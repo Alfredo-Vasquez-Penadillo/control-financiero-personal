@@ -342,12 +342,12 @@ function mergeBaselineEntries(){
 let entries=loadEntries();
 if(!Array.isArray(entries)) entries=[];
 mergeBaselineEntries();
-function loadEntries(){try{return JSON.parse(localStorage.getItem(STORE_KEY)||"[]")}catch(e){return []}}
-function persistEntries(){localStorage.setItem(STORE_KEY,JSON.stringify(entries))}
+function loadEntries(){try{const raw=localStorage.getItem(STORE_KEY);const data=raw?JSON.parse(raw):[];return Array.isArray(data)?data:[]}catch(e){console.error("No se pudieron leer los movimientos locales",e);return []}}
+function persistEntries(){try{localStorage.setItem(STORE_KEY,JSON.stringify(entries));return true}catch(e){console.error("No se pudieron guardar los movimientos locales",e);alert("No se pudieron guardar los cambios en este navegador. Exporta un respaldo y revisa el espacio disponible.");return false}}
 function money(n){return "S/ "+Number(n||0).toLocaleString("es-PE",{minimumFractionDigits:2,maximumFractionDigits:2})}
 function chooseType(t){document.getElementById("entryType").value=t;document.getElementById("incomeType").classList.toggle("selected",t==="ingreso");document.getElementById("expenseType").classList.toggle("selected",t==="gasto");document.getElementById("expenseType").classList.toggle("expense",t==="gasto")}
 function selectedMonth(){return document.getElementById("monthFilter").value||new Date().toISOString().slice(0,7)}
-function visibleEntries(){return entries.filter(e=>e.date.slice(0,7)===selectedMonth()).sort((a,b)=>b.date.localeCompare(a.date)||b.created-a.created)}
+function visibleEntries(){return entries.filter(e=>e&&e.date&&String(e.date).slice(0,7)===selectedMonth()).sort((a,b)=>String(b.date).localeCompare(String(a.date))||(Number(b.created)||0)-(Number(a.created)||0))}
 function saveEntry(ev){ev.preventDefault();const type=document.getElementById("entryType").value;const amount=Number(document.getElementById("entryAmount").value);const concept=document.getElementById("entryConcept").value.trim();if(!amount||amount<=0||!concept)return;
 const category=document.getElementById("entryCategory").value;const isCardPayment=type==="gasto"&&category==="Pago de tarjeta";
 entries.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),date:document.getElementById("entryDate").value,amount,concept,type,category,method:document.getElementById("entryMethod").value,notes:document.getElementById("entryNotes").value.trim(),cardPayment:isCardPayment,created:Date.now()});
@@ -381,7 +381,7 @@ function renderAnalytics(){
  else trend.innerHTML='<div class="chart-empty">No hay histórico suficiente.</div>';
  const status=document.getElementById("consumptionStatus");if(status)status.textContent=current.length?current.length+" operaciones encontradas para "+fmt(selected):"Sin operaciones para "+fmt(selected);
 }
-function renderEntries(){const month=visibleEntries();const income=month.filter(e=>e.type==="ingreso").reduce((a,e)=>a+e.amount,0);const expense=month.filter(e=>e.type==="gasto"&&!e.cardPayment).reduce((a,e)=>a+e.amount,0);const payments=month.filter(e=>e.cardPayment).reduce((a,e)=>a+e.amount,0);
+function renderEntries(){const month=visibleEntries();const income=month.filter(e=>e.type==="ingreso").reduce((a,e)=>a+Number(e.amount||0),0);const expense=month.filter(e=>e.type==="gasto"&&!e.cardPayment).reduce((a,e)=>a+Number(e.amount||0),0);const payments=month.filter(e=>e.cardPayment).reduce((a,e)=>a+Number(e.amount||0),0);
 document.getElementById("monthIncome").textContent=money(income);document.getElementById("monthExpense").textContent=money(expense);document.getElementById("monthNet").textContent=money(income-expense);
 const max=Math.max(income,expense,1);document.getElementById("monthChart").innerHTML='<div class="chart-row"><span>Ingresos</span><div class="chart-track"><i style="width:'+(income/max*100)+'%"></i></div><b class="right">'+money(income)+'</b></div><div class="chart-row"><span>Consumo</span><div class="chart-track"><i class="expense" style="width:'+(expense/max*100)+'%"></i></div><b class="right">'+money(expense)+'</b></div>'+(payments?'<div class="mini-total"><span>Pagos de tarjeta (no consumo)</span><b>'+money(payments)+'</b></div>':'');
 const cats={};month.filter(e=>e.type==="gasto"&&!e.cardPayment).forEach(e=>cats[e.category]=(cats[e.category]||0)+e.amount);const catArr=Object.entries(cats).sort((a,b)=>b[1]-a[1]);const catMax=catArr.length?catArr[0][1]:1;document.getElementById("categoryChart").innerHTML=catArr.length?catArr.map(([c,v])=>'<div class="chart-row"><span>'+escapeHtml(c)+'</span><div class="chart-track"><i class="expense" style="width:'+(v/catMax*100)+'%"></i></div><b class="right">'+money(v)+'</b></div>').join(""):'<div class="empty">Tus categorías aparecerán al registrar gastos.</div>';
@@ -496,7 +496,21 @@ document.getElementById("clearStatement").addEventListener("click",()=>{statemen
 
 function exportEntries(){const rows=[["fecha","tipo","importe","concepto","categoria","medio","nota","pago_tarjeta"],...entries.map(e=>[e.date,e.type,e.amount,e.concept,e.category,e.method,e.notes||"",e.cardPayment?"si":"no"])];const csv=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(",")).join("\n");const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alvapen_movimientos.csv";a.click();URL.revokeObjectURL(a.href)}
 function downloadBackup(){const blob=new Blob([JSON.stringify(entries,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alvapen_respaldo_financiero.json";a.click();URL.revokeObjectURL(a.href)}
-function importBackup(ev){const file=ev.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);if(!Array.isArray(data))throw Error();entries=data;persistEntries();renderEntries();alert("Respaldo importado.")}catch(e){alert("El archivo no tiene un respaldo válido.")}};reader.readAsText(file);ev.target.value=""}
+function importBackup(ev){
+ const file=ev.target.files[0];if(!file)return;
+ const reader=new FileReader();
+ reader.onload=()=>{
+  try{
+   const data=JSON.parse(reader.result);if(!Array.isArray(data))throw Error("Formato inválido");
+   const key=e=>[e.date,Number(e.amount).toFixed(2),String(e.concept||"").trim().toUpperCase(),String(e.category||""),String(e.method||""),String(e.type||"")].join("|");
+   const knownIds=new Set(entries.map(e=>e.id).filter(Boolean)),knownRows=new Set(entries.map(key));
+   let added=0;
+   data.forEach(e=>{if(!e||!e.date||!Number.isFinite(Number(e.amount)))return;if((e.id&&knownIds.has(e.id))||knownRows.has(key(e)))return;entries.push({...e,amount:Number(e.amount)});if(e.id)knownIds.add(e.id);knownRows.add(key(e));added++;});
+   persistEntries();renderEntries();renderAnalytics();alert("Respaldo integrado sin reemplazar tus datos. Nuevos movimientos añadidos: "+added+".");
+  }catch(e){alert("El archivo no tiene un respaldo válido.");}
+ };
+ reader.readAsText(file);ev.target.value="";
+}
 document.getElementById("entryForm").addEventListener("submit",saveEntry);
 document.getElementById("monthFilter").value=new Date().toISOString().slice(0,7);
 document.getElementById("entryDate").value=new Date().toISOString().slice(0,10);
