@@ -498,6 +498,14 @@ details{background:#191727;border-color:#3d364e;color:#eee9fa}details p{color:#a
 <details><summary>¿Qué información falta para un diagnóstico completo?</summary><p>Estado reciente de Diners, conciliación detallada de Scotiabank, confirmación de ingresos mensuales vigentes y registro diario completo de ingresos y gastos de noviembre.</p></details>
 <details><summary>¿Qué incluye la proyección del departamento?</summary><p>Solo el saldo actual y los aportes mensuales simulados. No incluye intereses, gastos notariales, registrales, tasación, seguros, costos hipotecarios ni variaciones del precio del inmueble. La inicial de S/ 30,000 es una meta de trabajo, no una cotización bancaria.</p></details>
 </section>
+<section id="movimientos" hidden aria-hidden="true">
+<form id="entryForm"></form><input id="monthFilter" type="month"><input id="entryDate" type="date">
+<input id="entryAmount" type="number"><input id="entryConcept"><input id="entryNotes">
+<input id="entryType" type="hidden" value="ingreso"><select id="entryCategory"></select><select id="entryMethod"></select>
+<button id="incomeType" type="button"></button><button id="expenseType" type="button"></button>
+<div id="monthIncome"></div><div id="monthExpense"></div><div id="monthNet"></div>
+<div id="monthChart"></div><div id="categoryChart"></div><div id="entryList"></div>
+</section>
 <div class="footer">ALVAPEN · Personal Finance Dashboard · Actualización documental por ciclos de tarjeta · Cifras sujetas a validación con los estados originales.</div>
 </div></main>
 </div>
