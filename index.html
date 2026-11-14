@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#2457A6">
-<meta name="alvapen-build" content="2026-11-14-consumption-dashboard-v3">
+<meta name="alvapen-build" content="2026-11-14-monthly-history-redesign-v5">
 <title>ALVAPEN | Panel financiero actualizado</title>
 <style>
-:root{--bg:#eef2f6;--ink:#18283d;--muted:#718096;--navy:#14243a;--navy2:#203a56;--teal:#168b83;--teal2:#dff3ef;--gold:#c69b52;--line:#e1e8ef;--white:#fff;--shadow:0 16px 42px #19324a12;--radius:22px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+:root{--bg:#f4f8fc;--ink:#152b45;--muted:#667d96;--navy:#153b64;--navy2:#245987;--teal:#20a99b;--teal2:#e3f6f3;--gold:#c79a52;--line:#dce8f2;--white:#fff;--shadow:0 14px 34px #183b5b12;--radius:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(145deg,#f6faff 0%,#eef7fb 48%,#f4fbfa 100%);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
 button,a,input{font:inherit}a{color:inherit;text-decoration:none}.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
 .sidebar{height:100vh;position:sticky;top:0;background:linear-gradient(165deg,#13243a,#1b344e 75%,#1c4d55);color:#eaf2f8;padding:25px 17px;display:flex;flex-direction:column;z-index:5}
 .logo{font-size:21px;font-weight:900;letter-spacing:.11em;padding:5px 10px}.logo span{color:#7dd3c7}.tag{font-size:11px;color:#a9bac9;padding:0 10px 24px}
@@ -74,7 +74,7 @@ body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),rad
 /* Importación y conciliación de estados PDF */
 .consumption-toolbar{display:grid;grid-template-columns:minmax(180px,230px) auto 1fr;gap:14px;align-items:end}.consumption-status{font-size:11px;color:#64748b;padding:10px 0}.consumption-row{grid-template-columns:145px 1fr 110px;margin:12px 0}.consumption-main{grid-template-columns:1.2fr .8fr}.consumption-kpis .kpi-value{font-size:25px}.import-zone{border:1.5px dashed #a9bdcc;border-radius:20px;padding:22px;background:rgba(247,250,253,.78);text-align:center}
 .import-zone input[type=file]{max-width:100%;font-size:12px}.import-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}.import-preview{overflow:auto;max-height:460px;border:1px solid #e5ebf1;border-radius:14px}.import-preview table{min-width:850px}.import-preview select,.import-preview input{font:inherit;font-size:11px;border:1px solid #dce5ec;border-radius:8px;padding:6px;background:#fff;max-width:150px}.import-status{font-size:11px;padding:10px 12px;border-radius:12px;background:#eef5fb;color:#4b647b;margin-top:12px}.import-status.error{background:#fff0ed;color:#9b4a3e}.import-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.import-kpis .mini{background:#f4f7fa}@media(max-width:650px){.consumption-toolbar{grid-template-columns:1fr}.consumption-main{grid-template-columns:1fr}.consumption-row{grid-template-columns:95px 1fr 85px}.import-controls{grid-template-columns:1fr}.import-kpis{grid-template-columns:1fr}}
-</style>
+.consumption-header{display:grid;grid-template-columns:1.4fr .6fr;gap:24px;align-items:center;padding:25px 28px;border-radius:24px;background:linear-gradient(120deg,#173e67 0%,#235d83 62%,#238d8a 100%);color:#fff;box-shadow:0 18px 42px #183b5b22;margin-bottom:15px}.consumption-header .eyebrow{color:#8ee2d6}.consumption-header h2{font-size:clamp(22px,2.4vw,30px);margin:5px 0 8px;color:#fff}.consumption-header p{font-size:12px;color:#e0edf5;max-width:620px;margin:0}.consumption-period{display:grid;gap:8px;background:#ffffff18;border:1px solid #ffffff32;border-radius:17px;padding:15px;backdrop-filter:blur(14px)}.consumption-period label{font-size:11px;color:#e8f4fa;font-weight:750}.consumption-period select{width:100%;border:1px solid #ffffff70;border-radius:11px;padding:11px;background:#fff;color:#18344f}.consumption-period .btn.primary{background:#d8f5ef;color:#135c59;border:0}.consumption-kpis{margin-bottom:15px}.consumption-kpis .card{border:1px solid #e3edf4;box-shadow:0 9px 25px #183b5b0a}.consumption-kpis .kpi-value{font-size:clamp(21px,2vw,27px);letter-spacing:-.03em}.consumption-main{margin-bottom:15px;grid-template-columns:1.15fr .85fr}.consumption-main .glass-panel,.consumption-trend{background:#fff;border:1px solid #e0eaf2;box-shadow:0 10px 28px #1b46630b;border-radius:20px;padding:20px}.consumption-row{display:grid;grid-template-columns:145px 1fr 100px;gap:12px;align-items:center;margin:14px 0;font-size:11px}.consumption-row>span{color:#4e647b;font-weight:650}.consumption-row .chart-track{background:#edf3f7;height:10px;border-radius:20px;overflow:hidden}.consumption-row .chart-track i{display:block;height:100%;border-radius:20px}.consumption-row b{color:#18344f;font-variant-numeric:tabular-nums}.consumption-trend{margin-top:0}.consumption-insight{padding:15px 18px;margin-top:14px;background:#e7f5f3;border:1px solid #ccebe5;border-radius:16px;color:#235a59;font-size:12px;line-height:1.6}.consumption-insight strong{color:#164a49}.consumption-main .chart-title h3,.consumption-trend .chart-title h3{color:#173b5b}.consumption-main .chart-title p,.consumption-trend .chart-title p{color:#71869b}.consumption-main .chart-empty{background:#f7fafc;border:1px dashed #d7e4ed;border-radius:14px;padding:24px;color:#71869b;text-align:center;font-size:12px}.consumption-period select:focus{outline:3px solid #8fe0d5}.donut-wrap{display:flex;gap:20px;align-items:center;justify-content:center;flex-wrap:wrap;padding:8px}.donut{width:174px;height:174px;border-radius:50%;display:grid;place-items:center;position:relative}.donut:before{content:"";position:absolute;inset:22px;background:#fff;border-radius:50%}.donut-center{position:relative;z-index:1;text-align:center;display:grid}.donut-center b{font-size:17px;color:#183b5b}.donut-center small{font-size:9px;color:#8294a6;letter-spacing:.1em}.legend-list{min-width:140px;flex:1}.legend-row{display:flex;justify-content:space-between;gap:10px;margin:8px 0;font-size:11px;color:#5b7085}.legend-row b{color:#183b5b}.consumption-status{font-size:11px;color:#71869b}@media(max-width:760px){.consumption-header{grid-template-columns:1fr;padding:20px}.consumption-main{grid-template-columns:1fr}.consumption-row{grid-template-columns:100px 1fr 85px;gap:8px}.consumption-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.donut{width:150px;height:150px}}</style>
 </head>
 <body>
 <div class="shell">
@@ -172,26 +172,6 @@ body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),rad
  <div class="panel"><div class="bank-head" style="background:linear-gradient(110deg,#252a36,#59616e)"><div><b>Diners Club · Miles Special Edition</b><small>Periodo facturado 10/09–09/10</small></div><span class="chip">Soles + USD</span></div><div class="mini-stats"><div class="mini"><small>Pago del mes</small><b>S/ 0.00</b></div><div class="mini"><small>Deuda reportada</small><b>S/ 0.00</b></div><div class="mini"><small>Línea disponible</small><b>US$ 3,200</b></div></div><p>Se observan pagos/abonos por S/ 83.30 y US$ 0.69. No se informa pago exigible en ese ciclo.</p><p class="muted">El documento no muestra compras pendientes ni deuda facturada para ese periodo.</p></div>
 </div>
 <div class="note" style="margin-top:14px"><strong>Cómo interpretar el gráfico:</strong> el pago del mes suma S/ 3,213.54 y el pago mínimo S/ 1,182.52. Son obligaciones del ciclo, no deuda total consolidada. Los saldos de deuda de las entidades no se suman aquí porque el BCP muestra línea utilizada mientras las otras entidades muestran deuda total o facturada. No hay estados de meses anteriores comparables suficientes para afirmar una tendencia de alza o baja; al importar nuevos periodos, el panel podrá mostrar esa evolución sin inventar datos.</div>
-<section class="section" id="importar"><div class="section-head"><div><h2>Importar estados de cuenta PDF</h2><p>Extrae movimientos, revisa categorías y agrega solo los registros confirmados.</p></div><span class="chip info">Importación asistida</span></div>
-<div class="panel">
- <div class="import-zone"><div style="font-size:28px">⇧</div><h3>Sube tu estado de cuenta</h3><p>Selecciona un PDF descargado de tu banco. El archivo se procesa localmente en este navegador.</p><input id="statementFile" type="file" accept="application/pdf,.pdf"></div>
- <div class="import-controls">
-  <div class="field"><label for="statementBank">Banco / entidad</label><select id="statementBank"><option>BCP</option><option>Interbank</option><option>Scotiabank</option><option>Banco Falabella / CMR</option><option>Diners Club</option><option>Otro</option></select></div>
-  <div class="field"><label for="statementAccount">Cuenta / tarjeta (opcional)</label><input id="statementAccount" placeholder="Ej. Visa terminación 3364"></div>
-  <div class="field"><label for="statementPeriod">Periodo (referencial)</label><input id="statementPeriod" type="month"></div>
- </div>
- <div class="tools-row"><button class="btn primary" type="button" id="analyzeStatement">Analizar PDF</button><button class="btn" type="button" id="clearStatement">Limpiar vista previa</button></div>
- <div id="statementStatus" class="import-status">Aún no has seleccionado un estado de cuenta.</div>
- <div id="statementReview" hidden>
-  <div class="import-kpis"><div class="mini"><small>Movimientos detectados</small><b id="statementCount">0</b></div><div class="mini"><small>Posibles duplicados</small><b id="statementDuplicates">0</b></div><div class="mini"><small>Total seleccionado</small><b id="statementTotal">S/ 0.00</b></div></div>
-  <p class="muted" style="font-size:11px">Revisa cada fila antes de importar. La detección automática es orientativa: verifica especialmente el signo, fecha, importe y descripción. Los duplicados aparecen desmarcados.</p>
-  <div class="import-preview"><table><thead><tr><th>Incluir</th><th>Fecha</th><th>Descripción</th><th>Importe</th><th>Tipo</th><th>Categoría</th><th>Estado</th></tr></thead><tbody id="statementRows"></tbody></table></div>
-  <div class="tools-row" style="margin-top:14px"><button class="btn primary" type="button" id="confirmStatement">Agregar movimientos seleccionados</button></div>
- </div>
- <div class="note" style="margin-top:14px"><strong>Protección de tus datos:</strong> los movimientos existentes no se reemplazan. Se agregan nuevos registros al almacenamiento local y se omiten coincidencias probables. El PDF no se envía a un servidor. Los PDF escaneados como imagen podrían no contener texto extraíble y requerirán OCR o registro manual.</div>
-</div></section>
-
-</section>
 <section class="section" id="comparativa"><div class="section-head"><div><h2>Cómo has evolucionado</h2><p>Comparación de los datos anteriores con los documentos de noviembre. Algunas bases no son idénticas.</p></div></div>
 <div class="compare">
 <div class="panel"><span class="chip good">Mejora</span><div class="delta" style="color:#16805f">+S/ 3,000</div><b>Ahorro vivienda</b><p>De S/ 5,000 a S/ 8,000. Aumento del 60%, confirmado como fondo exclusivo para la inicial.</p></div>
@@ -205,26 +185,24 @@ body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),rad
 
 
 <section class="section" id="analitica">
-<div class="section-head"><div><h2>Panel de consumo mensual</h2><p>Una lectura ejecutiva de tus gastos para decidir dónde ajustar.</p></div><span class="chip good">Análisis por periodo</span></div>
-<div class="glass-panel" style="margin-bottom:14px">
- <div class="consumption-toolbar">
-  <div class="field"><label for="consumptionMonthFilter">Mes a evaluar</label><input id="consumptionMonthFilter" type="month" value="2026-09"></div>
-  <button class="btn primary" type="button" id="applyConsumptionFilter">Analizar este mes</button>
-  <span id="consumptionStatus" class="consumption-status">Selecciona un periodo y ejecuta el análisis.</span>
- </div>
+<div class="section-head"><div><h2>Panel de consumo mensual</h2><p>Resumen ejecutivo para entender tus gastos y decidir dónde ajustar.</p></div><span class="chip good">Control por periodo</span></div>
+<div class="consumption-header">
+ <div><div class="eyebrow">FINANZAS PERSONALES</div><h2>Tu consumo, bajo control.</h2><p>Compara tus meses, identifica las categorías que más pesan y detecta cambios antes de que se conviertan en hábito.</p></div>
+ <div class="consumption-period"><label for="consumptionMonthFilter">Periodo evaluado</label><select id="consumptionMonthFilter"></select><button class="btn primary" type="button" id="applyConsumptionFilter">Actualizar análisis</button></div>
 </div>
 <div class="grid kpis consumption-kpis">
- <div class="card"><div class="kpi-label">Consumo total</div><div class="kpi-value" id="consumptionTotal">S/ 0.00</div><div class="kpi-note">Compras y gastos del periodo</div></div>
+ <div class="card"><div class="kpi-label">Consumo total</div><div class="kpi-value" id="consumptionTotal">S/ 0.00</div><div class="kpi-note">Gastos y compras en soles</div></div>
  <div class="card"><div class="kpi-label">Mayor categoría</div><div class="kpi-value" id="consumptionTopCategory">—</div><div class="kpi-note" id="consumptionTopAmount">Sin datos</div></div>
- <div class="card"><div class="kpi-label">Variación mensual</div><div class="kpi-value" id="consumptionVariation">—</div><div class="kpi-note" id="consumptionVariationNote">Sin comparación disponible</div></div>
- <div class="card"><div class="kpi-label">Operaciones</div><div class="kpi-value" id="consumptionCount">0</div><div class="kpi-note">Consumos considerados</div></div>
+ <div class="card"><div class="kpi-label">Cambio vs. mes previo</div><div class="kpi-value" id="consumptionVariation">—</div><div class="kpi-note" id="consumptionVariationNote">Sin comparación</div></div>
+ <div class="card"><div class="kpi-label">Operaciones</div><div class="kpi-value" id="consumptionCount">0</div><div class="kpi-note">Movimientos del periodo</div></div>
 </div>
-<div class="grid two consumption-main" style="margin-top:14px">
- <div class="glass-panel"><div class="chart-title"><div><h3>¿A dónde se fue el dinero?</h3><p>Importe por categoría · ordenado de mayor a menor</p></div></div><div id="consumptionCategoryBars"><div class="chart-empty">Presiona “Analizar este mes”.</div></div></div>
- <div class="glass-panel"><div class="chart-title"><div><h3>Distribución del consumo</h3><p>Participación de cada categoría</p></div></div><div id="consumptionDonut"><div class="chart-empty">Sin datos para mostrar.</div></div></div>
+<div class="grid two consumption-main">
+ <div class="glass-panel"><div class="chart-title"><div><h3>En qué estás gastando</h3><p>Importe por categoría, de mayor a menor</p></div></div><div id="consumptionCategoryBars"></div></div>
+ <div class="glass-panel"><div class="chart-title"><div><h3>Composición del gasto</h3><p>Participación de cada categoría</p></div></div><div id="consumptionDonut"></div></div>
 </div>
-<div class="glass-panel" style="margin-top:14px"><div class="chart-title"><div><h3>Evolución mensual</h3><p>Comparación de los seis últimos meses con información registrada</p></div></div><div id="consumptionTrend"><div class="chart-empty">Se mostrará cuando existan varios meses con información.</div></div></div>
-<div class="note" style="margin-top:12px"><strong>Cómo leerlo:</strong> los pagos de tarjetas y cancelaciones de deuda no se consideran consumo. El análisis depende de operaciones importadas o conservadas en este navegador. Los cargos en moneda extranjera no se convierten automáticamente a soles.</div>
+<div class="glass-panel consumption-trend"><div class="chart-title"><div><h3>Cómo evoluciona tu consumo</h3><p>Comparación de todos los meses con información disponible</p></div><span class="chip info" id="consumptionHistoryCount">—</span></div><div id="consumptionTrend"></div></div>
+<div class="consumption-insight" id="consumptionInsight">Selecciona un periodo para ver las principales señales de gasto.</div>
+<div class="note" style="margin-top:12px"><strong>Criterio:</strong> los pagos de tarjetas y cancelaciones de deuda se excluyen para no duplicar compras. Los cargos en dólares no se suman a los importes en soles. Los estados Diners antiguos no aportaron detalle legible de operaciones, por lo que no se han inventado consumos para esa tarjeta.</div>
 </section>
 <section class="section" id="movimientos" style="display:none"><div class="section-head"><div><h2>Registro diario · Overview</h2><p>Registra ingresos y gastos en una sola vista. El resumen y los gráficos se actualizan automáticamente.</p></div><span class="chip good">Libro personal</span></div>
 <div class="entry-layout">
@@ -269,7 +247,7 @@ body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),rad
 <div class="footer">ALVAPEN · Centro Financiero Personal · Estados de cuenta base: septiembre–octubre 2026 · Cifras sujetas a conciliación con los estados bancarios originales.</div>
 </div></main>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
 <script>
 const fmt = n => "S/ " + Math.round(n).toLocaleString("es-PE");
 function updateProjection(){
@@ -293,6 +271,7 @@ document.getElementById("months").addEventListener("input",updateProjection);
 updateProjection();
 
 const STORE_KEY="alvapen_personal_finance_v1";
+const BASELINE_AUG_CYCLE_2026=[{"id":"stmt26_jul_cmr_01","date":"2026-07-29","amount":16.9,"concept":"Uber Rides","type":"gasto","category":"Transporte","method":"CMR Falabella","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_bcp_01","date":"2026-08-11","amount":72.34,"concept":"PVEA Ayacucho","type":"gasto","category":"Alimentación","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_bcp_02","date":"2026-08-13","amount":33,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_bcp_03","date":"2026-08-13","amount":5.5,"concept":"Supermercados Holi","type":"gasto","category":"Alimentación","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_bcp_04","date":"2026-08-18","amount":50,"concept":"Starbucks","type":"gasto","category":"Alimentación","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_bcp_05","date":"2026-08-19","amount":1.76,"concept":"Supermercados Holi","type":"gasto","category":"Alimentación","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_bcp_06","date":"2026-08-25","amount":536,"concept":"Pago de impuestos SUNAT","type":"gasto","category":"Impuestos y tributos","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_bcp_07","date":"2026-08-29","amount":43,"concept":"Kanpai Sushi","type":"gasto","category":"Alimentación","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_bcp_08","date":"2026-08-30","amount":111.8,"concept":"Pardos Chicken","type":"gasto","category":"Alimentación","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_01","date":"2026-08-08","amount":164.16,"concept":"Tiendas Superpet","type":"gasto","category":"Mascotas","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_02","date":"2026-08-08","amount":19.9,"concept":"PVEA Ayacucho","type":"gasto","category":"Alimentación","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_03","date":"2026-08-14","amount":39.9,"concept":"Entel Perú","type":"gasto","category":"Telefonía e internet","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_04","date":"2026-08-18","amount":59.4,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_05","date":"2026-08-19","amount":39.6,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_06","date":"2026-08-19","amount":139.9,"concept":"Movistar App","type":"gasto","category":"Telefonía e internet","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_07","date":"2026-08-19","amount":46.2,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_08","date":"2026-08-20","amount":26.4,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_09","date":"2026-08-20","amount":535.52,"concept":"Ticketmaster","type":"gasto","category":"Entretenimiento","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_10","date":"2026-08-20","amount":26.4,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_11","date":"2026-08-20","amount":26.4,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_12","date":"2026-08-21","amount":52.8,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_13","date":"2026-08-22","amount":46.2,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_14","date":"2026-08-23","amount":98,"concept":"Shimaya Ramen","type":"gasto","category":"Alimentación","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_15","date":"2026-08-25","amount":67.8,"concept":"Sedapal","type":"gasto","category":"Vivienda y servicios","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_16","date":"2026-08-25","amount":92.4,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_ibk_17","date":"2026-08-27","amount":140,"concept":"Interseguro","type":"gasto","category":"Seguros","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_cmr_01","date":"2026-08-06","amount":118,"concept":"Cinemark","type":"gasto","category":"Entretenimiento","method":"CMR Falabella","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_cmr_02","date":"2026-08-06","amount":12.1,"concept":"DLC Rides","type":"gasto","category":"Transporte","method":"CMR Falabella","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_cmr_03","date":"2026-08-08","amount":20.31,"concept":"Google YouTube Premium","type":"gasto","category":"Suscripciones digitales","method":"CMR Falabella","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_cmr_04","date":"2026-08-14","amount":78.89,"concept":"Temu","type":"gasto","category":"Compras personales","method":"CMR Falabella","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_cmr_05","date":"2026-08-22","amount":20.4,"concept":"Google One","type":"gasto","category":"Suscripciones digitales","method":"CMR Falabella","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_sc_01","date":"2026-08-29","amount":35,"concept":"Openpay Mazomayo Huamanga","type":"gasto","category":"Compras personales","method":"Scotiabank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_aug_sc_02","date":"2026-08-29","amount":17,"concept":"IZI Kibo","type":"gasto","category":"Alimentación","method":"Scotiabank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_bcp_01","date":"2026-09-01","amount":102,"concept":"Pago de impuestos SUNAT","type":"gasto","category":"Impuestos y tributos","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_bcp_02","date":"2026-09-02","amount":46.2,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_bcp_03","date":"2026-09-02","amount":10.4,"concept":"Supermercados Holi","type":"gasto","category":"Alimentación","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_bcp_04","date":"2026-09-02","amount":52.8,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_bcp_05","date":"2026-09-03","amount":39.6,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_bcp_06","date":"2026-09-04","amount":50,"concept":"Starbucks","type":"gasto","category":"Alimentación","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_bcp_07","date":"2026-09-08","amount":8.4,"concept":"IKF 991 PV Acho","type":"gasto","category":"Compras personales","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_bcp_08","date":"2026-09-08","amount":2.3,"concept":"PVEA Acho","type":"gasto","category":"Alimentación","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_bcp_09","date":"2026-09-08","amount":33,"concept":"SUNARP","type":"gasto","category":"Trámites y registros","method":"BCP","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_ibk_01","date":"2026-09-02","amount":209.6,"concept":"Luz del Sur","type":"gasto","category":"Vivienda y servicios","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_ibk_02","date":"2026-09-05","amount":2852,"concept":"Pago de detracciones SUNAT","type":"gasto","category":"Impuestos y tributos","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_ibk_03","date":"2026-09-05","amount":12,"concept":"Nella Paletas","type":"gasto","category":"Alimentación","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_ibk_04","date":"2026-09-06","amount":10,"concept":"IZI El Placer","type":"gasto","category":"Alimentación","method":"Interbank","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_cmr_01","date":"2026-09-02","amount":57.52,"concept":"Apple.com Bill","type":"gasto","category":"Suscripciones digitales","method":"CMR Falabella","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_cmr_02","date":"2026-09-04","amount":13.9,"concept":"Seguro desgravamen","type":"gasto","category":"Seguros y cargos financieros","method":"CMR Falabella","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_cmr_03","date":"2026-09-04","amount":55.94,"concept":"Interés compensatorio","type":"gasto","category":"Intereses y financiamiento","method":"CMR Falabella","cardPayment":false,"source":"statement_2026_aug_cycle"},{"id":"stmt26_sep_cmr_04","date":"2026-09-04","amount":0.01,"concept":"Interés moratorio","type":"gasto","category":"Intereses y financiamiento","method":"CMR Falabella","cardPayment":false,"source":"statement_2026_aug_cycle"}];
 const BASELINE_SEPT_2026=[
  {id:"stmt26_bcp_01",date:"2026-09-24",amount:585,concept:"Pago de impuestos SUNAT",type:"gasto",category:"Impuestos y trámites",method:"BCP",cardPayment:false,source:"statement_baseline"},
  {id:"stmt26_bcp_02",date:"2026-09-24",amount:3.90,concept:"Combate de Angamos",type:"gasto",category:"Alimentación",method:"BCP",cardPayment:false,source:"statement_baseline"},
@@ -336,7 +315,7 @@ const BASELINE_SEPT_2026=[
 ];
 function mergeBaselineEntries(){
  const known=new Set(entries.map(e=>e.id));
- const missing=BASELINE_SEPT_2026.filter(e=>!known.has(e.id));
+ const missing=[...BASELINE_AUG_CYCLE_2026,...BASELINE_SEPT_2026].filter(e=>!known.has(e.id));
  if(missing.length){entries=entries.concat(missing);persistEntries();}
 }
 let entries=loadEntries();
@@ -353,33 +332,34 @@ const category=document.getElementById("entryCategory").value;const isCardPaymen
 entries.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),date:document.getElementById("entryDate").value,amount,concept,type,category,method:document.getElementById("entryMethod").value,notes:document.getElementById("entryNotes").value.trim(),cardPayment:isCardPayment,created:Date.now()});
 persistEntries();document.getElementById("entryAmount").value="";document.getElementById("entryConcept").value="";document.getElementById("entryNotes").value="";renderEntries();renderAnalytics();}
 function renderAnalytics(){
- const input=document.getElementById("consumptionMonthFilter");
- const selected=input&&input.value?input.value:"2026-09";
- const all=(Array.isArray(entries)?entries:[]).filter(e=>e&&e.date&&e.type==="gasto"&&!e.cardPayment&&!/pago de tarjeta|pago tc|cancelaci[oó]n de deuda|pago de deuda/i.test(String(e.category||"")+" "+String(e.concept||"")));
- const cat=e=>{const c=String(e.category||"").trim();return !c||/otros gastos|otros$/i.test(c)?"Por revisar":c};
+ const monthSelect=document.getElementById("consumptionMonthFilter");
+ const all=(Array.isArray(entries)?entries:[]).filter(e=>e&&e.date&&e.type==="gasto"&&!e.cardPayment&&!/pago de tarjeta|pago tc|cancelaci[oó]n de deuda|pago de deuda/i.test(String(e.category||"")+" "+String(e.concept||""))&&(!e.currency||e.currency==="PEN"));
+ const months=[...new Set(all.map(e=>String(e.date).slice(0,7)))].filter(m=>m.length===7&&m[4]==="-").sort();
+ const previousSelection=monthSelect.value;
+ monthSelect.innerHTML=months.map(m=>{const p=m.split("-").map(Number);const label=new Date(p[0],p[1]-1,1).toLocaleDateString("es-PE",{month:"long",year:"numeric"});return '<option value="'+m+'">'+label.charAt(0).toUpperCase()+label.slice(1)+'</option>'}).join("");
+ const selected=months.includes(previousSelection)?previousSelection:(months[months.length-1]||"");if(selected)monthSelect.value=selected;
+ const current=all.filter(e=>String(e.date).slice(0,7)===selected);
+ const category=e=>String(e.category||"").trim()||"Por revisar";
  const sum=xs=>xs.reduce((a,e)=>a+Math.abs(Number(e.amount)||0),0);
- const current=all.filter(e=>String(e.date).slice(0,7)===selected),cats={};
- current.forEach(e=>{const k=cat(e);cats[k]=(cats[k]||0)+Math.abs(Number(e.amount)||0)});
- const arr=Object.entries(cats).sort((a,b)=>b[1]-a[1]),total=sum(current);
- const colors=["#2457A6","#3B82A0","#D39B38","#C65D4B","#648A70","#7867A8","#B56B91","#8794A5","#5B9A9A","#A58B60"];
- const fmt=m=>{const p=m.split("-");return new Date(Number(p[0]),Number(p[1])-1,1).toLocaleDateString("es-PE",{month:"long",year:"numeric"})};
+ const grouped={};current.forEach(e=>{const c=category(e);grouped[c]=(grouped[c]||0)+Math.abs(Number(e.amount)||0)});
+ const cats=Object.entries(grouped).sort((a,b)=>b[1]-a[1]),total=sum(current);
+ const palette=["#245987","#23a69a","#d3a14d","#6e89ad","#73b8aa","#9a85b7","#d17d68","#8c9aa8","#4f9a9a","#b2a16f"];
+ const fmt=m=>{if(!m)return "—";const p=m.split("-").map(Number);return new Date(p[0],p[1]-1,1).toLocaleDateString("es-PE",{month:"long",year:"numeric"})};
  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v};
- set("consumptionTotal",money(total));set("consumptionCount",current.length);set("consumptionTopCategory",arr.length?arr[0][0]:"—");
- set("consumptionTopAmount",arr.length?money(arr[0][1])+" · "+(arr[0][1]/total*100).toFixed(1)+"% del total":"No hay consumos para este mes");
- const prevDate=new Date(Number(selected.slice(0,4)),Number(selected.slice(5,7))-2,1),prev=prevDate.getFullYear()+"-"+String(prevDate.getMonth()+1).padStart(2,"0");
- const previous=all.filter(e=>String(e.date).slice(0,7)===prev),prevTotal=sum(previous),variation=document.getElementById("consumptionVariation");
- if(previous.length){const diff=total-prevTotal,pct=prevTotal?(diff/prevTotal*100):null;variation.textContent=pct===null?((diff>0?"+":"")+money(diff)):((diff>0?"+":"")+pct.toFixed(1)+"%");variation.style.color=diff>0?"#b45349":diff<0?"#16805f":"#1e293b";set("consumptionVariationNote",(diff>0?"Subió":diff<0?"Bajó":"Sin cambio")+" frente a "+fmt(prev)+" · "+money(prevTotal));}
- else{variation.textContent="—";variation.style.color="";set("consumptionVariationNote","No hay datos del mes anterior para comparar");}
+ set("consumptionTotal",money(total));set("consumptionCount",current.length);set("consumptionTopCategory",cats.length?cats[0][0]:"—");
+ set("consumptionTopAmount",cats.length?money(cats[0][1])+" · "+(cats[0][1]/total*100).toFixed(1)+"% del consumo":"Sin operaciones en este periodo");
+ const idx=months.indexOf(selected),previousMonth=idx>0?months[idx-1]:"",previous=previousMonth?all.filter(e=>String(e.date).slice(0,7)===previousMonth):[],previousTotal=sum(previous),variation=document.getElementById("consumptionVariation");
+ if(previous.length){const diff=total-previousTotal,pct=previousTotal?diff/previousTotal*100:null;variation.textContent=pct===null?money(diff):(diff>0?"+":"")+pct.toFixed(1)+"%";variation.style.color=diff>0?"#b45349":diff<0?"#16805f":"#183b5b";set("consumptionVariationNote",(diff>0?"Aumentó":diff<0?"Disminuyó":"Se mantuvo")+" frente a "+fmt(previousMonth)+" · "+money(previousTotal));}else{variation.textContent="—";variation.style.color="";set("consumptionVariationNote","No hay un mes anterior comparable");}
  const bars=document.getElementById("consumptionCategoryBars");
- bars.innerHTML=arr.length?arr.map(([name,val],i)=>'<div class="chart-row consumption-row"><span>'+escapeHtml(name)+'</span><div class="chart-track"><i style="width:'+(val/arr[0][1]*100)+'%;background:'+colors[i%colors.length]+'"></i></div><b class="right">'+money(val)+'</b></div>').join(""):'<div class="chart-empty">No encontramos consumos guardados para '+fmt(selected)+'. Revisa que los estados de cuenta estén importados en este navegador.</div>';
+ bars.innerHTML=cats.length?cats.map(([name,val],i)=>'<div class="chart-row consumption-row"><span>'+escapeHtml(name)+'</span><div class="chart-track"><i style="width:'+(val/cats[0][1]*100)+'%;background:'+palette[i%palette.length]+'"></i></div><b class="right">'+money(val)+'</b></div>').join(""):'<div class="chart-empty">No hay consumos registrados para este mes.</div>';
  const donut=document.getElementById("consumptionDonut");
- if(total){let cursor=0;const stops=arr.map((x,i)=>{const a=cursor;cursor+=x[1]/total*100;return colors[i%colors.length]+" "+a+"% "+cursor+"%"}).join(",");donut.innerHTML='<div class="donut-wrap"><div class="donut" style="background:conic-gradient('+stops+')"><div class="donut-center"><b>'+money(total)+'</b><small>CONSUMO</small></div></div><div class="legend-list">'+arr.map((x,i)=>'<div class="legend-row"><span><i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:'+colors[i%colors.length]+';margin-right:7px"></i>'+escapeHtml(x[0])+'</span><b>'+((x[1]/total)*100).toFixed(1)+'%</b></div>').join("")+'</div></div>';}
- else donut.innerHTML='<div class="chart-empty">No hay categorías que distribuir.</div>';
- const months=[...new Set(all.map(e=>String(e.date).slice(0,7)))].sort().slice(-6);
- const trend=document.getElementById("consumptionTrend");
- if(months.length){const vals=months.map(m=>({m,v:sum(all.filter(e=>String(e.date).slice(0,7)===m))}));const max=Math.max(1,...vals.map(x=>x.v));trend.innerHTML=vals.map(x=>'<div class="chart-row consumption-row"><span>'+fmt(x.m)+'</span><div class="chart-track"><i style="width:'+(x.v/max*100)+'%;background:#2457A6"></i></div><b class="right">'+money(x.v)+'</b></div>').join("");}
- else trend.innerHTML='<div class="chart-empty">No hay histórico suficiente.</div>';
- const status=document.getElementById("consumptionStatus");if(status)status.textContent=current.length?current.length+" operaciones encontradas para "+fmt(selected):"Sin operaciones para "+fmt(selected);
+ if(total){let cursor=0;const stops=cats.map((x,i)=>{const a=cursor;cursor+=x[1]/total*100;return palette[i%palette.length]+" "+a+"% "+cursor+"%"}).join(",");donut.innerHTML='<div class="donut-wrap"><div class="donut" style="background:conic-gradient('+stops+')"><div class="donut-center"><b>'+money(total)+'</b><small>CONSUMO</small></div></div><div class="legend-list">'+cats.map((x,i)=>'<div class="legend-row"><span><i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:'+palette[i%palette.length]+' ;margin-right:7px"></i>'+escapeHtml(x[0])+'</span><b>'+((x[1]/total)*100).toFixed(1)+'%</b></div>').join("")+'</div></div>';}else donut.innerHTML='<div class="chart-empty">Sin categorías para distribuir.</div>';
+ const trend=document.getElementById("consumptionTrend"),monthlyTotals=months.map(m=>({month:m,value:sum(all.filter(e=>String(e.date).slice(0,7)===m))})),max=Math.max(1,...monthlyTotals.map(x=>x.value));
+ trend.innerHTML=monthlyTotals.length?monthlyTotals.map(x=>'<div class="chart-row consumption-row"><span>'+fmt(x.month)+'</span><div class="chart-track"><i style="width:'+(x.value/max*100)+'%;background:'+(x.month===selected?"#23a69a":"#7396b7")+'"></i></div><b class="right">'+money(x.value)+'</b></div>').join(""):'<div class="chart-empty">Aún no hay meses con movimientos.</div>';
+ set("consumptionHistoryCount",months.length+" meses disponibles");
+ const insight=document.getElementById("consumptionInsight");
+ if(!current.length)insight.innerHTML="<strong>Sin información del periodo.</strong> No hay consumos en soles cargados para el mes seleccionado.";else{const lead=cats[0],share=lead?lead[1]/total*100:0,delta=previous.length?total-previousTotal:null,movement=delta===null?"No hay comparación con el mes anterior.":(delta>0?"El consumo total subió "+money(delta)+" respecto de "+fmt(previousMonth)+".":delta<0?"El consumo total bajó "+money(Math.abs(delta))+" respecto de "+fmt(previousMonth)+".":"El consumo se mantuvo respecto del mes anterior.");insight.innerHTML="<strong>Lectura del mes:</strong> "+(lead?"La categoría de mayor peso es "+escapeHtml(lead[0])+" con "+money(lead[1])+" ("+share.toFixed(1)+"% del total). ":"")+movement+" Revisa primero esa categoría para identificar ajustes posibles.";}
+ const status=document.getElementById("consumptionStatus");if(status)status.textContent=current.length?current.length+" operaciones analizadas · "+fmt(selected):"Sin movimientos en el periodo";
 }
 function renderEntries(){const month=visibleEntries();const income=month.filter(e=>e.type==="ingreso").reduce((a,e)=>a+Number(e.amount||0),0);const expense=month.filter(e=>e.type==="gasto"&&!e.cardPayment).reduce((a,e)=>a+Number(e.amount||0),0);const payments=month.filter(e=>e.cardPayment).reduce((a,e)=>a+Number(e.amount||0),0);
 document.getElementById("monthIncome").textContent=money(income);document.getElementById("monthExpense").textContent=money(expense);document.getElementById("monthNet").textContent=money(income-expense);
@@ -390,109 +370,6 @@ const list=document.getElementById("entryList");list.innerHTML=month.length?mont
 function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function removeEntry(id){if(!confirm("¿Eliminar este movimiento?"))return;entries=entries.filter(e=>e.id!==id);persistEntries();renderEntries();renderAnalytics()}
 function clearMonth(){const m=selectedMonth();if(!confirm("¿Eliminar todos los movimientos de "+m+" guardados en este navegador?"))return;entries=entries.filter(e=>e.date.slice(0,7)!==m);persistEntries();renderEntries();renderAnalytics()}
-
-/* PDF import workflow: extract, review, deduplicate, then append without replacing */
-let statementCandidates=[];
-const stmtFile=document.getElementById("statementFile");
-const stmtStatus=document.getElementById("statementStatus");
-const stmtReview=document.getElementById("statementReview");
-function stmtMsg(msg,isError=false){stmtStatus.textContent=msg;stmtStatus.classList.toggle("error",isError)}
-function parseStatementDate(s){
- const m=s.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{2,4})$/);if(!m)return "";
- let y=Number(m[3]);if(y<100)y+=2000;const d=String(Number(m[1])).padStart(2,"0"),mo=String(Number(m[2])).padStart(2,"0");
- if(Number(m[1])>31||Number(m[2])>12||Number(m[1])<1||Number(m[2])<1)return "";
- return y+"-"+mo+"-"+d;
-}
-function parseStatementAmount(s){
- let t=s.replace(/S\/?/gi,"").replace(/\s/g,"");
- if(t.includes(",")&&t.includes("."))t=t.replace(/,/g,"");
- else if(t.includes(",")&&!t.includes("."))t=t.replace(",",".");
- const n=Number(t.replace(/[^0-9.\-+]/g,""));return Number.isFinite(n)?n:NaN;
-}
-function guessStatementCategory(desc){
- const d=desc.toUpperCase();
- if(/RESTAUR|CAF[EÉ]|MARKET|SUPERMERC|ALIMENT|PIZZA|DELIVERY/.test(d))return "Alimentación";
- if(/TAXI|UBER|CABIFY|PEAJE|GASOL|GRIFO|PARKING|ESTACIONAMIENTO/.test(d))return "Transporte";
- if(/NETFLIX|SPOTIFY|APPLE|GOOGLE|DISNEY|PRIME VIDEO/.test(d))return "Suscripciones";
- if(/FARMAC|CLINIC|MEDIC|BOTICA|SALUD/.test(d))return "Salud";
- if(/COLEGIO|UNIVERS|CURSO|EDUCAC/.test(d))return "Educación";
- if(/LUZ|AGUA|INTERNET|TELEF|CLARO|MOVISTAR|ENTEL/.test(d))return "Vivienda y servicios";
- if(/PAGO.*TARJETA|PAGO TC|PAGO DE TARJETA|ABONO.*TARJETA/.test(d))return "Pago de tarjeta";
- return "Compras personales";
-}
-function isStatementDuplicate(c){
- const norm=s=>String(s||"").toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,32);
- return entries.some(e=>e.date===c.date&&Math.abs(Number(e.amount)-Math.abs(c.amount))<0.005&&norm(e.concept)===norm(c.description));
-}
-function renderStatementReview(){
- const body=document.getElementById("statementRows");
- body.innerHTML=statementCandidates.map((c,i)=>'<tr><td><input type="checkbox" data-stmt-check="'+i+'" '+(c.duplicate?"":"checked")+' '+(c.duplicate?'disabled':'')+'></td><td><input type="date" data-stmt-date="'+i+'" value="'+c.date+'"></td><td><input data-stmt-desc="'+i+'" value="'+escapeHtml(c.description)+'"></td><td><input type="number" step="0.01" data-stmt-amount="'+i+'" value="'+Math.abs(c.amount).toFixed(2)+'"></td><td><select data-stmt-type="'+i+'"><option value="gasto" '+(c.type==="gasto"?"selected":"")+'>Gasto</option><option value="ingreso" '+(c.type==="ingreso"?"selected":"")+'>Ingreso</option></select></td><td><select data-stmt-cat="'+i+'">'+["Alimentación","Transporte","Vivienda y servicios","Salud","Educación","Compras personales","Suscripciones","Ocio","Deudas / intereses","Pago de tarjeta","Otros gastos","Otros ingresos"].map(x=>'<option '+(x===c.category?'selected':'')+'>'+x+'</option>').join("")+'</select></td><td>'+(c.duplicate?'<span class="chip warn">Posible duplicado</span>':'<span class="chip good">Nuevo</span>')+'</td></tr>').join("");
- document.getElementById("statementCount").textContent=statementCandidates.length;
- document.getElementById("statementDuplicates").textContent=statementCandidates.filter(x=>x.duplicate).length;
- document.getElementById("statementTotal").textContent=money(statementCandidates.filter((x,i)=>{const el=document.querySelector('[data-stmt-check="'+i+'"]');return el&&el.checked}).reduce((a,x)=>a+Math.abs(x.amount),0));
- body.querySelectorAll("input,select").forEach(el=>el.addEventListener("change",updateStatementTotals));
- stmtReview.hidden=false;updateStatementTotals();
-}
-function updateStatementTotals(){
- let total=0,count=0;
- statementCandidates.forEach((x,i)=>{const check=document.querySelector('[data-stmt-check="'+i+'"]');if(check&&check.checked){const a=document.querySelector('[data-stmt-amount="'+i+'"]');total+=Math.abs(Number(a.value)||0);count++}});
- document.getElementById("statementTotal").textContent=money(total);
- document.getElementById("confirmStatement").textContent="Agregar "+count+" movimientos seleccionados";
-}
-async function analyzeStatement(){
- const file=stmtFile.files&&stmtFile.files[0];if(!file){stmtMsg("Selecciona primero un archivo PDF.",true);return}
- if(!window.pdfjsLib){stmtMsg("No se pudo cargar el lector PDF. Comprueba tu conexión e inténtalo de nuevo.",true);return}
- try{
-  stmtMsg("Leyendo el PDF en este navegador…");pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
-  const data=new Uint8Array(await file.arrayBuffer());const pdf=await pdfjsLib.getDocument({data}).promise;let all=[];
-  for(let p=1;p<=pdf.numPages;p++){const page=await pdf.getPage(p);const tc=await page.getTextContent();let line="",lastY=null;for(const item of tc.items){const y=Math.round(item.transform[5]);if(lastY!==null&&Math.abs(y-lastY)>3){if(line.trim())all.push(line.trim());line="";}line+=(line?" ":"")+item.str;lastY=y;}if(line.trim())all.push(line.trim());}
-  if(!all.length){stmtMsg("Este PDF no contiene texto seleccionable. Puede ser un escaneo; requiere OCR o un PDF descargado directamente del banco.",true);return}
-  const found=[];
-  for(const line of all){
-   const dm=line.match(/(?:^|\s)(\d{1,2}[\/-]\d{1,2}[\/-]\d{2,4})(?:\s|$)/);if(!dm)continue;
-   const date=parseStatementDate(dm[1]);if(!date)continue;
-   const tail=line.slice(line.indexOf(dm[1])+dm[1].length).trim();
-   const nums=[...tail.matchAll(/(?:S\/?\s*)?[-+]?\d{1,3}(?:,\d{3})*(?:\.\d{2})|(?:S\/?\s*)?[-+]?\d+\.\d{2}/g)];
-   if(!nums.length)continue;
-   const last=nums[nums.length-1],amount=parseStatementAmount(last[0]);if(!Number.isFinite(amount)||Math.abs(amount)===0)continue;
-   let desc=tail.slice(0,last.index).replace(/[|•·]+/g," ").replace(/\s+/g," ").trim();
-   if(desc.length<2)desc=tail.replace(last[0],"").trim();
-   if(!desc||/SALDO ANTERIOR|SALDO FINAL|TOTAL PAGAR|PAGO MINIMO|PAGO M[IÍ]NIMO|L[IÍ]MITE DE CR[EÉ]DITO/i.test(desc))continue;
-   const cardPay=/PAGO.*TARJETA|PAGO TC|ABONO.*TARJETA/i.test(desc);
-   const positive=/ABONO|DEP[OÓ]SITO|TRANSFERENCIA RECIBIDA|DEVOLUCI[OÓ]N|REVERSO|PAGO RECIBIDO/i.test(desc)||/^\+/.test(last[0]);
-   const type=positive&&!cardPay?"ingreso":"gasto";
-   const c={date,description:desc.slice(0,110),amount,type,category:cardPay?"Pago de tarjeta":guessStatementCategory(desc),duplicate:false};
-   c.duplicate=isStatementDuplicate(c)||found.some(x=>x.date===c.date&&Math.abs(x.amount)===Math.abs(c.amount)&&x.description.toUpperCase()===c.description.toUpperCase());
-   found.push(c);
-  }
-  statementCandidates=found;
-  if(!found.length){stmtMsg("El PDF se pudo leer, pero no reconocí filas de movimientos con fecha e importe. Este formato requiere adaptar el lector al diseño del banco.",true);stmtReview.hidden=true;return}
-  renderStatementReview();stmtMsg("Lectura completada: "+found.length+" posibles movimientos. Verifica la vista previa antes de agregarlos.");
- }catch(e){console.error(e);stmtMsg("No se pudo procesar este PDF. Puede estar protegido, dañado o usar un formato no compatible.",true)}
-}
-function confirmStatementImport(){
- let added=0,skipped=0;const bank=document.getElementById("statementBank").value;const account=document.getElementById("statementAccount").value.trim();
- statementCandidates.forEach((c,i)=>{
-  const check=document.querySelector('[data-stmt-check="'+i+'"]');if(!check||!check.checked){skipped++;return}
-  const date=document.querySelector('[data-stmt-date="'+i+'"]').value;
-  const concept=document.querySelector('[data-stmt-desc="'+i+'"]').value.trim();
-  const amount=Math.abs(Number(document.querySelector('[data-stmt-amount="'+i+'"]').value));
-  const type=document.querySelector('[data-stmt-type="'+i+'"]').value;
-  const category=document.querySelector('[data-stmt-cat="'+i+'"]').value;
-  if(!date||!concept||!Number.isFinite(amount)||amount<=0){skipped++;return}
-  const cardPayment=category==="Pago de tarjeta";
-  const candidate={date,description:concept,amount};
-  if(isStatementDuplicate(candidate)){skipped++;return}
-  entries.push({id:"pdf_"+Date.now().toString(36)+"_"+i+"_"+Math.random().toString(36).slice(2,6),date,amount,concept,type,category,method:bank,notes:"Importado de PDF"+(account?" · "+account:""),cardPayment,created:Date.now(),source:"pdf_statement"});
-  added++;
- });
- persistEntries();renderEntries();renderAnalytics();
- stmtMsg("Importación finalizada: "+added+" movimientos agregados; "+skipped+" omitidos o duplicados. Tus registros anteriores se conservaron.");
- stmtReview.hidden=true;statementCandidates=[];
-}
-document.getElementById("analyzeStatement").addEventListener("click",analyzeStatement);
-document.getElementById("confirmStatement").addEventListener("click",confirmStatementImport);
-document.getElementById("clearStatement").addEventListener("click",()=>{statementCandidates=[];stmtReview.hidden=true;stmtFile.value="";stmtMsg("Vista previa limpiada. Tus movimientos guardados no fueron modificados.")});
 
 function exportEntries(){const rows=[["fecha","tipo","importe","concepto","categoria","medio","nota","pago_tarjeta"],...entries.map(e=>[e.date,e.type,e.amount,e.concept,e.category,e.method,e.notes||"",e.cardPayment?"si":"no"])];const csv=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(",")).join("\n");const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alvapen_movimientos.csv";a.click();URL.revokeObjectURL(a.href)}
 function downloadBackup(){const blob=new Blob([JSON.stringify(entries,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alvapen_respaldo_financiero.json";a.click();URL.revokeObjectURL(a.href)}
@@ -515,9 +392,9 @@ document.getElementById("entryForm").addEventListener("submit",saveEntry);
 document.getElementById("monthFilter").value=new Date().toISOString().slice(0,7);
 document.getElementById("entryDate").value=new Date().toISOString().slice(0,10);
 document.getElementById("monthFilter").addEventListener("change",()=>{renderEntries();renderAnalytics()});
-document.getElementById("consumptionMonthFilter").value="2026-09";
+
 document.getElementById("applyConsumptionFilter").addEventListener("click",renderAnalytics);
-document.getElementById("consumptionMonthFilter").addEventListener("change",()=>{document.getElementById("consumptionStatus").textContent="Periodo cambiado. Presiona “Analizar este mes” para actualizar.";});
+document.getElementById("consumptionMonthFilter").addEventListener("change",renderAnalytics);
 renderEntries();
 mergeBaselineEntries();
 renderAnalytics();
