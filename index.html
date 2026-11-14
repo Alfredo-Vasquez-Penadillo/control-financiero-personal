@@ -238,6 +238,28 @@ details{background:#101e32;border-color:#293f5d;color:#e3edfc}details p{color:#9
 @media(max-width:760px){.shell{display:block}.sidebar{display:none}.content{padding:16px 13px 112px}.workspace-group{padding:13px;margin-top:18px;border-radius:15px}.hero{grid-template-columns:1fr;padding:21px;border-radius:15px}.hero-stat{max-width:none}.card,.panel,.glass-panel{border-radius:13px}.ios-dock{background:rgba(9,18,33,.92)}}
 @media(prefers-reduced-motion:no-preference){.card,.panel,.btn,.nav a{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}.card:hover,.panel:hover{transform:translateY(-2px);border-color:#3a657c;box-shadow:0 15px 40px #0005,0 0 22px #39d6c00c}}
 
+
+/* Dynamic data visualization layer */
+.dynamic-chart{min-height:185px;padding:8px 4px 2px}
+.month-bars{height:188px;display:flex;align-items:stretch;gap:clamp(7px,1.4vw,17px);padding:8px 5px 0;overflow-x:auto}
+.month-bar{min-width:38px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px}
+.month-bar-value{font:10px "DM Mono",monospace;color:#a9c1dc;white-space:nowrap}
+.month-bar-track{height:132px;width:min(100%,34px);display:flex;align-items:flex-end;justify-content:center;border-radius:8px;background:linear-gradient(180deg,#182b44,#0b1729);border:1px solid #263e5b;overflow:hidden}
+.month-bar-track i{display:block;width:100%;border-radius:6px 6px 0 0;box-shadow:0 0 15px #50e3d044;min-height:3px}
+.month-bar-label{border:0;background:transparent;color:#8197b5;font:10px Manrope,sans-serif;text-transform:capitalize;padding:3px 5px;cursor:pointer;border-radius:6px}
+.month-bar-label.selected{color:#63f0df;background:#123b45;font-weight:800}
+.flow-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:10px;color:#a7bad4;margin:2px 0 12px}
+.flow-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.income-dot{background:#50e3d0}.expense-dot{background:#9b83f3}
+.flow-bars{height:146px;display:flex;align-items:flex-end;gap:clamp(7px,1.4vw,16px);padding:0 6px;border-bottom:1px solid #2a405e;overflow-x:auto}
+.flow-month{min-width:34px;flex:1;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;color:#8499b7;font-size:10px;text-transform:capitalize}
+.flow-pair{height:120px;display:flex;align-items:flex-end;gap:3px}
+.flow-pair i{width:12px;max-height:116px;min-height:0;border-radius:4px 4px 0 0;display:block}
+.flow-pair .income{background:linear-gradient(180deg,#65f2df,#148d9d);box-shadow:0 0 12px #50e3d022}
+.flow-pair .expense{background:linear-gradient(180deg,#b39aff,#7053c9)}
+.flow-caption{font-size:9px;color:#748aa8;line-height:1.5;margin-top:11px}
+@media(max-width:760px){.month-bars{gap:8px}.month-bar{min-width:34px}.flow-bars{gap:8px}.flow-pair i{width:9px}}
+
 </style>
 </head>
 <body>
@@ -365,6 +387,10 @@ details{background:#101e32;border-color:#293f5d;color:#e3edfc}details p{color:#9
  <div class="glass-panel"><div class="chart-title"><div><h3>Composición del gasto</h3><p>Participación de cada categoría</p></div></div><div id="consumptionDonut"></div></div>
 </div>
 <div class="glass-panel consumption-trend"><div class="chart-title"><div><h3>Cómo evoluciona tu consumo</h3><p>Comparación de todos los meses con información disponible</p></div><span class="chip info" id="consumptionHistoryCount">—</span></div><div id="consumptionTrend"></div></div>
+<div class="grid two" style="margin-top:14px">
+ <div class="glass-panel"><div class="chart-title"><div><h3>Ritmo mensual de consumo</h3><p>Comparación de cada periodo en columnas dinámicas</p></div><span class="chip info">Histórico</span></div><div id="consumptionMonthlyBars" class="dynamic-chart"></div></div>
+ <div class="glass-panel"><div class="chart-title"><div><h3>Ingresos frente a gastos</h3><p>Flujo registrado en el sistema · sin estimaciones</p></div><span class="chip info">Flujo</span></div><div id="cashflowTrend" class="dynamic-chart"></div></div>
+</div>
 <div class="consumption-insight" id="consumptionInsight">Selecciona un periodo para ver las principales señales de gasto.</div>
 <div class="note" style="margin-top:12px"><strong>Criterio:</strong> los pagos de tarjetas y cancelaciones de deuda se excluyen para no duplicar compras. Los cargos en dólares no se suman a los importes en soles. Los estados Diners antiguos no aportaron detalle legible de operaciones, por lo que no se han inventado consumos para esa tarjeta.</div>
 </section>
@@ -537,6 +563,7 @@ function renderAnalytics(){
  if(prev.length)diagnosis+=" "+(total>prevTotal?"El total también subió respecto del mes anterior.":"La comparación mensual no muestra un aumento del total.");
  advice.innerHTML='<div class="advice-label">Consejo financiero · '+fmt(selected)+'</div><div class="advice-title">'+headline+'</div><div class="advice-copy">'+diagnosis+'</div><div class="advice-action"><strong>Acción concreta:</strong> '+action+'</div>';
  const status=document.getElementById("consumptionStatus");if(status)status.textContent=current.length+" operaciones · "+fmt(selected);
+ renderDashboardCharts(all,months,selected,sum,fmt);
 }
 function renderEntries(){const month=visibleEntries();const income=month.filter(e=>e.type==="ingreso").reduce((a,e)=>a+Number(e.amount||0),0);const expense=month.filter(e=>e.type==="gasto"&&!e.cardPayment).reduce((a,e)=>a+Number(e.amount||0),0);const payments=month.filter(e=>e.cardPayment).reduce((a,e)=>a+Number(e.amount||0),0);
 document.getElementById("monthIncome").textContent=money(income);document.getElementById("monthExpense").textContent=money(expense);document.getElementById("monthNet").textContent=money(income-expense);
@@ -634,6 +661,31 @@ renderAnalytics();
 })();
 
 
+
+function renderDashboardCharts(all,months,selected,sum,fmt){
+ const palette=["#50e3d0","#8c75ef","#e4b76c","#ed8ca8","#65a8f5","#7bd6a5"];
+ const monthly=document.getElementById("consumptionMonthlyBars");
+ const totals=months.map(m=>({m,v:sum(all.filter(e=>String(e.date).slice(0,7)===m))}));
+ if(monthly){
+  if(totals.length){
+   const max=Math.max(1,...totals.map(x=>x.v));
+   monthly.innerHTML='<div class="month-bars">'+totals.map((x,i)=>'<div class="month-bar" title="'+fmt(x.m)+': '+money(x.v)+'"><div class="month-bar-value">'+(x.v>=1000?(x.v/1000).toFixed(1)+'k':Math.round(x.v))+'</div><div class="month-bar-track"><i style="height:'+Math.max(4,x.v/max*100)+'%;background:'+(x.m===selected?'linear-gradient(180deg,#70f6e5,#148d9d)':'linear-gradient(180deg,'+palette[i%palette.length]+',#344d78)')+'"></i></div><button type="button" class="month-bar-label '+(x.m===selected?'selected':'')+'" data-month="'+x.m+'">'+fmt(x.m).split(' ')[0].slice(0,3)+'</button></div>').join('')+'</div>';
+   monthly.querySelectorAll("button[data-month]").forEach(b=>b.addEventListener("click",()=>{const sel=document.getElementById("consumptionMonthFilter");if(sel){sel.value=b.dataset.month;renderAnalytics();}}));
+  }else monthly.innerHTML='<div class="chart-empty">Aún no hay periodos para comparar.</div>';
+ }
+ const cash=document.getElementById("cashflowTrend");
+ if(cash){
+  const entriesByMonth=months.map(m=>{
+   const rows=entries.filter(e=>e&&e.date&&String(e.date).slice(0,7)===m);
+   return {m,income:rows.filter(e=>e.type==="ingreso").reduce((a,e)=>a+Math.abs(Number(e.amount)||0),0),expense:rows.filter(e=>e.type==="gasto"&&!e.cardPayment&&!/pago de tarjeta|pago tc|cancelaci[oó]n de deuda|pago de deuda/i.test(String(e.category||"")+" "+String(e.concept||""))&&(!e.currency||e.currency==="PEN")).reduce((a,e)=>a+Math.abs(Number(e.amount)||0),0)};
+  });
+  const hasIncome=entriesByMonth.some(x=>x.income>0);
+  if(entriesByMonth.length&&hasIncome){
+   const max=Math.max(1,...entriesByMonth.flatMap(x=>[x.income,x.expense]));
+   cash.innerHTML='<div class="flow-legend"><span><i class="income-dot"></i>Ingresos registrados</span><span><i class="expense-dot"></i>Gastos registrados</span></div><div class="flow-bars">'+entriesByMonth.map(x=>'<div class="flow-month" title="'+fmt(x.m)+' · Ingresos '+money(x.income)+' · Gastos '+money(x.expense)+'"><div class="flow-pair"><i class="income" style="height:'+Math.max(x.income?3:0,x.income/max*116)+'px"></i><i class="expense" style="height:'+Math.max(x.expense?3:0,x.expense/max*116)+'px"></i></div><span>'+fmt(x.m).split(' ')[0].slice(0,3)+'</span></div>').join('')+'</div><div class="flow-caption">Se muestran únicamente ingresos que hayas registrado; los meses sin ingresos registrados no se interpretan como ingresos cero reales.</div>';
+  }else cash.innerHTML='<div class="chart-empty">Aún no hay ingresos registrados suficientes para comparar el flujo. Cuando registres tus ingresos mensuales, este gráfico mostrará ingresos frente a gastos sin inventar cifras.</div>';
+ }
+}
 </script>
 </body>
 </html>
