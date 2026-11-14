@@ -69,6 +69,10 @@ body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),rad
  .card,.panel,.glass-panel{border-radius:21px}
 }
 @media(prefers-reduced-motion:no-preference){.ios-dock a,.card,.panel,.btn{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}.card:hover,.panel:hover{transform:translateY(-2px)}}
+
+/* Importación y conciliación de estados PDF */
+.import-zone{border:1.5px dashed #a9bdcc;border-radius:20px;padding:22px;background:rgba(247,250,253,.78);text-align:center}
+.import-zone input[type=file]{max-width:100%;font-size:12px}.import-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}.import-preview{overflow:auto;max-height:460px;border:1px solid #e5ebf1;border-radius:14px}.import-preview table{min-width:850px}.import-preview select,.import-preview input{font:inherit;font-size:11px;border:1px solid #dce5ec;border-radius:8px;padding:6px;background:#fff;max-width:150px}.import-status{font-size:11px;padding:10px 12px;border-radius:12px;background:#eef5fb;color:#4b647b;margin-top:12px}.import-status.error{background:#fff0ed;color:#9b4a3e}.import-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.import-kpis .mini{background:#f4f7fa}@media(max-width:650px){.import-controls{grid-template-columns:1fr}.import-kpis{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -206,6 +210,24 @@ body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),rad
 <tr><td>SEBFLOW E.I.R.L.</td><td class="right">S/ 500.00</td><td class="right">13.0%</td></tr><tr><td>Podoinka S.A.C.</td><td class="right">S/ 250.00</td><td class="right">6.5%</td></tr><tr><td>Bl & Jt Consultores S.A.C.</td><td class="right">S/ 700.00</td><td class="right">18.1%</td></tr><tr><td>Juan Manuel</td><td class="right">S/ 1,900.00</td><td class="right">49.2%</td></tr><tr><td>Proyecto Educando S.A.C.</td><td class="right">S/ 275.00</td><td class="right">7.1%</td></tr><tr><td>URBAN ASOCIADOS S.A.C.</td><td class="right">S/ 236.00</td><td class="right">6.1%</td></tr></tbody><tfoot><tr><td><b>Total</b></td><td class="right"><b>S/ 3,861.00</b></td><td class="right"><b>100%</b></td></tr></tfoot></table></div>
 </section>
 
+<section class="section" id="importar"><div class="section-head"><div><h2>Importar estados de cuenta PDF</h2><p>Extrae movimientos, revisa categorías y agrega solo los registros confirmados.</p></div><span class="chip info">Importación asistida</span></div>
+<div class="panel">
+ <div class="import-zone"><div style="font-size:28px">⇧</div><h3>Sube tu estado de cuenta</h3><p>Selecciona un PDF descargado de tu banco. El archivo se procesa localmente en este navegador.</p><input id="statementFile" type="file" accept="application/pdf,.pdf"></div>
+ <div class="import-controls">
+  <div class="field"><label for="statementBank">Banco / entidad</label><select id="statementBank"><option>BCP</option><option>Interbank</option><option>Scotiabank</option><option>Banco Falabella / CMR</option><option>Diners Club</option><option>Otro</option></select></div>
+  <div class="field"><label for="statementAccount">Cuenta / tarjeta (opcional)</label><input id="statementAccount" placeholder="Ej. Visa terminación 3364"></div>
+  <div class="field"><label for="statementPeriod">Periodo (referencial)</label><input id="statementPeriod" type="month"></div>
+ </div>
+ <div class="tools-row"><button class="btn primary" type="button" id="analyzeStatement">Analizar PDF</button><button class="btn" type="button" id="clearStatement">Limpiar vista previa</button></div>
+ <div id="statementStatus" class="import-status">Aún no has seleccionado un estado de cuenta.</div>
+ <div id="statementReview" hidden>
+  <div class="import-kpis"><div class="mini"><small>Movimientos detectados</small><b id="statementCount">0</b></div><div class="mini"><small>Posibles duplicados</small><b id="statementDuplicates">0</b></div><div class="mini"><small>Total seleccionado</small><b id="statementTotal">S/ 0.00</b></div></div>
+  <p class="muted" style="font-size:11px">Revisa cada fila antes de importar. La detección automática es orientativa: verifica especialmente el signo, fecha, importe y descripción. Los duplicados aparecen desmarcados.</p>
+  <div class="import-preview"><table><thead><tr><th>Incluir</th><th>Fecha</th><th>Descripción</th><th>Importe</th><th>Tipo</th><th>Categoría</th><th>Estado</th></tr></thead><tbody id="statementRows"></tbody></table></div>
+  <div class="tools-row" style="margin-top:14px"><button class="btn primary" type="button" id="confirmStatement">Agregar movimientos seleccionados</button></div>
+ </div>
+ <div class="note" style="margin-top:14px"><strong>Protección de tus datos:</strong> los movimientos existentes no se reemplazan. Se agregan nuevos registros al almacenamiento local y se omiten coincidencias probables. El PDF no se envía a un servidor. Los PDF escaneados como imagen podrían no contener texto extraíble y requerirán OCR o registro manual.</div>
+</div></section>
 <section class="section" id="criterios"><div class="section-head"><div><h2>Cómo leer este panel</h2><p>Reglas para que tus números no se distorsionen.</p></div></div>
 <details open><summary>¿Por qué un pago de tarjeta no es un gasto nuevo?</summary><p>El gasto se reconoce cuando realizas la compra. Cuando pagas la tarjeta, estás cancelando la deuda generada por esas compras. Registrar ambos como gasto duplicaría el consumo.</p></details>
 <details><summary>¿Qué diferencia hay entre deuda, pago del mes y línea utilizada?</summary><p>La deuda es el saldo pendiente; el pago del mes es el importe exigido en el ciclo; la línea utilizada es el crédito consumido según la medición del banco. No son cifras intercambiables.</p></details>
@@ -284,6 +306,110 @@ const list=document.getElementById("entryList");list.innerHTML=month.length?mont
 function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function removeEntry(id){if(!confirm("¿Eliminar este movimiento?"))return;entries=entries.filter(e=>e.id!==id);persistEntries();renderEntries();renderAnalytics()}
 function clearMonth(){const m=selectedMonth();if(!confirm("¿Eliminar todos los movimientos de "+m+" guardados en este navegador?"))return;entries=entries.filter(e=>e.date.slice(0,7)!==m);persistEntries();renderEntries();renderAnalytics()}
+
+/* PDF import workflow: extract, review, deduplicate, then append without replacing */
+let statementCandidates=[];
+const stmtFile=document.getElementById("statementFile");
+const stmtStatus=document.getElementById("statementStatus");
+const stmtReview=document.getElementById("statementReview");
+function stmtMsg(msg,isError=false){stmtStatus.textContent=msg;stmtStatus.classList.toggle("error",isError)}
+function parseStatementDate(s){
+ const m=s.match(/^(\\d{1,2})[\\/-](\\d{1,2})[\\/-](\\d{2,4})$/);if(!m)return "";
+ let y=Number(m[3]);if(y<100)y+=2000;const d=String(Number(m[1])).padStart(2,"0"),mo=String(Number(m[2])).padStart(2,"0");
+ if(Number(m[1])>31||Number(m[2])>12||Number(m[1])<1||Number(m[2])<1)return "";
+ return y+"-"+mo+"-"+d;
+}
+function parseStatementAmount(s){
+ let t=s.replace(/S\\/?/gi,"").replace(/\\s/g,"");
+ if(t.includes(",")&&t.includes("."))t=t.replace(/,/g,"");
+ else if(t.includes(",")&&!t.includes("."))t=t.replace(",",".");
+ const n=Number(t.replace(/[^0-9.\\-+]/g,""));return Number.isFinite(n)?n:NaN;
+}
+function guessStatementCategory(desc){
+ const d=desc.toUpperCase();
+ if(/RESTAUR|CAF[EÉ]|MARKET|SUPERMERC|ALIMENT|PIZZA|DELIVERY/.test(d))return "Alimentación";
+ if(/TAXI|UBER|CABIFY|PEAJE|GASOL|GRIFO|PARKING|ESTACIONAMIENTO/.test(d))return "Transporte";
+ if(/NETFLIX|SPOTIFY|APPLE|GOOGLE|DISNEY|PRIME VIDEO/.test(d))return "Suscripciones";
+ if(/FARMAC|CLINIC|MEDIC|BOTICA|SALUD/.test(d))return "Salud";
+ if(/COLEGIO|UNIVERS|CURSO|EDUCAC/.test(d))return "Educación";
+ if(/LUZ|AGUA|INTERNET|TELEF|CLARO|MOVISTAR|ENTEL/.test(d))return "Vivienda y servicios";
+ if(/PAGO.*TARJETA|PAGO TC|PAGO DE TARJETA|ABONO.*TARJETA/.test(d))return "Pago de tarjeta";
+ return "Compras personales";
+}
+function isStatementDuplicate(c){
+ const norm=s=>String(s||"").toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,32);
+ return entries.some(e=>e.date===c.date&&Math.abs(Number(e.amount)-Math.abs(c.amount))<0.005&&norm(e.concept)===norm(c.description));
+}
+function renderStatementReview(){
+ const body=document.getElementById("statementRows");
+ body.innerHTML=statementCandidates.map((c,i)=>'<tr><td><input type="checkbox" data-stmt-check="'+i+'" '+(c.duplicate?"":"checked")+' '+(c.duplicate?'disabled':'')+'></td><td><input type="date" data-stmt-date="'+i+'" value="'+c.date+'"></td><td><input data-stmt-desc="'+i+'" value="'+escapeHtml(c.description)+'"></td><td><input type="number" step="0.01" data-stmt-amount="'+i+'" value="'+Math.abs(c.amount).toFixed(2)+'"></td><td><select data-stmt-type="'+i+'"><option value="gasto" '+(c.type==="gasto"?"selected":"")+'>Gasto</option><option value="ingreso" '+(c.type==="ingreso"?"selected":"")+'>Ingreso</option></select></td><td><select data-stmt-cat="'+i+'">'+["Alimentación","Transporte","Vivienda y servicios","Salud","Educación","Compras personales","Suscripciones","Ocio","Deudas / intereses","Pago de tarjeta","Otros gastos","Otros ingresos"].map(x=>'<option '+(x===c.category?'selected':'')+'>'+x+'</option>').join("")+'</select></td><td>'+(c.duplicate?'<span class="chip warn">Posible duplicado</span>':'<span class="chip good">Nuevo</span>')+'</td></tr>').join("");
+ document.getElementById("statementCount").textContent=statementCandidates.length;
+ document.getElementById("statementDuplicates").textContent=statementCandidates.filter(x=>x.duplicate).length;
+ document.getElementById("statementTotal").textContent=money(statementCandidates.filter((x,i)=>{const el=document.querySelector('[data-stmt-check="'+i+'"]');return el&&el.checked}).reduce((a,x)=>a+Math.abs(x.amount),0));
+ body.querySelectorAll("input,select").forEach(el=>el.addEventListener("change",updateStatementTotals));
+ stmtReview.hidden=false;updateStatementTotals();
+}
+function updateStatementTotals(){
+ let total=0,count=0;
+ statementCandidates.forEach((x,i)=>{const check=document.querySelector('[data-stmt-check="'+i+'"]');if(check&&check.checked){const a=document.querySelector('[data-stmt-amount="'+i+'"]');total+=Math.abs(Number(a.value)||0);count++}});
+ document.getElementById("statementTotal").textContent=money(total);
+ document.getElementById("confirmStatement").textContent="Agregar "+count+" movimientos seleccionados";
+}
+async function analyzeStatement(){
+ const file=stmtFile.files&&stmtFile.files[0];if(!file){stmtMsg("Selecciona primero un archivo PDF.",true);return}
+ if(!window.pdfjsLib){stmtMsg("No se pudo cargar el lector PDF. Comprueba tu conexión e inténtalo de nuevo.",true);return}
+ try{
+  stmtMsg("Leyendo el PDF en este navegador…");pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  const data=new Uint8Array(await file.arrayBuffer());const pdf=await pdfjsLib.getDocument({data}).promise;let all=[];
+  for(let p=1;p<=pdf.numPages;p++){const page=await pdf.getPage(p);const tc=await page.getTextContent();let line="",lastY=null;for(const item of tc.items){const y=Math.round(item.transform[5]);if(lastY!==null&&Math.abs(y-lastY)>3){if(line.trim())all.push(line.trim());line="";}line+=(line?" ":"")+item.str;lastY=y;}if(line.trim())all.push(line.trim());}
+  if(!all.length){stmtMsg("Este PDF no contiene texto seleccionable. Puede ser un escaneo; requiere OCR o un PDF descargado directamente del banco.",true);return}
+  const found=[];
+  for(const line of all){
+   const dm=line.match(/(?:^|\\s)(\\d{1,2}[\\/-]\\d{1,2}[\\/-]\\d{2,4})(?:\\s|$)/);if(!dm)continue;
+   const date=parseStatementDate(dm[1]);if(!date)continue;
+   const tail=line.slice(line.indexOf(dm[1])+dm[1].length).trim();
+   const nums=[...tail.matchAll(/(?:S\\/?\\s*)?[-+]?\\d{1,3}(?:,\\d{3})*(?:\\.\\d{2})|(?:S\\/?\\s*)?[-+]?\\d+\\.\\d{2}/g)];
+   if(!nums.length)continue;
+   const last=nums[nums.length-1],amount=parseStatementAmount(last[0]);if(!Number.isFinite(amount)||Math.abs(amount)===0)continue;
+   let desc=tail.slice(0,last.index).replace(/[|•·]+/g," ").replace(/\\s+/g," ").trim();
+   if(desc.length<2)desc=tail.replace(last[0],"").trim();
+   if(!desc||/SALDO ANTERIOR|SALDO FINAL|TOTAL PAGAR|PAGO MINIMO|PAGO M[IÍ]NIMO|L[IÍ]MITE DE CR[EÉ]DITO/i.test(desc))continue;
+   const cardPay=/PAGO.*TARJETA|PAGO TC|ABONO.*TARJETA/i.test(desc);
+   const positive=/ABONO|DEP[OÓ]SITO|TRANSFERENCIA RECIBIDA|DEVOLUCI[OÓ]N|REVERSO|PAGO RECIBIDO/i.test(desc)||/^\\+/.test(last[0]);
+   const type=positive&&!cardPay?"ingreso":"gasto";
+   const c={date,description:desc.slice(0,110),amount,type,category:cardPay?"Pago de tarjeta":guessStatementCategory(desc),duplicate:false};
+   c.duplicate=isStatementDuplicate(c)||found.some(x=>x.date===c.date&&Math.abs(x.amount)===Math.abs(c.amount)&&x.description.toUpperCase()===c.description.toUpperCase());
+   found.push(c);
+  }
+  statementCandidates=found;
+  if(!found.length){stmtMsg("El PDF se pudo leer, pero no reconocí filas de movimientos con fecha e importe. Este formato requiere adaptar el lector al diseño del banco.",true);stmtReview.hidden=true;return}
+  renderStatementReview();stmtMsg("Lectura completada: "+found.length+" posibles movimientos. Verifica la vista previa antes de agregarlos.");
+ }catch(e){console.error(e);stmtMsg("No se pudo procesar este PDF. Puede estar protegido, dañado o usar un formato no compatible.",true)}
+}
+function confirmStatementImport(){
+ let added=0,skipped=0;const bank=document.getElementById("statementBank").value;const account=document.getElementById("statementAccount").value.trim();
+ statementCandidates.forEach((c,i)=>{
+  const check=document.querySelector('[data-stmt-check="'+i+'"]');if(!check||!check.checked){skipped++;return}
+  const date=document.querySelector('[data-stmt-date="'+i+'"]').value;
+  const concept=document.querySelector('[data-stmt-desc="'+i+'"]').value.trim();
+  const amount=Math.abs(Number(document.querySelector('[data-stmt-amount="'+i+'"]').value));
+  const type=document.querySelector('[data-stmt-type="'+i+'"]').value;
+  const category=document.querySelector('[data-stmt-cat="'+i+'"]').value;
+  if(!date||!concept||!Number.isFinite(amount)||amount<=0){skipped++;return}
+  const cardPayment=category==="Pago de tarjeta";
+  const candidate={date,description:concept,amount};
+  if(isStatementDuplicate(candidate)){skipped++;return}
+  entries.push({id:"pdf_"+Date.now().toString(36)+"_"+i+"_"+Math.random().toString(36).slice(2,6),date,amount,concept,type,category,method:bank,notes:"Importado de PDF"+(account?" · "+account:""),cardPayment,created:Date.now(),source:"pdf_statement"});
+  added++;
+ });
+ persistEntries();renderEntries();renderAnalytics();
+ stmtMsg("Importación finalizada: "+added+" movimientos agregados; "+skipped+" omitidos o duplicados. Tus registros anteriores se conservaron.");
+ stmtReview.hidden=true;statementCandidates=[];
+}
+document.getElementById("analyzeStatement").addEventListener("click",analyzeStatement);
+document.getElementById("confirmStatement").addEventListener("click",confirmStatementImport);
+document.getElementById("clearStatement").addEventListener("click",()=>{statementCandidates=[];stmtReview.hidden=true;stmtFile.value="";stmtMsg("Vista previa limpiada. Tus movimientos guardados no fueron modificados.")});
+
 function exportEntries(){const rows=[["fecha","tipo","importe","concepto","categoria","medio","nota","pago_tarjeta"],...entries.map(e=>[e.date,e.type,e.amount,e.concept,e.category,e.method,e.notes||"",e.cardPayment?"si":"no"])];const csv=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(",")).join("\n");const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alvapen_movimientos.csv";a.click();URL.revokeObjectURL(a.href)}
 function downloadBackup(){const blob=new Blob([JSON.stringify(entries,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alvapen_respaldo_financiero.json";a.click();URL.revokeObjectURL(a.href)}
 function importBackup(ev){const file=ev.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);if(!Array.isArray(data))throw Error();entries=data;persistEntries();renderEntries();alert("Respaldo importado.")}catch(e){alert("El archivo no tiene un respaldo válido.")}};reader.readAsText(file);ev.target.value=""}
