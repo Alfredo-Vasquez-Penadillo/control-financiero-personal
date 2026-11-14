@@ -394,6 +394,36 @@ details{background:#fff;border-color:#e4e9f1;color:#1c293d}details p{color:#7180
 @media(prefers-reduced-motion:no-preference){.card,.panel,.btn,.nav a{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}.card:hover,.panel:hover{transform:translateY(-2px);border-color:#c5d2ec;box-shadow:0 10px 25px #1722360d}}
 
 </style>
+
+<style id="alvapen-final-glass-interface">
+:root{--bg:#eef1f5;--ink:#202a38;--muted:#697789;--navy:#202b3a;--navy2:#34465c;--teal:#6f8fae;--teal2:#e8eef4;--line:#dce3eb;--white:#fff;--shadow:0 16px 42px rgba(28,43,62,.08)}
+body{background:radial-gradient(ellipse at 14% 0%,rgba(210,222,235,.52),transparent 38%),radial-gradient(ellipse at 88% 12%,rgba(223,229,237,.46),transparent 34%),linear-gradient(145deg,#f6f8fa,#e9edf2 58%,#f4f6f8)!important;color:#202a38}
+.sidebar{background:linear-gradient(165deg,rgba(31,43,58,.94),rgba(43,57,73,.94))!important;border-right:1px solid rgba(255,255,255,.15);backdrop-filter:blur(30px) saturate(145%);-webkit-backdrop-filter:blur(30px) saturate(145%);padding:25px 14px!important}
+.logo span{color:#a9c0d6!important}
+.sidebar .nav{gap:9px!important;margin-top:12px}
+.sidebar .nav a{display:flex;align-items:center;gap:10px;padding:10px 12px!important;border:1px solid rgba(255,255,255,.12);border-radius:14px!important;background:rgba(255,255,255,.055);color:rgba(245,248,252,.82)!important;font-size:12px!important;line-height:1.3;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:background .2s,border-color .2s,transform .2s}
+.sidebar .nav a:before{content:"";width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:rgba(213,225,239,.58);box-shadow:0 0 8px rgba(210,225,240,.24)}
+.sidebar .nav a:hover,.sidebar .nav a.active{background:rgba(221,234,247,.16)!important;border-color:rgba(228,239,250,.32);color:#fff!important;box-shadow:inset 0 1px rgba(255,255,255,.12),0 7px 18px rgba(8,17,29,.12);transform:translateX(2px)}
+.sidebar .nav a.active:before{background:#d8e8f5;box-shadow:0 0 10px #d8e8f5}
+.home-stat,.home-panel{background:linear-gradient(145deg,rgba(255,255,255,.78),rgba(244,247,250,.56))!important;border:1px solid rgba(255,255,255,.92)!important;box-shadow:0 16px 42px rgba(35,50,69,.075),inset 0 1px 0 rgba(255,255,255,.95)!important;backdrop-filter:blur(26px) saturate(150%);-webkit-backdrop-filter:blur(26px) saturate(150%)}
+.home-stat strong,.home-panel h3{color:#253447!important}
+.home-track{background:rgba(195,207,220,.42)!important}
+.home-track i{background:linear-gradient(90deg,#819db8,#55718f)!important}
+.home-track i.alt{background:linear-gradient(90deg,#b4c3d1,#879bad)!important}
+#alvapenHome{display:block;margin:8px 0 28px}
+#alvapenModuleView{display:none;margin:8px 0 28px}
+#alvapenModuleView .section{display:block!important;margin:0 0 22px}
+.alvapen-space{display:none}
+.alvapen-space.active{display:block}
+.module-toolbar{display:flex;align-items:center;gap:13px;margin:8px 0 22px}
+.module-toolbar button{border:1px solid rgba(255,255,255,.94);border-radius:13px;padding:9px 14px;background:rgba(255,255,255,.62);color:#34465c;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 8px 22px rgba(33,49,68,.08);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+.module-toolbar button:hover{background:rgba(255,255,255,.88)}
+.module-toolbar span{font-size:11px;color:#778597;letter-spacing:.1em;text-transform:uppercase}
+#alvapenHome .module-heading,#alvapenHome .module-grid{display:none!important}
+.ios-dock{background:rgba(31,43,58,.78)!important;border:1px solid rgba(255,255,255,.22)!important;backdrop-filter:blur(28px) saturate(150%);-webkit-backdrop-filter:blur(28px) saturate(150%)}
+@media(max-width:760px){.sidebar{height:auto;position:relative;padding:14px!important}.sidebar .nav{grid-template-columns:repeat(2,minmax(0,1fr));display:grid}.sidebar .nav a{justify-content:flex-start}.home-status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.sidebar .nav{grid-template-columns:1fr 1fr}.home-status-grid{grid-template-columns:1fr 1fr}.home-stat{padding:13px}}
+</style>
 </head>
 <body>
 <div class="shell">
@@ -1150,5 +1180,57 @@ body{background:radial-gradient(ellipse at 12% 4%,rgba(185,165,221,.32),transpar
 })();
 </script>
 
+
+<script id="alvapen-final-navigation">
+(function(){
+ const main=document.querySelector("main .content");if(!main)return;
+ const groups={
+  finanzas:{label:"Finanzas y obligaciones",ids:["resumen","tarjetas","analitica","comparativa"]},
+  vivienda:{label:"Mi vivienda",ids:["departamento","bonos","proyeccion"]},
+  cierres:{label:"Cierres y control",ids:["actualizaciones","criterios"]}
+ };
+ const sections={};
+ Object.values(groups).forEach(g=>g.ids.forEach(id=>{const el=document.getElementById(id);if(el)sections[id]=el;}));
+ const hero=main.querySelector(".hero");if(hero)hero.remove();
+ const intro=main.querySelector(".dashboard-intro");if(intro)intro.remove();
+ const home=document.getElementById("alvapenHome")||document.createElement("section");
+ home.id="alvapenHome";
+ if(!home.querySelector(".home-welcome")){
+  home.innerHTML='<div class="home-welcome"><div><div class="eyebrow">ALVAPEN / CENTRO FINANCIERO</div><h2>Tu situación financiera, de un vistazo.</h2><p>Resumen de ahorro, compromisos y próximos pasos. Los datos no conciliados se mantienen identificados como pendientes.</p></div><span class="chip info">Corte documental · Nov. 2026</span></div><div class="home-status-grid"><div class="home-stat"><small>AHORRO PROTEGIDO PARA VIVIENDA</small><strong>S/ 8,000</strong><span>Confirmado por ti · destinado a la inicial</span></div><div class="home-stat"><small>PAGOS DE TARJETAS IDENTIFICADOS</small><strong>S/ 4,703.62</strong><span>Vencimientos 30 nov. al 8 dic. · no es deuda total</span></div><div class="home-stat"><small>CUOTAS MENSUALES VIGENTES</small><strong>S/ 973.41</strong><span>Referencia de cuotas Scotia e Interbank</span></div><div class="home-stat"><small>INGRESO MENSUAL DECLARADO</small><strong>S/ 3,861</strong><span>Pendiente validar continuidad y neto sustentable</span></div></div><div class="home-panels"><div class="home-panel"><h3>Avance hacia tu inicial</h3><p>Meta referencial S/ 30,000 · ahorro separado para vivienda.</p><div class="home-chart"><div><div class="home-bar-label"><span>Ahorro acumulado</span><b>S/ 8,000 · 26.7%</b></div><div class="home-track"><i style="width:26.67%"></i></div></div><div><div class="home-bar-label"><span>Meta pendiente</span><b>S/ 22,000 · 73.3%</b></div><div class="home-track"><i class="alt" style="width:73.33%"></i></div></div></div><p style="margin-top:13px">Meta de planificación, no aprobación hipotecaria.</p></div><div class="home-panel"><h3>Prioridades para el siguiente cierre</h3><p>Recomendaciones sujetas a la conciliación de los próximos estados.</p><div class="home-note"><div>01</div><div><b>Ordena los vencimientos</b><span>Verifica qué pagos de los S/ 4,703.62 identificados siguen pendientes antes de priorizar caja.</span></div></div><div class="home-note"><div>02</div><div><b>Protege tu ahorro</b><span>Mantén separados los S/ 8,000 destinados a vivienda.</span></div></div><div class="home-note"><div>03</div><div><b>Completa la información</b><span>Falta Diners reciente, conciliación de Scotia e ingresos vigentes para evaluar capacidad hipotecaria.</span></div></div></div></div>';
+ }
+ const view=document.createElement("section");view.id="alvapenModuleView";
+ view.innerHTML='<div class="module-toolbar"><button type="button" id="alvapenReturn">← Inicio</button><span id="alvapenSpaceLabel">ALVAPEN / ESPACIO</span></div><div id="alvapenSpaceHost"></div>';
+ const host=view.querySelector("#alvapenSpaceHost");
+ Object.entries(groups).forEach(([key,g])=>{
+  const panel=document.createElement("div");panel.className="alvapen-space";panel.id="alvapen-space-"+key;
+  g.ids.forEach(id=>{if(sections[id])panel.appendChild(sections[id]);});
+  host.appendChild(panel);
+ });
+ const existingView=document.getElementById("alvapenModuleView");if(existingView)existingView.remove();
+ main.appendChild(home);main.appendChild(view);
+ const nav=document.querySelector(".sidebar .nav");
+ const dock=document.querySelector(".ios-dock");
+ const navLinks='<a href="#inicio">Inicio</a>'+Object.entries(groups).map(([k,g])=>'<a href="#espacio/'+k+'">'+g.label+'</a>').join("");
+ if(nav)nav.innerHTML=navLinks;
+ if(dock)dock.innerHTML='<a href="#inicio"><span class="dock-icon">⌂</span><span>Inicio</span></a>'+Object.entries(groups).map(([k,g])=>'<a href="#espacio/'+k+'"><span class="dock-icon">'+({finanzas:"▤",vivienda:"⌂",cierres:"↻"}[k])+'</span><span>'+g.label.split(" ")[0]+'</span></a>').join("");
+ function render(){
+  const m=location.hash.match(/^#espacio\/(finanzas|vivienda|cierres)$/);
+  const key=m?m[1]:null;
+  home.style.display=key?"none":"block";
+  view.style.display=key?"block":"none";
+  Object.entries(groups).forEach(([k,g])=>{
+   const panel=document.getElementById("alvapen-space-"+k);
+   if(panel)panel.classList.toggle("active",k===key);
+  });
+  if(key)view.querySelector("#alvapenSpaceLabel").textContent="ALVAPEN / "+groups[key].label.toUpperCase();
+  document.querySelectorAll(".sidebar .nav a,.ios-dock a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")===(key?"#espacio/"+key:"#inicio")));
+  document.title=key?"ALVAPEN | "+groups[key].label:"ALVAPEN | Panel financiero";
+  window.scrollTo({top:0,behavior:"smooth"});
+ }
+ view.querySelector("#alvapenReturn").addEventListener("click",()=>{location.hash="inicio";});
+ window.addEventListener("hashchange",render);
+ render();
+})();
+</script>
 </body>
 </html>
