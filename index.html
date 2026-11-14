@@ -173,6 +173,71 @@ body{background:#f4f1ec;color:#24232a;font-family:"Manrope",Inter,ui-sans-serif,
 .ios-dock a.active{color:#a95f3c;background:#f3e5db}
 @media(max-width:760px){.content{padding:16px 13px 112px}.hero{grid-template-columns:1fr;padding:22px;border-radius:16px}.hero-stat{max-width:none}.topbar{border-bottom:1px solid #e3d9d0}.card,.panel,.glass-panel{border-radius:14px}.ios-dock{background:rgba(255,251,247,.9)}}
 
+
+/* ALVAPEN FUTURE SYSTEM · interfaz unificada */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--bg:#080d18;--ink:#e8efff;--muted:#8b9ab5;--navy:#0b1425;--navy2:#111f37;--teal:#50e3d0;--teal2:#102b35;--gold:#a78bfa;--line:#1d2c45;--white:#101a2b;--shadow:0 18px 50px rgba(0,0,0,.24);--radius:16px}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{background:radial-gradient(ellipse at 15% -5%,#18375a 0,transparent 34%),radial-gradient(ellipse at 90% 15%,#17234c 0,transparent 30%),#080d18;color:#e8efff;font-family:Manrope,Inter,system-ui,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.16;background-image:linear-gradient(#29405b55 1px,transparent 1px),linear-gradient(90deg,#29405b55 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
+.shell{grid-template-columns:246px minmax(0,1fr);background:transparent}
+.sidebar{background:rgba(8,15,29,.88);border-right:1px solid #243653;color:#e8efff;box-shadow:12px 0 40px #0003;backdrop-filter:blur(24px);padding:25px 16px}
+.logo{font-size:21px;letter-spacing:.16em;color:#f4f7ff}.logo span{color:#50e3d0}
+.tag{color:#8294b3;letter-spacing:.15em;font-size:9px}
+.nav{gap:5px}.nav a{color:#9eacc5;border:1px solid transparent;border-radius:10px;padding:10px 12px;font-size:11px}.nav a:hover,.nav a.active{background:linear-gradient(100deg,#123447aa,#162347aa);border-color:#28546b;color:#efffff;box-shadow:inset 2px 0 #50e3d0,0 0 20px #35d6c012}
+.sidefoot{background:#101d31;border:1px solid #263b59;border-radius:12px;color:#a9b7ce}.sidefoot strong{color:#50e3d0;font-family:"DM Mono",monospace}
+.content{max-width:1600px;padding:28px clamp(18px,3vw,48px) 65px}
+.topbar{border-bottom:1px solid #20314c;padding-bottom:18px;margin-bottom:22px}
+.eyebrow{color:#50e3d0;font-size:9px;letter-spacing:.2em}
+.topbar h1{color:#f0f5ff;letter-spacing:-.05em}.sub{color:#91a0ba}
+.btn{background:#14223a;color:#dce8ff;border:1px solid #2b4162;border-radius:10px;box-shadow:none;backdrop-filter:none}
+.btn:hover{background:#1a304e;border-color:#50a99f;box-shadow:0 0 22px #50e3d018;transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(110deg,#087f83,#22b8a9);color:#04151b;border:1px solid #5ce9d8;font-weight:800}
+.btn.dark{background:#14223a;color:#fff}
+.hero{background:linear-gradient(115deg,#101e34 0%,#142c48 55%,#123b48 100%);border:1px solid #2b526b;border-radius:18px;box-shadow:0 20px 55px #0005;padding:28px 30px}
+.hero:after{background:#50e3d020;width:400px;height:400px;right:4%;top:-270px;filter:blur(10px)}
+.hero h2{color:#f2f7ff;letter-spacing:-.04em}.hero p{color:#a8bad4}.hero .eyebrow{color:#50e3d0}
+.hero-stat{background:#07162499;border:1px solid #3d7882;border-radius:14px;backdrop-filter:blur(20px)}
+.hero-stat strong{color:#62f0df;font-family:"DM Mono",monospace}.hero-stat span{color:#9de9df}
+.section{margin-top:26px;scroll-margin-top:20px}
+.section-head{margin-bottom:13px}.section-head h2{color:#edf4ff;font-size:18px;letter-spacing:-.035em}.section-head p{color:#8b9bb5}
+.card,.panel,.glass-panel{background:linear-gradient(145deg,rgba(18,31,52,.94),rgba(12,22,39,.96));border:1px solid #263b59;border-radius:15px;box-shadow:0 12px 35px #0003;backdrop-filter:blur(16px)}
+.card{padding:17px}.kpi-label{color:#91a2bd;font-size:9px;letter-spacing:.1em}.kpi-value{color:#f1f6ff;font-family:"DM Mono",monospace;font-size:clamp(21px,2vw,27px);letter-spacing:-.05em}.kpi-note{color:#8192ad}.kpi-icon{background:#143342;color:#50e3d0;border:1px solid #275b67}
+.chip{background:#1a2941;color:#a9bad4;border:1px solid #2b405e}.chip.good{background:#102f30;color:#67e5c9;border-color:#23635d}.chip.warn{background:#342a1b;color:#e9c17a;border-color:#68502c}.chip.bad{background:#351f2b;color:#f29ba9;border-color:#683443}.chip.info{background:#182943;color:#91c4f7;border-color:#2d5279}
+.panel{padding:18px}.panel h3,.glass-panel h3{color:#e9f1ff}.panel p{color:#9baac2}
+.bank-head{border-radius:12px 12px 0 0;margin:-18px -18px 15px;padding:14px 17px;border-bottom:1px solid #ffffff18}
+.bcp{background:linear-gradient(110deg,#473c24,#806c3e)}.ibk{background:linear-gradient(110deg,#18354c,#28657a)}.scotia{background:linear-gradient(110deg,#173e3c,#247b73)}.cmr{background:linear-gradient(110deg,#183d34,#26785d)}
+.mini{background:#0c182a;border:1px solid #223752;border-radius:10px}.mini small{color:#8395b0}.mini b{color:#e6efff;font-family:"DM Mono",monospace}
+.note{background:#101e32;border:1px solid #2b4565;color:#aebdd4;border-radius:12px}.note strong{color:#eaf3ff}
+.projection{background:linear-gradient(145deg,#12223a,#0e1a2e);border-color:#31506e}.control{background:#0b1729;border:1px solid #243a59}.control label{color:#9eb0ca}.control input{accent-color:#50e3d0}
+.result{background:linear-gradient(145deg,#103c49,#10273c);border:1px solid #2e7377;border-radius:12px}.result small{color:#a5d7d5}.result b{color:#66eddd;font-family:"DM Mono",monospace}
+.progress{background:#1d3049}.progress i{background:linear-gradient(90deg,#20a99b,#6bf1df)}
+.timeline .btn{border-radius:10px}
+table{color:#dce7f8}th{color:#8195b2;border-color:#263b58}td{border-color:#1d2e48}tr:last-child td{border:0}
+.chart-track{background:#1d2d45}.chart-track i{background:linear-gradient(90deg,#0f9c9a,#5be8d7)}.chart-track i.expense{background:linear-gradient(90deg,#8c6be8,#c1a7ff)}
+.entry-item{background:#0e1a2c;border-color:#263b58}.entry-item b{color:#e5efff}.entry-item small{color:#8194b0}.entry-actions button{background:#1b2b43;color:#b9c9df}
+.field label{color:#9bacc5}.field input,.field select,.field textarea{background:#0b1729;border:1px solid #2a405e;border-radius:9px;color:#e5efff}.field input:focus,.field select:focus,.field textarea:focus{border-color:#50e3d0;box-shadow:0 0 0 3px #50e3d018}
+.type-switch button{background:#101e32;border-color:#2a405d;color:#9baec9}.type-switch button.selected{background:#123d3b;color:#70e8d7;border-color:#267d76}.type-switch button.selected.expense{background:#382337;color:#f2a7b9;border-color:#78465c}
+.analytics-hero{background:linear-gradient(115deg,#10263d,#123a46);border:1px solid #2d6871;border-radius:16px;box-shadow:0 15px 40px #0004}
+.analytics-hero p{color:#a6bfd0}.glass-panel{background:linear-gradient(145deg,#12213a,#0e1b30);border-color:#2a405e}
+.donut{background:conic-gradient(#50e3d0 0 30%,#8c75ef 30% 55%,#e4b76c 55% 78%,#ed8ca8 78% 100%)}
+.donut:after{background:#0e1a2c}.legend{color:#9aabc4}.legend-row{color:#a9b9d0}
+.chart-empty,.empty{color:#8497b3;border-color:#2a405c}
+.analytics-tabs span{background:#12213a;border:1px solid #2a405e;color:#a7bad4;box-shadow:none}
+.import-zone{background:#0c1a2d;border-color:#31516d}.import-status{background:#132b42;color:#9fc7df}
+details{background:#101e32;border-color:#293f5d;color:#e3edfc}details p{color:#9aabc4}
+.footer{color:#647793}
+.ios-dock{background:rgba(9,18,33,.86);border:1px solid #34506e;box-shadow:0 12px 40px #0008}
+.ios-dock a{color:#8ea1bd}.ios-dock a.active{color:#63ecdc;background:#123b45}
+.workspace-group{margin-top:28px;padding:19px;border:1px solid #203650;border-radius:18px;background:linear-gradient(145deg,#0c1627b8,#0a1322b8);box-shadow:inset 0 1px #ffffff08}
+.workspace-label{display:flex;align-items:center;gap:10px;margin:0 0 15px;color:#6de8dc;font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.workspace-label:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,#2a6270,transparent)}
+.workspace-group>.section:first-of-type{margin-top:0}
+.workspace-group .section{margin-top:22px}
+#movimientos[style*="display:none"]{display:block!important}
+@media(max-width:760px){.shell{display:block}.sidebar{display:none}.content{padding:16px 13px 112px}.workspace-group{padding:13px;margin-top:18px;border-radius:15px}.hero{grid-template-columns:1fr;padding:21px;border-radius:15px}.hero-stat{max-width:none}.card,.panel,.glass-panel{border-radius:13px}.ios-dock{background:rgba(9,18,33,.92)}}
+@media(prefers-reduced-motion:no-preference){.card,.panel,.btn,.nav a{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}.card:hover,.panel:hover{transform:translateY(-2px);border-color:#3a657c;box-shadow:0 15px 40px #0005,0 0 22px #39d6c00c}}
+
 </style>
 </head>
 <body>
@@ -522,20 +587,52 @@ renderAnalytics();
  links.forEach(a=>a.addEventListener("click",()=>{links.forEach(x=>x.classList.toggle("active",x===a));}));
 })();
 
-/* Orden de trabajo: primero control, luego análisis y ejecución */
+
+/* Navegación por espacios de trabajo: reduce duplicidad y ordena tareas */
 (function(){
  const main=document.querySelector("main .content");
  if(!main)return;
- const order=["resumen","tarjetas","analitica","movimientos","ingresos","departamento","proyeccion","comparativa","criterios"];
- order.forEach(id=>{const el=document.getElementById(id);if(el)main.appendChild(el);});
- const footer=main.querySelector(".footer");if(footer)main.appendChild(footer);
+ const ids=["resumen","tarjetas","movimientos","ingresos","analitica","comparativa","departamento","proyeccion","criterios"];
+ const sections={};ids.forEach(id=>{sections[id]=document.getElementById(id);});
+ const makeGroup=(id,label,items)=>{
+  const wrap=document.createElement("div");wrap.className="workspace-group";wrap.id=id;
+  const title=document.createElement("div");title.className="workspace-label";title.textContent=label;wrap.appendChild(title);
+  items.forEach(key=>{const el=sections[key];if(el){wrap.appendChild(el);}});
+  main.appendChild(wrap);return wrap;
+ };
+ const hero=main.querySelector(".hero");if(hero)hero.insertAdjacentElement("afterend",sections.resumen);
+ makeGroup("space-control","01 / Control de obligaciones",[ "tarjetas","movimientos","ingresos" ]);
+ makeGroup("space-insights","02 / Inteligencia financiera",[ "analitica","comparativa" ]);
+ makeGroup("space-goals","03 / Patrimonio y planificación",[ "departamento","proyeccion" ]);
+ makeGroup("space-method","04 / Método y criterios",[ "criterios" ]);
  const nav=document.querySelector(".sidebar .nav");
- if(nav){
-  const labels={resumen:"▦ &nbsp; Resumen",tarjetas:"▣ &nbsp; Tarjetas y deudas",analitica:"▥ &nbsp; Consumo mensual",movimientos:"✎ &nbsp; Movimientos",ingresos:"＋ &nbsp; Ingresos",departamento:"⌂ &nbsp; Mi departamento",proyeccion:"↗ &nbsp; Proyecciones",comparativa:"⇄ &nbsp; Evolución",criterios:"✓ &nbsp; Criterios"};
-  nav.innerHTML='<a href="#inicio" class="active">⌂ &nbsp; Inicio</a>'+order.map(id=>'<a href="#'+id+'">'+labels[id]+'</a>').join("");
- }
- const top=document.querySelector(".topbar .eyebrow");if(top)top.textContent="PANEL PERSONAL · CONTROL Y PLANIFICACIÓN";
+ const dock=document.querySelector(".ios-dock");
+ const navItems=[
+  ["#inicio","⌂","Inicio"],
+  ["#resumen","▦","Resumen"],
+  ["#space-control","◫","Control"],
+  ["#space-insights","⌁","Análisis"],
+  ["#space-goals","◇","Metas"]
+ ];
+ if(nav)nav.innerHTML=navItems.map((x,i)=>'<a href="'+x[0]+'"'+(i===0?' class="active"':'')+'>'+x[1]+'&nbsp; '+x[2]+'</a>').join("");
+ if(dock)dock.innerHTML=navItems.map((x,i)=>'<a href="'+x[0]+'"'+(i===0?' class="active"':'')+'><span class="dock-icon">'+x[1]+'</span><span>'+x[2]+'</span></a>').join("");
+ const top=document.querySelector(".topbar .eyebrow");if(top)top.textContent="ALVAPEN / PERSONAL FINANCE OS";
+ const heading=document.querySelector(".topbar h1");if(heading)heading.textContent="Tu centro de control financiero";
+ const summary=sections.resumen;
+ if(summary){const p=summary.querySelector(".section-head p");if(p)p.textContent="Una sola vista para tus indicadores clave. Los detalles viven en sus respectivos módulos.";}
+ const movement=sections.movimientos;
+ if(movement){const h=movement.querySelector("h2");if(h)h.textContent="Registro y flujo de caja";const p=movement.querySelector(".section-head p");if(p)p.textContent="Registra operaciones y revisa el flujo mensual en el mismo módulo.";}
+ const income=sections.ingresos;
+ if(income){const h=income.querySelector("h2");if(h)h.textContent="Composición de ingresos";const p=income.querySelector(".section-head p");if(p)p.textContent="Detalle por fuente. La cifra total ya se muestra en el resumen.";}
+ const analytics=sections.analitica;
+ if(analytics){const h=analytics.querySelector(".section-head h2");if(h)h.textContent="Consumo y comportamiento";const p=analytics.querySelector(".section-head p");if(p)p.textContent="Tendencias, composición y señales de gasto. No duplica pagos de tarjetas.";}
+ const projection=sections.proyeccion;
+ if(projection){const h=projection.querySelector("h2");if(h)h.textContent="Simulador de ahorro para inicial";}
+ const footer=main.querySelector(".footer");if(footer)main.appendChild(footer);
+ const links=[...document.querySelectorAll(".sidebar .nav a,.ios-dock a")];
+ links.forEach(a=>a.addEventListener("click",()=>{links.forEach(x=>x.classList.toggle("active",x===a));}));
 })();
+
 
 </script>
 </body>
