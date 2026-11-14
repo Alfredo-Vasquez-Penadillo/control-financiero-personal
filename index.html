@@ -1086,5 +1086,69 @@ body{background:radial-gradient(ellipse at 12% 0%,rgba(180,205,255,.25),transpar
 })();
 </script>
 
+
+<style id="alvapen-aurora-glass-theme">
+:root{--bg:#f2f0f6;--ink:#27243a;--muted:#777387;--navy:#27243a;--navy2:#514767;--teal:#9a83c8;--teal2:#eee8f7;--line:#e4dfeb;--white:#fff;--shadow:0 18px 48px rgba(42,34,65,.09)}
+body{background:radial-gradient(ellipse at 12% 4%,rgba(185,165,221,.32),transparent 34%),radial-gradient(ellipse at 90% 16%,rgba(219,197,207,.26),transparent 32%),linear-gradient(145deg,#f8f6fa,#eeebf2 55%,#f7f5f8)!important;color:#29263b}
+.sidebar{background:linear-gradient(160deg,rgba(35,31,49,.97),rgba(57,48,73,.96))!important;backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px)}
+.logo span{color:#c4addf!important}
+.home-stat,.home-panel,.module-card{background:linear-gradient(145deg,rgba(255,255,255,.83),rgba(247,243,250,.66))!important;border:1px solid rgba(255,255,255,.95)!important;box-shadow:0 16px 42px rgba(49,37,69,.08),inset 0 1px 0 #fff!important;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.home-stat strong,.home-panel h3,.module-card strong{color:#302a43!important}
+.home-track i{background:linear-gradient(90deg,#a78bc9,#7e6ba7)!important}.home-track i.alt{background:linear-gradient(90deg,#d5a8b6,#b77d96)!important}
+.module-icon{background:linear-gradient(145deg,#eee5f6,#e3d8ed)!important;color:#65527f!important}
+#alvapenModuleView{display:none;margin:8px 0 28px}
+#alvapenModuleView .section{display:block!important}
+.alvapen-space{display:none}
+.alvapen-space.active{display:block}
+.alvapen-space .section{margin:0 0 22px}
+.module-card{cursor:pointer}
+.module-card:hover{border-color:#c9b8dc!important}
+.module-toolbar button{background:rgba(255,255,255,.82)!important;border-color:#fff!important;color:#433653!important}
+@media(max-width:620px){.home-welcome h2{font-size:25px}}
+</style>
+<script id="alvapen-separated-spaces-fix">
+(function(){
+ const main=document.querySelector("main .content");if(!main)return;
+ const groups={
+  finanzas:{name:"Finanzas y obligaciones",ids:["resumen","tarjetas","analitica","comparativa"]},
+  vivienda:{name:"Mi vivienda",ids:["departamento","bonos","proyeccion"]},
+  cierres:{name:"Cierres y control",ids:["actualizaciones","criterios"]}
+ };
+ const titles={finanzas:"Finanzas y obligaciones",vivienda:"Mi vivienda",cierres:"Cierres y control"};
+ const descriptions={finanzas:"Resumen patrimonial, tarjetas, obligaciones y análisis del consumo.",vivienda:"Tu ahorro para la inicial, simulación y programas de apoyo habitacional.",cierres:"Carga documental, conciliación bancaria y reglas de control."};
+ const icons={finanzas:"▤",vivienda:"⌂",cierres:"↻"};
+ let home=document.getElementById("alvapenHome");
+ if(!home)return;
+ const oldView=document.getElementById("alvapenModuleView");if(oldView)oldView.remove();
+ const homeCards=home.querySelector(".module-grid");
+ if(homeCards)homeCards.innerHTML=Object.keys(groups).map(k=>'<a class="module-card" href="#espacio/'+k+'"><span class="module-icon">'+icons[k]+'</span><strong>'+titles[k]+'</strong><span>'+descriptions[k]+'</span><em>Entrar al espacio →</em></a>').join("");
+ const view=document.createElement("section");view.id="alvapenModuleView";
+ view.innerHTML='<div class="module-toolbar"><button type="button" id="alvapenBackHome">← Volver al inicio</button><span id="alvapenSpaceTitle">ALVAPEN / ESPACIO</span></div><div id="alvapenSpaceBody"></div>';
+ const body=view.querySelector("#alvapenSpaceBody"),sections={};
+ Object.values(groups).forEach(g=>g.ids.forEach(id=>{sections[id]=document.getElementById(id);}));
+ Object.entries(groups).forEach(([key,g])=>{
+  const wrap=document.createElement("div");wrap.className="alvapen-space";wrap.id="space-"+key;
+  g.ids.forEach(id=>{if(sections[id]){sections[id].style.removeProperty("display");wrap.appendChild(sections[id]);}});
+  body.appendChild(wrap);
+ });
+ main.appendChild(view);
+ function route(){
+  const m=location.hash.match(/^#espacio\/(finanzas|vivienda|cierres)$/),key=m?m[1]:null;
+  home.style.display=key?"none":"block";view.style.display=key?"block":"none";
+  Object.keys(groups).forEach(k=>{const el=document.getElementById("space-"+k);if(el)el.classList.toggle("active",k===key);});
+  if(key)view.querySelector("#alvapenSpaceTitle").textContent="ALVAPEN / "+groups[key].name.toUpperCase();
+  document.querySelectorAll(".sidebar .nav a,.ios-dock a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")===(key?"#espacio/"+key:"#inicio")));
+  window.scrollTo({top:0,behavior:"smooth"});
+ }
+ view.querySelector("#alvapenBackHome").addEventListener("click",()=>{location.hash="inicio";});
+ window.addEventListener("hashchange",route);
+ const nav=document.querySelector(".sidebar .nav");
+ if(nav)nav.innerHTML='<a href="#inicio">Inicio</a>'+Object.keys(groups).map(k=>'<a href="#espacio/'+k+'">'+titles[k]+'</a>').join("");
+ const dock=document.querySelector(".ios-dock");
+ if(dock)dock.innerHTML='<a href="#inicio"><span class="dock-icon">⌂</span><span>Inicio</span></a>'+Object.keys(groups).map(k=>'<a href="#espacio/'+k+'"><span class="dock-icon">'+icons[k]+'</span><span>'+titles[k].split(" ")[0]+'</span></a>').join("");
+ route();
+})();
+</script>
+
 </body>
 </html>
