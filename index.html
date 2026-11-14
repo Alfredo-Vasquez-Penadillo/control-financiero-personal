@@ -29,6 +29,11 @@ details{border:1px solid var(--line);border-radius:15px;padding:13px 15px;backgr
 .mobile-nav{display:none}
 @media(max-width:1050px){.shell{grid-template-columns:205px 1fr}.kpis{grid-template-columns:repeat(2,1fr)}.compare{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.shell{display:block}.sidebar{display:none}.content{padding:18px 14px 40px}.hero{grid-template-columns:1fr;padding:22px}.hero-stat{max-width:none}.topbar{align-items:flex-start}.top-actions{justify-content:flex-end}.mobile-nav{display:flex;overflow:auto;gap:7px;padding:0 0 12px}.mobile-nav a{white-space:nowrap;padding:8px 11px;border-radius:99px;background:#fff;border:1px solid var(--line);font-size:10px}.two,.three,.bank-grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.projection-result{grid-template-columns:1fr}.timeline{grid-template-columns:1fr}.table-wrap{overflow:auto}.table-wrap table{min-width:640px}}
+
+/* Registro diario · Overview workspace */
+.entry-layout{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.4fr);gap:14px}
+.entry-form{display:grid;gap:10px}.field{display:grid;gap:5px}.field label{font-size:10px;color:#63758a;font-weight:800}.field input,.field select,.field textarea{width:100%;border:1px solid #dce5ec;background:#f8fafb;border-radius:11px;padding:10px 11px;color:#1b2b40;font:inherit;font-size:12px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:#54aaa0;box-shadow:0 0 0 3px #168b8318}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.type-switch{display:grid;grid-template-columns:1fr 1fr;gap:7px}.type-switch button{border:1px solid #dce5ec;background:#f5f8fa;padding:10px;border-radius:11px;font-size:11px;font-weight:800;color:#63758a;cursor:pointer}.type-switch button.selected{background:#e0f3ee;color:#16745f;border-color:#a9d9cd}.type-switch button.selected.expense{background:#fff0ec;color:#ad5547;border-color:#f0c4bb}.entry-list{display:grid;gap:8px;max-height:430px;overflow:auto}.entry-item{display:grid;grid-template-columns:1fr auto;gap:10px;padding:12px;border:1px solid #e8edf1;border-radius:13px;background:#fff}.entry-item b{font-size:12px}.entry-item small{display:block;color:#8190a0;font-size:10px;margin-top:3px}.entry-amount{font-weight:850;font-size:13px;text-align:right}.entry-amount.in{color:#16805f}.entry-amount.out{color:#b45248}.entry-actions{display:flex;gap:6px;align-items:center;justify-content:flex-end;margin-top:6px}.entry-actions button{border:0;background:#f1f4f6;color:#536579;border-radius:8px;padding:5px 8px;font-size:10px;cursor:pointer}.empty{padding:28px 15px;text-align:center;color:#8190a0;border:1px dashed #d4dfe6;border-radius:14px;font-size:12px}.chart-bars{display:grid;gap:11px;margin-top:12px}.chart-row{display:grid;grid-template-columns:90px 1fr 90px;gap:8px;align-items:center;font-size:10px}.chart-track{height:9px;background:#edf1f4;border-radius:99px;overflow:hidden}.chart-track i{height:100%;display:block;border-radius:99px;background:linear-gradient(90deg,#168b83,#7bc9b9)}.chart-track i.expense{background:linear-gradient(90deg,#d47c69,#e9b19f)}.mini-total{display:flex;justify-content:space-between;gap:8px;padding:9px 0;border-bottom:1px solid #edf1f4;font-size:11px}.mini-total:last-child{border:0}.tools-row{display:flex;gap:8px;flex-wrap:wrap}.btn.danger{color:#a94a41;background:#fff5f3;border-color:#f4d7d1}
+@media(max-width:850px){.entry-layout{grid-template-columns:1fr}}@media(max-width:520px){.form-row{grid-template-columns:1fr}.chart-row{grid-template-columns:70px 1fr 75px}.entry-item{grid-template-columns:1fr auto}}
 </style>
 </head>
 <body>
@@ -36,7 +41,7 @@ details{border:1px solid var(--line);border-radius:15px;padding:13px 15px;backgr
 <aside class="sidebar">
 <div class="logo">ALVA<span>PEN</span></div><div class="tag">TU CENTRO FINANCIERO PERSONAL</div>
 <nav class="nav">
-<a href="#inicio" class="active">⌂ &nbsp; Inicio</a><a href="#resumen">▦ &nbsp; Mi resumen</a><a href="#proyeccion">↗ &nbsp; Proyecciones</a><a href="#tarjetas">▣ &nbsp; Tarjetas y deudas</a><a href="#comparativa">⇄ &nbsp; Evolución</a><a href="#departamento">⌂ &nbsp; Mi departamento</a><a href="#ingresos">＋ &nbsp; Ingresos</a><a href="#criterios">✓ &nbsp; Criterios</a>
+<a href="#inicio" class="active">⌂ &nbsp; Inicio</a><a href="#resumen">▦ &nbsp; Mi resumen</a><a href="#proyeccion">↗ &nbsp; Proyecciones</a><a href="#tarjetas">▣ &nbsp; Tarjetas y deudas</a><a href="#comparativa">⇄ &nbsp; Evolución</a><a href="#movimientos">＋ &nbsp; Registro diario</a><a href="#departamento">⌂ &nbsp; Mi departamento</a><a href="#ingresos">＋ &nbsp; Ingresos</a><a href="#criterios">✓ &nbsp; Criterios</a>
 </nav>
 <div class="sidefoot">Meta de ahorro mensual<strong>S/ 1,000</strong>Tu ahorro para vivienda está separado de las deudas.</div>
 </aside>
@@ -45,7 +50,7 @@ details{border:1px solid var(--line);border-radius:15px;padding:13px 15px;backgr
 <div><div class="eyebrow">Panel personal · Noviembre 2026</div><h1>Hola, Alfred 👋</h1><div class="sub">Tu dinero, tus metas y tus decisiones en un solo lugar.</div></div>
 <div class="top-actions"><span class="chip info">Actualizado · 14 nov 2026</span><button class="btn" onclick="window.print()">⤓ Imprimir informe</button></div>
 </header>
-<nav class="mobile-nav"><a href="#resumen">Resumen</a><a href="#proyeccion">Proyecciones</a><a href="#tarjetas">Tarjetas</a><a href="#comparativa">Evolución</a><a href="#departamento">Departamento</a></nav>
+<nav class="mobile-nav"><a href="#resumen">Resumen</a><a href="#proyeccion">Proyecciones</a><a href="#tarjetas">Tarjetas</a><a href="#comparativa">Evolución</a><a href="#movimientos">Movimientos</a><a href="#departamento">Departamento</a></nav>
 
 <section class="hero">
 <div><div class="eyebrow">Tu objetivo patrimonial</div><h2>Construyendo el camino hacia tu departamento.</h2><p>Tu ahorro destinado a la inicial ya llegó a S/ 8,000. Mantendremos ese fondo separado y proyectaremos cuánto puedes avanzar según tu capacidad mensual de ahorro.</p><a class="btn primary" href="#proyeccion">Ver mis proyecciones ↗</a></div>
@@ -107,7 +112,30 @@ details{border:1px solid var(--line);border-radius:15px;padding:13px 15px;backgr
 <div class="note" style="margin-top:13px"><strong>Lectura honesta:</strong> el avance más claro es el ahorro. En tarjetas, el panorama es mixto. No es posible afirmar todavía que tu deuda total consolidada haya bajado o subido: hay fechas y bases de medición diferentes, y falta un estado reciente de Diners y una conciliación completa de Scotiabank.</div>
 </section>
 
-<section class="section" id="departamento"><div class="section-head"><div><h2>Tu proyecto de departamento</h2><p>Meta inicial referencial y ahorro protegido.</p></div><span class="chip good">Objetivo activo</span></div>
+
+<section class="section" id="movimientos"><div class="section-head"><div><h2>Registro diario · Overview</h2><p>Registra ingresos y gastos en una sola vista. El resumen y los gráficos se actualizan automáticamente.</p></div><span class="chip good">Libro personal</span></div>
+<div class="entry-layout">
+<div class="panel">
+<h3>＋ Añadir movimiento</h3><p>Un registro por cada ingreso o gasto. Si pagas una tarjeta, elige “Pago de tarjeta”: no se sumará como consumo.</p>
+<form class="entry-form" id="entryForm">
+<div class="type-switch"><button type="button" id="incomeType" class="selected" onclick="chooseType('ingreso')">＋ Ingreso</button><button type="button" id="expenseType" onclick="chooseType('gasto')">− Gasto</button></div>
+<input type="hidden" id="entryType" value="ingreso">
+<div class="form-row"><div class="field"><label for="entryDate">Fecha</label><input id="entryDate" type="date" required></div><div class="field"><label for="entryAmount">Importe (S/)</label><input id="entryAmount" type="number" min="0.01" step="0.01" placeholder="0.00" required></div></div>
+<div class="field"><label for="entryConcept">Concepto / motivo</label><input id="entryConcept" maxlength="100" placeholder="Ej. honorarios, almuerzo, movilidad..." required></div>
+<div class="form-row"><div class="field"><label for="entryCategory">Categoría</label><select id="entryCategory"><option>Honorarios / trabajo</option><option>Otros ingresos</option><option>Alimentación</option><option>Transporte</option><option>Vivienda y servicios</option><option>Salud</option><option>Educación</option><option>Compras personales</option><option>Suscripciones</option><option>Ocio</option><option>Deudas / intereses</option><option>Pago de tarjeta</option><option>Otros gastos</option></select></div><div class="field"><label for="entryMethod">Medio / cuenta / tarjeta</label><select id="entryMethod"><option>Efectivo</option><option>BCP</option><option>Interbank</option><option>Scotiabank</option><option>Falabella / CMR</option><option>Diners</option><option>Transferencia</option><option>Otro</option></select></div></div>
+<div class="field"><label for="entryNotes">Nota opcional</label><input id="entryNotes" maxlength="140" placeholder="Detalle adicional"></div>
+<button class="btn primary" type="submit">Guardar movimiento</button>
+<div class="muted" style="font-size:10px">Los datos se guardan en este navegador. No se envían automáticamente a GitHub ni se sincronizan entre dispositivos.</div>
+</form></div>
+<div class="panel"><div style="display:flex;justify-content:space-between;gap:8px;align-items:start"><div><h3>Tu actividad</h3><p>Resumen del mes seleccionado.</p></div><div class="field" style="min-width:145px"><label for="monthFilter">Mes</label><input id="monthFilter" type="month"></div></div>
+<div class="grid three" style="margin:13px 0"><div class="mini"><small>Ingresos</small><b id="monthIncome">S/ 0.00</b></div><div class="mini"><small>Gastos consumo</small><b id="monthExpense">S/ 0.00</b></div><div class="mini"><small>Flujo neto</small><b id="monthNet">S/ 0.00</b></div></div>
+<h3 style="margin-top:16px">Ingresos vs. gastos</h3><div class="chart-bars" id="monthChart"><div class="empty">Aún no hay movimientos para este mes.</div></div>
+<h3 style="margin-top:20px">Gastos por categoría</h3><div id="categoryChart" class="chart-bars"><div class="empty">Tus categorías aparecerán al registrar gastos.</div></div>
+<div class="tools-row" style="margin-top:18px"><button class="btn" type="button" onclick="exportEntries()">↓ Exportar CSV</button><button class="btn" type="button" onclick="downloadBackup()">Guardar respaldo JSON</button><button class="btn" type="button" onclick="document.getElementById('importFile').click()">Importar respaldo</button><input id="importFile" type="file" accept="application/json" style="display:none" onchange="importBackup(event)"></div>
+</div></div>
+<div class="panel" style="margin-top:14px"><div class="section-head"><div><h3>Movimientos registrados</h3><p>Los pagos de tarjeta se muestran aparte y no se suman a los gastos de consumo.</p></div><button class="btn danger" type="button" onclick="clearMonth()">Limpiar mes seleccionado</button></div><div id="entryList" class="entry-list"><div class="empty">Todavía no has registrado movimientos.</div></div></div>
+<div class="note" style="margin-top:12px"><strong>Regla de conciliación:</strong> registra la compra como gasto. Cuando pagues la tarjeta, registra el movimiento como “Pago de tarjeta”; el panel lo mostrará como salida de caja separada, sin volver a sumarlo al consumo. No registres como ingreso una transferencia entre tus propias cuentas.</div>
+</section>\n<section class="section" id="departamento"><div class="section-head"><div><h2>Tu proyecto de departamento</h2><p>Meta inicial referencial y ahorro protegido.</p></div><span class="chip good">Objetivo activo</span></div>
 <div class="grid two">
 <div class="panel"><div class="eyebrow">Ahorro confirmado</div><div class="kpi-value">S/ 8,000.00</div><p>Cuenta Ahorro Clásico Falabella. Confirmaste que el saldo completo está destinado a la inicial, no al fondo de emergencia.</p><div class="bar"><i style="width:26.67%"></i></div><div class="sub">26.7% de S/ 30,000 · faltan S/ 22,000</div></div>
 <div class="panel"><h3>Regla de protección</h3><p>Tu ahorro para vivienda se mantiene separado. No lo consideraremos disponible para cubrir pagos de tarjetas ni gastos corrientes.</p><p><b>Meta mensual base: S/ 1,000.</b> Es un mínimo de planificación, no un límite máximo. Si tus ingresos crecen, puedes acelerar la inicial.</p></div>
@@ -148,5 +176,35 @@ function setScenario(monthly,months){document.getElementById("monthly").value=mo
 document.getElementById("monthly").addEventListener("input",updateProjection);
 document.getElementById("months").addEventListener("input",updateProjection);
 updateProjection();
+
+const STORE_KEY="alvapen_personal_finance_v1";
+let entries=loadEntries();
+function loadEntries(){try{return JSON.parse(localStorage.getItem(STORE_KEY)||"[]")}catch(e){return []}}
+function persistEntries(){localStorage.setItem(STORE_KEY,JSON.stringify(entries))}
+function money(n){return "S/ "+Number(n||0).toLocaleString("es-PE",{minimumFractionDigits:2,maximumFractionDigits:2})}
+function chooseType(t){document.getElementById("entryType").value=t;document.getElementById("incomeType").classList.toggle("selected",t==="ingreso");document.getElementById("expenseType").classList.toggle("selected",t==="gasto");document.getElementById("expenseType").classList.toggle("expense",t==="gasto")}
+function selectedMonth(){return document.getElementById("monthFilter").value||new Date().toISOString().slice(0,7)}
+function visibleEntries(){return entries.filter(e=>e.date.slice(0,7)===selectedMonth()).sort((a,b)=>b.date.localeCompare(a.date)||b.created-a.created)}
+function saveEntry(ev){ev.preventDefault();const type=document.getElementById("entryType").value;const amount=Number(document.getElementById("entryAmount").value);const concept=document.getElementById("entryConcept").value.trim();if(!amount||amount<=0||!concept)return;
+const category=document.getElementById("entryCategory").value;const isCardPayment=type==="gasto"&&category==="Pago de tarjeta";
+entries.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),date:document.getElementById("entryDate").value,amount,concept,type,category,method:document.getElementById("entryMethod").value,notes:document.getElementById("entryNotes").value.trim(),cardPayment:isCardPayment,created:Date.now()});
+persistEntries();document.getElementById("entryAmount").value="";document.getElementById("entryConcept").value="";document.getElementById("entryNotes").value="";renderEntries();}
+function renderEntries(){const month=visibleEntries();const income=month.filter(e=>e.type==="ingreso").reduce((a,e)=>a+e.amount,0);const expense=month.filter(e=>e.type==="gasto"&&!e.cardPayment).reduce((a,e)=>a+e.amount,0);const payments=month.filter(e=>e.cardPayment).reduce((a,e)=>a+e.amount,0);
+document.getElementById("monthIncome").textContent=money(income);document.getElementById("monthExpense").textContent=money(expense);document.getElementById("monthNet").textContent=money(income-expense);
+const max=Math.max(income,expense,1);document.getElementById("monthChart").innerHTML='<div class="chart-row"><span>Ingresos</span><div class="chart-track"><i style="width:'+(income/max*100)+'%"></i></div><b class="right">'+money(income)+'</b></div><div class="chart-row"><span>Consumo</span><div class="chart-track"><i class="expense" style="width:'+(expense/max*100)+'%"></i></div><b class="right">'+money(expense)+'</b></div>'+(payments?'<div class="mini-total"><span>Pagos de tarjeta (no consumo)</span><b>'+money(payments)+'</b></div>':'');
+const cats={};month.filter(e=>e.type==="gasto"&&!e.cardPayment).forEach(e=>cats[e.category]=(cats[e.category]||0)+e.amount);const catArr=Object.entries(cats).sort((a,b)=>b[1]-a[1]);const catMax=catArr.length?catArr[0][1]:1;document.getElementById("categoryChart").innerHTML=catArr.length?catArr.map(([c,v])=>'<div class="chart-row"><span>'+escapeHtml(c)+'</span><div class="chart-track"><i class="expense" style="width:'+(v/catMax*100)+'%"></i></div><b class="right">'+money(v)+'</b></div>').join(""):'<div class="empty">Tus categorías aparecerán al registrar gastos.</div>';
+const list=document.getElementById("entryList");list.innerHTML=month.length?month.map(e=>'<div class="entry-item"><div><b>'+escapeHtml(e.concept)+'</b><small>'+e.date+' · '+escapeHtml(e.category)+' · '+escapeHtml(e.method)+(e.notes?' · '+escapeHtml(e.notes):'')+'</small><div class="entry-actions"><button onclick="removeEntry(\''+e.id+'\')">Eliminar</button></div></div><div class="entry-amount '+(e.type==="ingreso"?"in":"out")+'">'+(e.type==="ingreso"?"+":"−")+money(e.amount)+(e.cardPayment?'<small>Pago de tarjeta</small>':'')+'</div></div>').join(""):'<div class="empty">No hay movimientos registrados para este mes.</div>';
+}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function removeEntry(id){if(!confirm("¿Eliminar este movimiento?"))return;entries=entries.filter(e=>e.id!==id);persistEntries();renderEntries()}
+function clearMonth(){const m=selectedMonth();if(!confirm("¿Eliminar todos los movimientos de "+m+" guardados en este navegador?"))return;entries=entries.filter(e=>e.date.slice(0,7)!==m);persistEntries();renderEntries()}
+function exportEntries(){const rows=[["fecha","tipo","importe","concepto","categoria","medio","nota","pago_tarjeta"],...entries.map(e=>[e.date,e.type,e.amount,e.concept,e.category,e.method,e.notes||"",e.cardPayment?"si":"no"])];const csv=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(",")).join("\n");const blob=new Blob(["\\ufeff"+csv],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alvapen_movimientos.csv";a.click();URL.revokeObjectURL(a.href)}
+function downloadBackup(){const blob=new Blob([JSON.stringify(entries,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alvapen_respaldo_financiero.json";a.click();URL.revokeObjectURL(a.href)}
+function importBackup(ev){const file=ev.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);if(!Array.isArray(data))throw Error();entries=data;persistEntries();renderEntries();alert("Respaldo importado.")}catch(e){alert("El archivo no tiene un respaldo válido.")}};reader.readAsText(file);ev.target.value=""}
+document.getElementById("entryForm").addEventListener("submit",saveEntry);
+document.getElementById("monthFilter").value=new Date().toISOString().slice(0,7);
+document.getElementById("entryDate").value=new Date().toISOString().slice(0,10);
+document.getElementById("monthFilter").addEventListener("change",renderEntries);
+renderEntries();
 </script>
 </body></html>
