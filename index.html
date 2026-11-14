@@ -34,6 +34,16 @@ details{border:1px solid var(--line);border-radius:15px;padding:13px 15px;backgr
 .entry-layout{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.4fr);gap:14px}
 .entry-form{display:grid;gap:10px}.field{display:grid;gap:5px}.field label{font-size:10px;color:#63758a;font-weight:800}.field input,.field select,.field textarea{width:100%;border:1px solid #dce5ec;background:#f8fafb;border-radius:11px;padding:10px 11px;color:#1b2b40;font:inherit;font-size:12px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:#54aaa0;box-shadow:0 0 0 3px #168b8318}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.type-switch{display:grid;grid-template-columns:1fr 1fr;gap:7px}.type-switch button{border:1px solid #dce5ec;background:#f5f8fa;padding:10px;border-radius:11px;font-size:11px;font-weight:800;color:#63758a;cursor:pointer}.type-switch button.selected{background:#e0f3ee;color:#16745f;border-color:#a9d9cd}.type-switch button.selected.expense{background:#fff0ec;color:#ad5547;border-color:#f0c4bb}.entry-list{display:grid;gap:8px;max-height:430px;overflow:auto}.entry-item{display:grid;grid-template-columns:1fr auto;gap:10px;padding:12px;border:1px solid #e8edf1;border-radius:13px;background:#fff}.entry-item b{font-size:12px}.entry-item small{display:block;color:#8190a0;font-size:10px;margin-top:3px}.entry-amount{font-weight:850;font-size:13px;text-align:right}.entry-amount.in{color:#16805f}.entry-amount.out{color:#b45248}.entry-actions{display:flex;gap:6px;align-items:center;justify-content:flex-end;margin-top:6px}.entry-actions button{border:0;background:#f1f4f6;color:#536579;border-radius:8px;padding:5px 8px;font-size:10px;cursor:pointer}.empty{padding:28px 15px;text-align:center;color:#8190a0;border:1px dashed #d4dfe6;border-radius:14px;font-size:12px}.chart-bars{display:grid;gap:11px;margin-top:12px}.chart-row{display:grid;grid-template-columns:90px 1fr 90px;gap:8px;align-items:center;font-size:10px}.chart-track{height:9px;background:#edf1f4;border-radius:99px;overflow:hidden}.chart-track i{height:100%;display:block;border-radius:99px;background:linear-gradient(90deg,#168b83,#7bc9b9)}.chart-track i.expense{background:linear-gradient(90deg,#d47c69,#e9b19f)}.mini-total{display:flex;justify-content:space-between;gap:8px;padding:9px 0;border-bottom:1px solid #edf1f4;font-size:11px}.mini-total:last-child{border:0}.tools-row{display:flex;gap:8px;flex-wrap:wrap}.btn.danger{color:#a94a41;background:#fff5f3;border-color:#f4d7d1}
 @media(max-width:850px){.entry-layout{grid-template-columns:1fr}}@media(max-width:520px){.form-row{grid-template-columns:1fr}.chart-row{grid-template-columns:70px 1fr 75px}.entry-item{grid-template-columns:1fr auto}}
+
+/* Liquid Glass analytics workspace */
+.analytics-hero{background:linear-gradient(125deg,#12283eeb,#1a5260dc);color:#f4fbff;border:1px solid #ffffff70;border-radius:26px;padding:22px;box-shadow:0 22px 55px #102d4326,inset 0 1px #ffffff50;backdrop-filter:blur(24px) saturate(150%)}
+.analytics-hero p{color:#c6dce3;font-size:12px;margin:6px 0 0}.glass-panel{background:linear-gradient(145deg,#ffffffd9,#f7fbfbd0);border:1px solid #ffffffed;border-radius:23px;padding:19px;box-shadow:0 18px 48px #17344c14,inset 0 1px #fff;backdrop-filter:blur(22px) saturate(160%)}
+.analytics-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.chart-title{display:flex;justify-content:space-between;gap:8px;align-items:start;margin-bottom:14px}.chart-title h3{margin:0;font-size:14px}.chart-title p{margin:4px 0 0;color:#8190a0;font-size:10px}
+.svg-chart{width:100%;height:auto;display:block;overflow:visible}.legend{display:flex;gap:13px;flex-wrap:wrap;font-size:10px;color:#68798a;margin-top:8px}.legend span:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#168b83;margin-right:5px}.legend .coral:before{background:#df927f}
+.donut-wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.donut{width:148px;height:148px;border-radius:50%;display:grid;place-items:center;position:relative;flex:none;background:conic-gradient(#168b83 0 30%,#4e8ca0 30% 55%,#c69b52 55% 78%,#df927f 78% 100%)}.donut:after{content:"";position:absolute;inset:20px;border-radius:50%;background:#f9fcfc}.donut-center{z-index:1;text-align:center}.donut-center b{display:block;font-size:17px}.donut-center small{font-size:9px;color:#7c8a99}.legend-list{display:grid;gap:8px;flex:1;min-width:130px}.legend-row{display:flex;justify-content:space-between;gap:8px;font-size:10px;color:#637489}.legend-row span:first-child:before{content:"";display:inline-block;width:8px;height:8px;border-radius:3px;background:var(--dot);margin-right:6px}
+.chart-empty{padding:26px 12px;text-align:center;color:#8190a0;font-size:11px;border:1px dashed #d8e2e9;border-radius:15px}
+.analytics-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.analytics-tabs span{padding:7px 10px;background:#ffffffa8;border:1px solid #ffffff;border-radius:99px;font-size:10px;color:#5c7083;box-shadow:0 5px 14px #17344c0b}
+@media(max-width:850px){.analytics-grid{grid-template-columns:1fr}.donut-wrap{justify-content:center}}
 </style>
 </head>
 <body>
@@ -41,7 +51,7 @@ details{border:1px solid var(--line);border-radius:15px;padding:13px 15px;backgr
 <aside class="sidebar">
 <div class="logo">ALVA<span>PEN</span></div><div class="tag">TU CENTRO FINANCIERO PERSONAL</div>
 <nav class="nav">
-<a href="#inicio" class="active">⌂ &nbsp; Inicio</a><a href="#resumen">▦ &nbsp; Mi resumen</a><a href="#proyeccion">↗ &nbsp; Proyecciones</a><a href="#tarjetas">▣ &nbsp; Tarjetas y deudas</a><a href="#comparativa">⇄ &nbsp; Evolución</a><a href="#movimientos">＋ &nbsp; Registro diario</a><a href="#departamento">⌂ &nbsp; Mi departamento</a><a href="#ingresos">＋ &nbsp; Ingresos</a><a href="#criterios">✓ &nbsp; Criterios</a>
+<a href="#inicio" class="active">⌂ &nbsp; Inicio</a><a href="#resumen">▦ &nbsp; Mi resumen</a><a href="#proyeccion">↗ &nbsp; Proyecciones</a><a href="#tarjetas">▣ &nbsp; Tarjetas y deudas</a><a href="#comparativa">⇄ &nbsp; Evolución</a><a href="#analitica">▥ &nbsp; Analítica</a><a href="#movimientos">＋ &nbsp; Registro diario</a><a href="#departamento">⌂ &nbsp; Mi departamento</a><a href="#ingresos">＋ &nbsp; Ingresos</a><a href="#criterios">✓ &nbsp; Criterios</a>
 </nav>
 <div class="sidefoot">Meta de ahorro mensual<strong>S/ 1,000</strong>Tu ahorro para vivienda está separado de las deudas.</div>
 </aside>
@@ -50,7 +60,7 @@ details{border:1px solid var(--line);border-radius:15px;padding:13px 15px;backgr
 <div><div class="eyebrow">Panel personal · Noviembre 2026</div><h1>Hola, Alfred 👋</h1><div class="sub">Tu dinero, tus metas y tus decisiones en un solo lugar.</div></div>
 <div class="top-actions"><span class="chip info">Actualizado · 14 nov 2026</span><button class="btn" onclick="window.print()">⤓ Imprimir informe</button></div>
 </header>
-<nav class="mobile-nav"><a href="#resumen">Resumen</a><a href="#proyeccion">Proyecciones</a><a href="#tarjetas">Tarjetas</a><a href="#comparativa">Evolución</a><a href="#movimientos">Movimientos</a><a href="#departamento">Departamento</a></nav>
+<nav class="mobile-nav"><a href="#resumen">Resumen</a><a href="#proyeccion">Proyecciones</a><a href="#tarjetas">Tarjetas</a><a href="#comparativa">Evolución</a><a href="#analitica">Gráficos</a><a href="#movimientos">Movimientos</a><a href="#departamento">Departamento</a></nav>
 
 <section class="hero">
 <div><div class="eyebrow">Tu objetivo patrimonial</div><h2>Construyendo el camino hacia tu departamento.</h2><p>Tu ahorro destinado a la inicial ya llegó a S/ 8,000. Mantendremos ese fondo separado y proyectaremos cuánto puedes avanzar según tu capacidad mensual de ahorro.</p><a class="btn primary" href="#proyeccion">Ver mis proyecciones ↗</a></div>
@@ -113,7 +123,25 @@ details{border:1px solid var(--line);border-radius:15px;padding:13px 15px;backgr
 </section>
 
 
-<section class="section" id="movimientos"><div class="section-head"><div><h2>Registro diario · Overview</h2><p>Registra ingresos y gastos en una sola vista. El resumen y los gráficos se actualizan automáticamente.</p></div><span class="chip good">Libro personal</span></div>
+
+<section class="section" id="analitica"><div class="section-head"><div><h2>Analítica financiera</h2><p>Una página dedicada a entender tendencias, categorías y flujo de caja.</p></div><span class="chip good">Overview · Analytics</span></div>
+<div class="analytics-hero"><div class="eyebrow" style="color:#8de0d0">FINANCIAL INSIGHTS</div><h2 style="margin:5px 0;font-size:23px">Mira más allá de los saldos.</h2><p>Visualiza cómo se mueve tu dinero. Los gráficos se alimentan de los movimientos que registres en la sección Registro diario y del mes seleccionado.</p><div class="analytics-tabs"><span>Flujo mensual</span><span>Gastos por categoría</span><span>Tendencia diaria</span><span>Balance</span></div></div>
+<div class="grid kpis" style="margin-top:14px">
+<div class="card"><div class="kpi-label">Ingresos del mes</div><div class="kpi-value" id="analyticsIncome">S/ 0.00</div><div class="kpi-note">Movimientos clasificados como ingreso</div></div>
+<div class="card"><div class="kpi-label">Consumo del mes</div><div class="kpi-value" id="analyticsExpense">S/ 0.00</div><div class="kpi-note">Sin pagos de tarjetas</div></div>
+<div class="card"><div class="kpi-label">Flujo neto</div><div class="kpi-value" id="analyticsNet">S/ 0.00</div><div class="kpi-note">Ingresos menos consumo</div></div>
+<div class="card"><div class="kpi-label">Pagos de tarjeta</div><div class="kpi-value" id="analyticsPayments">S/ 0.00</div><div class="kpi-note">Salidas de caja, no gasto duplicado</div></div>
+</div>
+<div class="analytics-grid" style="margin-top:14px">
+<div class="glass-panel"><div class="chart-title"><div><h3>Flujo de caja por día</h3><p>Ingresos y gastos de consumo durante el mes</p></div><span class="chip info" id="flowMonthLabel">Mes seleccionado</span></div><div id="flowChart"><div class="chart-empty">Registra movimientos para visualizar el flujo diario.</div></div><div class="legend"><span>Ingresos</span><span class="coral">Gastos</span></div></div>
+<div class="glass-panel"><div class="chart-title"><div><h3>Composición de gastos</h3><p>Distribución por categoría</p></div></div><div id="donutChart"><div class="chart-empty">Aún no hay gastos para distribuir.</div></div></div>
+</div>
+<div class="analytics-grid" style="margin-top:14px">
+<div class="glass-panel"><div class="chart-title"><div><h3>Gastos por categoría</h3><p>Comparación de importes registrados</p></div></div><div id="categoryAnalytics"><div class="chart-empty">Las categorías aparecerán aquí.</div></div></div>
+<div class="glass-panel"><div class="chart-title"><div><h3>Resumen del periodo</h3><p>Indicadores calculados con tus registros</p></div></div><div id="periodInsights"><div class="mini-total"><span>Días con movimientos</span><b>0</b></div><div class="mini-total"><span>Promedio de gasto diario</span><b>S/ 0.00</b></div><div class="mini-total"><span>Mayor gasto individual</span><b>S/ 0.00</b></div><div class="mini-total"><span>Participación del ahorro vivienda</span><b>No calculado</b></div></div></div>
+</div>
+<div class="note" style="margin-top:13px"><strong>Importante:</strong> los gráficos se construyen únicamente con movimientos que registres en esta página. No inventan datos históricos ni incorporan automáticamente los estados de cuenta. Los pagos de tarjeta se visualizan por separado para evitar doble conteo.</div>
+</section>\n<section class="section" id="movimientos"><div class="section-head"><div><h2>Registro diario · Overview</h2><p>Registra ingresos y gastos en una sola vista. El resumen y los gráficos se actualizan automáticamente.</p></div><span class="chip good">Libro personal</span></div>
 <div class="entry-layout">
 <div class="panel">
 <h3>＋ Añadir movimiento</h3><p>Un registro por cada ingreso o gasto. Si pagas una tarjeta, elige “Pago de tarjeta”: no se sumará como consumo.</p>
@@ -190,6 +218,32 @@ function saveEntry(ev){ev.preventDefault();const type=document.getElementById("e
 const category=document.getElementById("entryCategory").value;const isCardPayment=type==="gasto"&&category==="Pago de tarjeta";
 entries.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),date:document.getElementById("entryDate").value,amount,concept,type,category,method:document.getElementById("entryMethod").value,notes:document.getElementById("entryNotes").value.trim(),cardPayment:isCardPayment,created:Date.now()});
 persistEntries();document.getElementById("entryAmount").value="";document.getElementById("entryConcept").value="";document.getElementById("entryNotes").value="";renderEntries();}
+function renderAnalytics(){
+ const month=visibleEntries();
+ const inc=month.filter(e=>e.type==="ingreso").reduce((a,e)=>a+e.amount,0);
+ const exp=month.filter(e=>e.type==="gasto"&&!e.cardPayment).reduce((a,e)=>a+e.amount,0);
+ const pays=month.filter(e=>e.cardPayment).reduce((a,e)=>a+e.amount,0);
+ document.getElementById("analyticsIncome").textContent=money(inc);
+ document.getElementById("analyticsExpense").textContent=money(exp);
+ document.getElementById("analyticsNet").textContent=money(inc-exp);
+ document.getElementById("analyticsPayments").textContent=money(pays);
+ document.getElementById("flowMonthLabel").textContent=document.getElementById("monthFilter").value;
+ const dayCount=Number(document.getElementById("monthFilter").value.split("-")[1] ? new Date(Number(document.getElementById("monthFilter").value.split("-")[0]),Number(document.getElementById("monthFilter").value.split("-")[1]),0).getDate():30);
+ const daily=Array.from({length:dayCount},(_,i)=>({d:i+1,inc:0,exp:0}));
+ month.forEach(e=>{const d=Number(e.date.slice(8,10))-1;if(d>=0&&d<daily.length){if(e.type==="ingreso")daily[d].inc+=e.amount;else if(!e.cardPayment)daily[d].exp+=e.amount}});
+ const max=Math.max(1,...daily.flatMap(d=>[d.inc,d.exp]));
+ const W=700,H=230,left=34,bottom=25,top=12,plotH=H-top-bottom,step=(W-left-10)/dayCount,bw=Math.max(2,Math.min(9,step*.32));
+ let bars="";
+ daily.forEach((d,i)=>{const x=left+i*step+step*.15;const ih=d.inc/max*plotH,eh=d.exp/max*plotH;bars+= '<rect x="'+x+'" y="'+(top+plotH-ih)+'" width="'+bw+'" height="'+ih+'" rx="2" fill="#168b83"><title>Día '+d.d+' ingresos '+money(d.inc)+'</title></rect><rect x="'+(x+bw+2)+'" y="'+(top+plotH-eh)+'" width="'+bw+'" height="'+eh+'" rx="2" fill="#df927f"><title>Día '+d.d+' gastos '+money(d.exp)+'</title></rect>';});
+ let labels="";for(let i=0;i<dayCount;i+=Math.max(1,Math.ceil(dayCount/10))){labels+='<text x="'+(left+i*step+step/2)+'" y="'+(H-5)+'" font-size="10" text-anchor="middle" fill="#8290a0">'+(i+1)+'</text>'}
+ document.getElementById("flowChart").innerHTML=month.length?'<svg class="svg-chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Flujo diario"><line x1="'+left+'" y1="'+(top+plotH)+'" x2="'+W+'" y2="'+(top+plotH)+'" stroke="#dfe7ec"/>'+bars+labels+'</svg>':'<div class="chart-empty">Registra movimientos para visualizar el flujo diario.</div>';
+ const cats={};month.filter(e=>e.type==="gasto"&&!e.cardPayment).forEach(e=>cats[e.category]=(cats[e.category]||0)+e.amount);
+ const arr=Object.entries(cats).sort((a,b)=>b[1]-a[1]);const colors=["#168b83","#4e8ca0","#c69b52","#df927f","#7488b5","#83aa91","#9c85b5"];const sum=arr.reduce((a,x)=>a+x[1],0);
+ if(sum){let cursor=0;const stops=arr.map((x,i)=>{const start=cursor;cursor+=x[1]/sum*100;return colors[i%colors.length]+" "+start+"% "+cursor+"%"}).join(",");document.getElementById("donutChart").innerHTML='<div class="donut-wrap"><div class="donut" style="background:conic-gradient('+stops+')"><div class="donut-center"><b>'+money(sum)+'</b><small>GASTOS</small></div></div><div class="legend-list">'+arr.map((x,i)=>'<div class="legend-row"><span style="--dot:'+colors[i%colors.length]+'">'+escapeHtml(x[0])+'</span><b>'+((x[1]/sum)*100).toFixed(1)+'%</b></div>').join("")+'</div></div>';}else document.getElementById("donutChart").innerHTML='<div class="chart-empty">Aún no hay gastos para distribuir.</div>';
+ document.getElementById("categoryAnalytics").innerHTML=arr.length?arr.map((x,i)=>'<div class="chart-row"><span>'+escapeHtml(x[0])+'</span><div class="chart-track"><i style="width:'+(x[1]/arr[0][1]*100)+'%;background:'+colors[i%colors.length]+'"></i></div><b class="right">'+money(x[1])+'</b></div>').join(""):'<div class="chart-empty">Las categorías aparecerán aquí.</div>';
+ const days=new Set(month.map(e=>e.date)).size;const avg=days?exp/days:0;const biggest=month.filter(e=>e.type==="gasto"&&!e.cardPayment).reduce((m,e)=>Math.max(m,e.amount),0);
+ document.getElementById("periodInsights").innerHTML='<div class="mini-total"><span>Días con movimientos</span><b>'+days+'</b></div><div class="mini-total"><span>Promedio de gasto por día activo</span><b>'+money(avg)+'</b></div><div class="mini-total"><span>Mayor gasto individual</span><b>'+money(biggest)+'</b></div><div class="mini-total"><span>Pagos de tarjeta</span><b>'+money(pays)+'</b></div>';
+}
 function renderEntries(){const month=visibleEntries();const income=month.filter(e=>e.type==="ingreso").reduce((a,e)=>a+e.amount,0);const expense=month.filter(e=>e.type==="gasto"&&!e.cardPayment).reduce((a,e)=>a+e.amount,0);const payments=month.filter(e=>e.cardPayment).reduce((a,e)=>a+e.amount,0);
 document.getElementById("monthIncome").textContent=money(income);document.getElementById("monthExpense").textContent=money(expense);document.getElementById("monthNet").textContent=money(income-expense);
 const max=Math.max(income,expense,1);document.getElementById("monthChart").innerHTML='<div class="chart-row"><span>Ingresos</span><div class="chart-track"><i style="width:'+(income/max*100)+'%"></i></div><b class="right">'+money(income)+'</b></div><div class="chart-row"><span>Consumo</span><div class="chart-track"><i class="expense" style="width:'+(expense/max*100)+'%"></i></div><b class="right">'+money(expense)+'</b></div>'+(payments?'<div class="mini-total"><span>Pagos de tarjeta (no consumo)</span><b>'+money(payments)+'</b></div>':'');
@@ -197,7 +251,7 @@ const cats={};month.filter(e=>e.type==="gasto"&&!e.cardPayment).forEach(e=>cats[
 const list=document.getElementById("entryList");list.innerHTML=month.length?month.map(e=>'<div class="entry-item"><div><b>'+escapeHtml(e.concept)+'</b><small>'+e.date+' · '+escapeHtml(e.category)+' · '+escapeHtml(e.method)+(e.notes?' · '+escapeHtml(e.notes):'')+'</small><div class="entry-actions"><button onclick="removeEntry(\''+e.id+'\')">Eliminar</button></div></div><div class="entry-amount '+(e.type==="ingreso"?"in":"out")+'">'+(e.type==="ingreso"?"+":"−")+money(e.amount)+(e.cardPayment?'<small>Pago de tarjeta</small>':'')+'</div></div>').join(""):'<div class="empty">No hay movimientos registrados para este mes.</div>';
 }
 function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function removeEntry(id){if(!confirm("¿Eliminar este movimiento?"))return;entries=entries.filter(e=>e.id!==id);persistEntries();renderEntries()}
+function removeEntry(id){if(!confirm("¿Eliminar este movimiento?"))return;entries=entries.filter(e=>e.id!==id);persistEntries();renderEntries();renderAnalytics()}
 function clearMonth(){const m=selectedMonth();if(!confirm("¿Eliminar todos los movimientos de "+m+" guardados en este navegador?"))return;entries=entries.filter(e=>e.date.slice(0,7)!==m);persistEntries();renderEntries()}
 function exportEntries(){const rows=[["fecha","tipo","importe","concepto","categoria","medio","nota","pago_tarjeta"],...entries.map(e=>[e.date,e.type,e.amount,e.concept,e.category,e.method,e.notes||"",e.cardPayment?"si":"no"])];const csv=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(",")).join("\n");const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alvapen_movimientos.csv";a.click();URL.revokeObjectURL(a.href)}
 function downloadBackup(){const blob=new Blob([JSON.stringify(entries,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alvapen_respaldo_financiero.json";a.click();URL.revokeObjectURL(a.href)}
@@ -205,7 +259,7 @@ function importBackup(ev){const file=ev.target.files[0];if(!file)return;const re
 document.getElementById("entryForm").addEventListener("submit",saveEntry);
 document.getElementById("monthFilter").value=new Date().toISOString().slice(0,7);
 document.getElementById("entryDate").value=new Date().toISOString().slice(0,10);
-document.getElementById("monthFilter").addEventListener("change",renderEntries);
+document.getElementById("monthFilter").addEventListener("change",()=>{renderEntries();renderAnalytics()});
 renderEntries();
 </script>
-</body></html>
+</body></html\nrenderAnalytics();>
