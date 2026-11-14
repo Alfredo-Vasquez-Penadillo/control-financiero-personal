@@ -325,6 +325,16 @@ details{background:#191727;border-color:#3d364e;color:#eee9fa}details p{color:#a
 .dashboard-group .section:first-of-type{margin-top:12px}.dashboard-group .section{margin-top:23px}
 @media(max-width:760px){.dashboard-group{padding:12px;margin-top:16px}.dashboard-intro{margin:14px 2px}.dashboard-group-title{font-size:8px}}
 
+
+.monthly-housing .section-head{align-items:flex-start}
+.monthly-housing .kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+.monthly-housing .data-table{width:100%;border-collapse:collapse;font-size:11px}
+.monthly-housing .data-table th,.monthly-housing .data-table td{text-align:left;padding:10px 9px;border-bottom:1px solid #39334b;vertical-align:top}
+.monthly-housing .data-table th{color:#b9add0;font-size:9px;text-transform:uppercase;letter-spacing:.08em}
+.monthly-housing .data-table td{color:#e0d9ed}
+.monthly-housing .data-table td:nth-child(2){font-family:"DM Mono",monospace;color:#d3c2fa}
+@media(max-width:760px){.monthly-housing .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.monthly-housing .data-table{min-width:580px}.monthly-housing .table-wrap{overflow-x:auto}}
+
 </style>
 </head>
 <body>
@@ -523,11 +533,45 @@ details{background:#191727;border-color:#3d364e;color:#eee9fa}details p{color:#a
    <p><a href="https://www.gob.pe/institucion/fondomivivienda/pages/36922-postular-al-programa-techo-propio" target="_blank" rel="noopener">Requisitos para postular ↗</a></p>
   </div>
  </div>
- <div class="panel" style="margin-top:14px">
-  <h3>Lectura preliminar para tu situación</h3>
-  <p><b>Si actualmente eres soltero y no tienes cónyuge, conviviente ni dependientes que puedas declarar como grupo familiar, Techo Propio AVN no parece ser la ruta inmediata.</b> La información oficial exige constituir un grupo familiar; no asumiré que puedes postular individualmente sin dependientes.</p>
-  <p><b>Mivivienda + BBP sí merece una evaluación inicial</b>, porque acepta solicitantes mayores de edad independientemente del estado civil. Falta confirmar que no seas propietario/copropietario de otra vivienda, que no tengas un crédito pendiente con el Fondo y que una entidad financiera te califique.</p>
-  <p class="muted">Los montos y requisitos son una fotografía de la información oficial consultada. No constituyen aprobación ni garantía de asignación. Los cambios propuestos para jóvenes no se presentan como beneficios vigentes hasta que exista norma aprobada.</p>
+ <div class="panel monthly-housing" style="margin-top:14px">
+  <div class="section-head"><div><h2>Tu calificación Mivivienda · seguimiento mensual</h2><p>Evaluación con la información que has proporcionado. Se actualizará cada vez que compartas nuevos estados de cuenta y movimientos de ahorro.</p></div><span class="chip warn">Precalificación pendiente</span></div>
+  <div class="grid kpis">
+   <div class="card"><div class="kpi-label">Ingreso neto declarado</div><div class="kpi-value">S/ 3,861</div><div class="kpi-note">Sustento mixto · por validar</div></div>
+   <div class="card"><div class="kpi-label">Cuotas financiadas</div><div class="kpi-value">S/ 973</div><div class="kpi-note">25.2% del ingreso · sin tarjetas</div></div>
+   <div class="card"><div class="kpi-label">Ahorro para inicial</div><div class="kpi-value">S/ 8,000</div><div class="kpi-note">Saldo informado · falta estado actualizado</div></div>
+   <div class="card"><div class="kpi-label">Dependencia de tarjetas</div><div class="kpi-value">Por medir</div><div class="kpi-note">Se calculará con estados y pagos exigibles</div></div>
+  </div>
+  <div class="grid two" style="margin-top:12px">
+   <div class="glass-panel" style="padding:17px">
+    <div class="eyebrow">ESTADO PRELIMINAR · NOVIEMBRE 2026</div>
+    <h3 style="margin:7px 0;color:#f3edff">Mivivienda + BBP Integrador</h3>
+    <p>Perfil inicial compatible en los datos declarados: no tienes vivienda/terreno y tu ingreso informado está por debajo del umbral de referencia que venimos monitoreando.</p>
+    <span class="chip good">Elegibilidad preliminar favorable</span>
+    <p class="muted" style="margin-top:10px">No es aprobación ni confirmación del bono. Faltan verificar historial de apoyo habitacional, créditos pendientes con el Fondo, ingreso computable y evaluación de riesgo por la entidad financiera.</p>
+   </div>
+   <div class="glass-panel" style="padding:17px">
+    <div class="eyebrow">CAPACIDAD DE PAGO</div>
+    <h3 style="margin:7px 0;color:#f3edff">Hipoteca aún no cuantificable</h3>
+    <p>Las cuotas conocidas consumen 25.2% de tu ingreso. Falta incorporar el pago exigible de tarjetas y confirmar si los S/ 973 incluyen todas las cuotas financiadas.</p>
+    <p class="muted">No fijaremos un precio objetivo de departamento hasta conciliar esos importes y verificar tus ingresos sustentables.</p>
+   </div>
+  </div>
+  <div style="margin-top:16px">
+   <div class="chart-title"><div><h3>Control mensual de elegibilidad y capacidad hipotecaria</h3><p>La evaluación se reconstruye con cada cierre mensual; no se extrapolan saldos ni ingresos no documentados.</p></div><span class="chip info">Corte por mes</span></div>
+   <div class="table-wrap"><table class="data-table">
+    <thead><tr><th>Indicador</th><th>Base actual</th><th>Fuente de actualización</th></tr></thead>
+    <tbody>
+     <tr><td>Ingreso neto sustentable</td><td>S/ 3,861 declarados</td><td>Boletas, recibos por honorarios y abonos bancarios</td></tr>
+     <tr><td>Consumo y deuda de tarjetas</td><td>Pendiente de conciliación</td><td>Estados de cuenta de BCP, Interbank, Scotia, CMR y Diners</td></tr>
+     <tr><td>Cuotas de préstamos/financiaciones</td><td>S/ 973 declarados</td><td>Cronogramas y estados de cuenta</td></tr>
+     <tr><td>Saldo de ahorro para inicial</td><td>S/ 8,000 informados</td><td>Estado de cuenta de ahorro al cierre</td></tr>
+     <tr><td>Ratio de endeudamiento</td><td>25.2% mínimo conocido</td><td>Cuotas + pagos exigibles de tarjetas / ingreso sustentable</td></tr>
+     <tr><td>Capacidad de cuota hipotecaria</td><td>Por determinar</td><td>Ingreso validado menos obligaciones y gastos esenciales</td></tr>
+     <tr><td>Requisitos del BBP</td><td>Preliminarmente compatibles</td><td>Validación de requisitos vigentes del Fondo Mivivienda</td></tr>
+    </tbody>
+   </table></div>
+  </div>
+  <div class="note" style="margin-top:14px"><strong>Regla de actualización mensual:</strong> al recibir estados de tarjetas y de la cuenta de ahorro, conciliaré consumos, pagos, cuotas, intereses, saldos y vencimientos; separaré compras de pagos de tarjeta para evitar doble conteo; actualizaré el ahorro real y recalcularé el endeudamiento, capacidad de cuota, inicial disponible, rango de vivienda y estado de elegibilidad Mivivienda/BBP. Si falta un documento, el indicador quedará como pendiente y no se estimará.</div>
  </div>
  <div class="note" style="margin-top:14px"><strong>Vigilancia automática:</strong> cada mañana se revisarán publicaciones oficiales del MVCS, Fondo MIVIVIENDA, gob.pe y El Peruano. Si cambian montos, requisitos, convocatorias, inscripciones o proyectos, recibirás un aviso con la fuente. La revisión automática no modifica por sí sola el código de esta página: cuando haya una novedad verificada, actualizaré también ALVAPEN.</div>
 </section>
