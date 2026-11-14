@@ -424,6 +424,61 @@ body{background:radial-gradient(ellipse at 14% 0%,rgba(210,222,235,.52),transpar
 @media(max-width:760px){.sidebar{height:auto;position:relative;padding:14px!important}.sidebar .nav{grid-template-columns:repeat(2,minmax(0,1fr));display:grid}.sidebar .nav a{justify-content:flex-start}.home-status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:480px){.sidebar .nav{grid-template-columns:1fr 1fr}.home-status-grid{grid-template-columns:1fr 1fr}.home-stat{padding:13px}}
 </style>
+
+<style id="alvapen-iphone-responsive">
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+@media(max-width:760px){
+ .shell{display:block!important;min-height:100dvh}
+ .sidebar{display:none!important}
+ main,.content{width:100%;min-width:0;max-width:100%;margin:0}
+ .content{padding:16px 14px calc(104px + env(safe-area-inset-bottom))!important}
+ .topbar{display:flex;align-items:flex-start;flex-direction:column;gap:10px;margin-bottom:16px}
+ .topbar h1{font-size:24px;line-height:1.2}
+ .top-actions{width:100%;display:flex;flex-wrap:wrap;align-items:center}
+ .top-actions .chip{max-width:100%}
+ .home-welcome{display:flex;flex-direction:column;align-items:flex-start;gap:9px;margin:8px 0 16px}
+ .home-welcome h2{font-size:25px;line-height:1.18}
+ .home-welcome p{font-size:12px}
+ .home-status-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px}
+ .home-stat{min-width:0;padding:13px;border-radius:17px}
+ .home-stat small{font-size:9px;min-height:28px}
+ .home-stat strong{font-size:20px;overflow-wrap:anywhere}
+ .home-stat span{font-size:9px}
+ .home-panels{grid-template-columns:1fr!important;gap:11px}
+ .home-panel{padding:16px;border-radius:18px}
+ .home-note{gap:8px}
+ .section{margin-top:19px;scroll-margin-top:12px}
+ .section-head{align-items:flex-start;flex-direction:column;gap:7px}
+ .section-head h2{font-size:17px}
+ .grid,.two,.three,.bank-grid{grid-template-columns:1fr!important}
+ .kpis,.consumption-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .card,.panel,.glass-panel{min-width:0;padding:14px;border-radius:17px}
+ .kpi-value{font-size:21px;overflow-wrap:anywhere}
+ .module-toolbar{position:sticky;top:0;z-index:4;padding:8px 0;margin:0 0 15px;background:rgba(239,242,246,.78);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+ #alvapenModuleView{min-width:0;width:100%}
+ #alvapenModuleView .section{width:100%;min-width:0}
+ .ios-dock{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;position:fixed!important;left:10px!important;right:10px!important;bottom:calc(8px + env(safe-area-inset-bottom))!important;z-index:100!important;width:auto!important;margin:0!important;padding:7px 6px!important;border-radius:22px!important;background:rgba(35,47,63,.84)!important;border:1px solid rgba(255,255,255,.28)!important;box-shadow:0 12px 34px rgba(25,38,55,.24),inset 0 1px rgba(255,255,255,.2)!important;backdrop-filter:blur(28px) saturate(160%)!important;-webkit-backdrop-filter:blur(28px) saturate(160%)!important}
+ .ios-dock a{display:flex!important;min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:6px 2px!important;border-radius:14px!important;color:rgba(255,255,255,.78)!important;font-size:9px!important;line-height:1.1;text-align:center;white-space:nowrap}
+ .ios-dock a.active{background:rgba(255,255,255,.16)!important;color:#fff!important;box-shadow:inset 0 1px rgba(255,255,255,.2)}
+ .ios-dock .dock-icon{font-size:17px!important;line-height:1.1}
+ .table-wrap,.data-table-wrap,.statement-table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+ table{min-width:540px}
+ .consumption-header{grid-template-columns:1fr!important;padding:15px!important}
+ .consumption-period{display:grid;grid-template-columns:1fr;gap:8px}
+ .month-bars,.flow-bars{max-width:100%;overflow-x:auto}
+ input,select,textarea{max-width:100%}
+}
+@media(max-width:390px){
+ .content{padding-left:11px!important;padding-right:11px!important}
+ .home-status-grid{gap:7px}
+ .home-stat{padding:10px}
+ .home-stat strong{font-size:18px}
+ .ios-dock{left:7px!important;right:7px!important}
+ .ios-dock a{font-size:8px!important}
+ .kpis,.consumption-kpis{gap:8px}
+ .card{padding:11px}
+}
+</style>
 </head>
 <body>
 <div class="shell">
