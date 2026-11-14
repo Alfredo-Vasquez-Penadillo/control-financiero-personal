@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#2457A6">
-<meta name="alvapen-build" content="2026-11-14-monthly-history-redesign-v5">
+<meta name="theme-color" content="#111827">
+<meta name="alvapen-build" content="2026-11-14-clean-finance-command-center-v6">
 <title>ALVAPEN | Panel financiero actualizado</title>
 <style>
 :root{--bg:#f4f8fc;--ink:#152b45;--muted:#667d96;--navy:#153b64;--navy2:#245987;--teal:#20a99b;--teal2:#e3f6f3;--gold:#c79a52;--line:#dce8f2;--white:#fff;--shadow:0 14px 34px #183b5b12;--radius:20px}
@@ -334,6 +334,64 @@ details{background:#191727;border-color:#3d364e;color:#eee9fa}details p{color:#a
 .monthly-housing .data-table td{color:#e0d9ed}
 .monthly-housing .data-table td:nth-child(2){font-family:"DM Mono",monospace;color:#d3c2fa}
 @media(max-width:760px){.monthly-housing .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.monthly-housing .data-table{min-width:580px}.monthly-housing .table-wrap{overflow-x:auto}}
+
+
+/* ALVAPEN 2026 · clean precision interface */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--bg:#f5f7fb;--ink:#182235;--muted:#718096;--navy:#111827;--navy2:#1f2937;--teal:#315efb;--teal2:#eaf0ff;--gold:#8b96a8;--line:#e4e9f1;--white:#fff;--shadow:0 8px 28px rgba(21,35,58,.055);--radius:14px}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{background:#f5f7fb;color:#182235;font-family:Inter,system-ui,sans-serif;line-height:1.55}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 85% 0%,#dfe8ff 0,transparent 30%),radial-gradient(ellipse at 0% 70%,#e9eef8 0,transparent 28%)}
+.shell{grid-template-columns:224px minmax(0,1fr);background:transparent}
+.sidebar{background:#111827;color:#e8edf5;border-right:1px solid #263248;padding:24px 15px;box-shadow:none}
+.logo{font-family:"Space Grotesk",sans-serif;font-size:22px;letter-spacing:.12em;color:#fff}.logo span{color:#8ca8ff}
+.tag{color:#8f9bb0;letter-spacing:.13em;font-size:9px}
+.nav{gap:5px}.nav a{color:#aeb9ca;border:1px solid transparent;border-radius:9px;padding:10px 12px;font-size:11px}.nav a:hover,.nav a.active{background:#202d43;color:#fff;border-color:#344564;box-shadow:inset 2px 0 #7695ff}
+.sidefoot{background:#192438;border:1px solid #2b3b56;border-radius:11px;color:#aeb9ca}.sidefoot strong{color:#a8bcff;font-family:"Space Grotesk",sans-serif}
+.content{max-width:1560px;padding:25px clamp(17px,3vw,44px) 58px}
+.topbar{border-bottom:1px solid #e4e9f1;padding-bottom:17px;margin-bottom:19px}
+.eyebrow{color:#315efb;font-size:9px;letter-spacing:.18em}
+.topbar h1{font-family:"Space Grotesk",sans-serif;color:#182235;letter-spacing:-.045em}.sub{color:#718096}
+.btn{background:#fff;color:#263247;border:1px solid #dfe5ee;border-radius:9px;box-shadow:0 2px 5px #14213a08;backdrop-filter:none}
+.btn:hover{background:#f7f9ff;border-color:#9db3ff;box-shadow:0 5px 14px #1a3d8910;transform:translateY(-1px)}
+.btn.primary{background:#315efb;color:white;border-color:#315efb;font-weight:700}.btn.dark{background:#172236;color:#fff}
+.hero{background:#172236;color:#fff;border:1px solid #263957;border-radius:16px;padding:25px 27px;box-shadow:0 12px 28px #1a2c4814}
+.hero:after{background:#315efb24;width:350px;height:350px;right:3%;top:-245px;filter:blur(10px)}
+.hero h2{font-family:"Space Grotesk",sans-serif;font-size:clamp(22px,2.2vw,29px);letter-spacing:-.04em}.hero p{color:#b9c5d8}.hero .eyebrow{color:#9cb3ff}
+.hero-stat{background:#ffffff0b;border:1px solid #ffffff24;border-radius:12px}.hero-stat strong{color:#a9bdff;font-family:"Space Grotesk",sans-serif}.hero-stat span{color:#aebbd0}
+.section{margin-top:23px}.section-head h2{font-family:"Space Grotesk",sans-serif;font-size:18px;letter-spacing:-.025em;color:#1c293d}.section-head p{color:#718096}
+.card,.panel,.glass-panel{background:#fff;border:1px solid #e5eaf1;border-radius:13px;box-shadow:0 6px 22px rgba(21,35,58,.045);backdrop-filter:none}
+.card{padding:16px}.kpi-label{color:#748198;font-size:9px;letter-spacing:.09em}.kpi-value{color:#172236;font-family:"Space Grotesk",sans-serif;font-size:clamp(21px,2vw,27px);letter-spacing:-.04em}.kpi-note{color:#8390a3}.kpi-icon{background:#edf2ff;color:#315efb;border:1px solid #dce5ff;border-radius:9px}
+.panel{padding:17px}.panel h3,.glass-panel h3{color:#1b2940}.panel p{color:#6f7d91}
+.chip{background:#f0f3f8;color:#536177;border:1px solid #e3e8ef}.chip.good{background:#e9f7ef;color:#247448;border-color:#d5eddf}.chip.warn{background:#fff5e5;color:#9a6819;border-color:#f3e4c7}.chip.bad{background:#fff0ef;color:#ae4e48;border-color:#f2d9d7}.chip.info{background:#edf2ff;color:#3157ca;border-color:#dce5ff}
+.bank-head{border-radius:12px 12px 0 0;margin:-17px -17px 14px;padding:13px 16px}
+.bcp{background:#263b61}.ibk{background:#344b66}.scotia{background:#365f63}.cmr{background:#32644f}
+.mini{background:#f6f8fb;border:1px solid #e8edf4;border-radius:9px}.mini small{color:#77859a}.mini b{color:#202d42;font-family:"Space Grotesk",sans-serif}
+.note{background:#f4f7fc;border:1px solid #e2e9f4;color:#59677c;border-radius:11px}.note strong{color:#1d2b40}
+.projection{background:#fff;border-color:#e2e8f1}.control{background:#f5f7fb;border:1px solid #e7ecf3}.control input{accent-color:#315efb}.result{background:#172236;border-radius:11px}.result b{color:#a9bdff;font-family:"Space Grotesk",sans-serif}.progress{background:#e8edf5}.progress i{background:linear-gradient(90deg,#315efb,#79a0ff)}
+.chart-track{background:#e9edf4}.chart-track i{background:linear-gradient(90deg,#315efb,#8ca9ff)}.chart-track i.expense{background:linear-gradient(90deg,#62728b,#a5b1c4)}
+.entry-item{background:#fff;border-color:#e5eaf1}.entry-actions button{background:#f0f3f8;color:#536177}
+.field input,.field select,.field textarea{background:#fff;border:1px solid #dfe5ee;color:#1d2b40}
+.analytics-hero{background:#172236;border:1px solid #263957;border-radius:14px;box-shadow:none}
+.analytics-hero p{color:#b9c5d8}.glass-panel{background:#fff;border-color:#e5eaf1}
+.donut{background:conic-gradient(#315efb 0 30%,#7d91b4 30% 55%,#b2c1d8 55% 78%,#6d9c91 78% 100%)}
+.donut:after{background:#fff}
+.analytics-tabs span{background:#fff;border:1px solid #e5eaf1;color:#58677d;box-shadow:none}
+.import-zone{background:#f7f9fc;border-color:#dce4ef}.import-status{background:#eef2f8;color:#5c6b80}
+details{background:#fff;border-color:#e4e9f1;color:#1c293d}details p{color:#718096}
+.footer{color:#8a95a6}
+.ios-dock{background:rgba(255,255,255,.94);border:1px solid #e1e7f0;box-shadow:0 8px 25px #17223612}
+.ios-dock a{color:#748198}.ios-dock a.active{color:#315efb;background:#edf2ff}
+.dashboard-intro{margin:14px 0 10px;padding:0 2px}.dashboard-intro h2{font-family:"Space Grotesk",sans-serif;font-size:17px;color:#1c293d;margin:5px 0}.dashboard-intro p{font-size:11px;color:#718096;margin:0}
+.dashboard-group{margin-top:20px;padding:16px;border:1px solid #e3e8f0;border-radius:15px;background:#ffffffa8;box-shadow:0 5px 20px #15233a08}
+.dashboard-group-title{display:flex;align-items:center;gap:10px;color:#315efb;font-size:9px;font-weight:800;letter-spacing:.16em;margin:0 0 3px}
+.dashboard-group-title:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,#cdd8ef,transparent)}
+.dashboard-group .section:first-of-type{margin-top:12px}.dashboard-group .section{margin-top:21px}
+.statement-protocol{background:#fff}
+.monthly-housing .data-table th,.monthly-housing .data-table td{border-bottom-color:#e8edf4}
+.monthly-housing .data-table th{color:#6f7e93}.monthly-housing .data-table td{color:#344258}.monthly-housing .data-table td:nth-child(2){color:#315efb}
+@media(max-width:760px){.shell{display:block}.sidebar{display:none}.content{padding:15px 12px 100px}.hero{grid-template-columns:1fr;padding:20px;border-radius:14px}.hero-stat{max-width:none}.dashboard-group{padding:12px;margin-top:15px;border-radius:12px}.dashboard-group-title{font-size:8px}.ios-dock{background:rgba(255,255,255,.96)}.statement-list{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:no-preference){.card,.panel,.btn,.nav a{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}.card:hover,.panel:hover{transform:translateY(-2px);border-color:#c5d2ec;box-shadow:0 10px 25px #1722360d}}
 
 </style>
 </head>
@@ -800,22 +858,23 @@ function renderDashboardCharts(all,months,selected,sum,fmt){
  }
 }
 
-/* Reorganización de dashboard documental */
+
+/* Nueva arquitectura de navegación ALVAPEN */
 (function(){
  const main=document.querySelector("main .content");if(!main)return;
- const order=["resumen","tarjetas","analitica","comparativa","departamento","proyeccion","actualizaciones","criterios"];
- const refs={};order.forEach(id=>refs[id]=document.getElementById(id));
+ const ids=["resumen","tarjetas","analitica","comparativa","departamento","bonos","proyeccion","actualizaciones","criterios"];
+ const refs={};ids.forEach(id=>refs[id]=document.getElementById(id));
  const hero=main.querySelector(".hero");
  if(hero){
   const intro=document.createElement("div");intro.className="dashboard-intro";
-  intro.innerHTML='<div class="eyebrow">FINANCIAL COMMAND CENTER</div><h2>Tu panorama, sin registros manuales.</h2><p>Los datos se actualizan cuando compartes los estados de cuenta y cierres de tus tarjetas.</p>';
+  intro.innerHTML='<div class="eyebrow">ALVAPEN / FINANCIAL CONTROL</div><h2>Una visión clara de tu dinero y tu objetivo de vivienda.</h2><p>Sin registros manuales: el panel se actualiza con tus estados de cuenta y documentos de cada cierre.</p>';
   hero.insertAdjacentElement("afterend",intro);
  }
  const groups=[
-  ["overview-group","01 · OVERVIEW",["resumen","tarjetas"]],
-  ["insights-group","02 · INTELIGENCIA Y EVOLUCIÓN",["analitica","comparativa"]],
-  ["goals-group","03 · PATRIMONIO Y PLANIFICACIÓN",["departamento","bonos","proyeccion"]],
-  ["updates-group","04 · ACTUALIZACIONES DOCUMENTALES",["actualizaciones","criterios"]]
+  ["overview-group","01 / RESUMEN Y OBLIGACIONES",["resumen","tarjetas"]],
+  ["insights-group","02 / CONSUMO Y EVOLUCIÓN",["analitica","comparativa"]],
+  ["goals-group","03 / VIVIENDA Y FINANCIAMIENTO",["departamento","bonos","proyeccion"]],
+  ["updates-group","04 / CIERRES Y METODOLOGÍA",["actualizaciones","criterios"]]
  ];
  groups.forEach(([id,label,keys])=>{
   const wrap=document.createElement("div");wrap.className="dashboard-group";wrap.id=id;
@@ -824,13 +883,18 @@ function renderDashboardCharts(all,months,selected,sum,fmt){
   main.appendChild(wrap);
  });
  const nav=document.querySelector(".sidebar .nav");
- const items=[["#inicio","Overview"],["#overview-group","Tarjetas"],["#insights-group","Insights"],["#goals-group","Vivienda y bonos"],["#updates-group","Cierres"]];
+ const dock=document.querySelector(".ios-dock");
+ const items=[["#inicio","Inicio"],["#overview-group","Obligaciones"],["#insights-group","Análisis"],["#goals-group","Vivienda"],["#updates-group","Cierres"]];
  if(nav)nav.innerHTML=items.map((x,i)=>'<a href="'+x[0]+'"'+(i===0?' class="active"':'')+'>'+x[1]+'</a>').join("");
+ if(dock)dock.innerHTML=items.map((x,i)=>'<a href="'+x[0]+'"'+(i===0?' class="active"':'')+'><span class="dock-icon">'+["⌂","▤","⌁","⌂","↻"][i]+'</span><span>'+x[1]+'</span></a>').join("");
  const head=document.querySelector(".topbar .eyebrow");if(head)head.textContent="ALVAPEN / PERSONAL FINANCE";
- const title=document.querySelector(".topbar h1");if(title)title.textContent="Financial overview";
- const sub=document.querySelector(".topbar .sub");if(sub)sub.textContent="Un panel documental para controlar tus tarjetas y tu patrimonio.";
+ const title=document.querySelector(".topbar h1");if(title)title.textContent="Panel de control financiero";
+ const sub=document.querySelector(".topbar .sub");if(sub)sub.textContent="Tarjetas, ahorro y elegibilidad Mivivienda en un solo lugar.";
  const footer=main.querySelector(".footer");if(footer)main.appendChild(footer);
+ const links=[...document.querySelectorAll(".sidebar .nav a,.ios-dock a")];
+ links.forEach(a=>a.addEventListener("click",()=>links.forEach(x=>x.classList.toggle("active",x===a))));
 })();
+
 </script>
 </body>
 </html>
