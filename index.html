@@ -80,7 +80,7 @@ body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),rad
 <aside class="sidebar">
 <div class="logo">ALVA<span>PEN</span></div><div class="tag">TU CENTRO FINANCIERO PERSONAL</div>
 <nav class="nav">
-<a href="#inicio" class="active">⌂ &nbsp; Inicio</a><a href="#resumen">▦ &nbsp; Mi resumen</a><a href="#proyeccion">↗ &nbsp; Proyecciones</a><a href="#tarjetas">▣ &nbsp; Tarjetas y deudas</a><a href="#comparativa">⇄ &nbsp; Evolución</a><a href="#analitica">▥ &nbsp; Analítica</a><a href="#movimientos">＋ &nbsp; Registro diario</a><a href="#departamento">⌂ &nbsp; Mi departamento</a><a href="#ingresos">＋ &nbsp; Ingresos</a><a href="#criterios">✓ &nbsp; Criterios</a>
+<a href="#inicio" class="active">⌂ &nbsp; Inicio</a><a href="#resumen">▦ &nbsp; Mi resumen</a><a href="#proyeccion">↗ &nbsp; Proyecciones</a><a href="#tarjetas">▣ &nbsp; Tarjetas y deudas</a><a href="#comparativa">⇄ &nbsp; Evolución</a><a href="#analitica">▥ &nbsp; Analítica</a><a href="#departamento">⌂ &nbsp; Mi departamento</a><a href="#ingresos">＋ &nbsp; Ingresos</a><a href="#criterios">✓ &nbsp; Criterios</a>
 </nav>
 <div class="sidefoot">Meta de ahorro mensual<strong>S/ 1,000</strong>Tu ahorro para vivienda está separado de las deudas.</div>
 </aside>
@@ -93,7 +93,7 @@ body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),rad
 <a href="#inicio" class="active"><span class="dock-icon">⌂</span><span>Inicio</span></a>
 <a href="#tarjetas"><span class="dock-icon">▣</span><span>Tarjetas</span></a>
 <a href="#analitica"><span class="dock-icon">▥</span><span>Analítica</span></a>
-<a href="#movimientos"><span class="dock-icon">＋</span><span>Movimientos</span></a>
+<a href="#resumen"><span class="dock-icon">▦</span><span>Resumen</span></a>
 <a href="#departamento"><span class="dock-icon">⌑</span><span>Mi meta</span></a>
 </nav>
 
@@ -137,16 +137,60 @@ body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),rad
 </div>
 </div></section>
 
-<section class="section" id="tarjetas"><div class="section-head"><div><h2>Tarjetas y obligaciones</h2><p>Separamos deuda reportada, pago exigido y línea de crédito para no confundir conceptos.</p></div></div>
-<div class="grid bank-grid">
-<div class="panel"><div class="bank-head bcp"><div><b>BCP · Visa Oro LATAM Pass</b><small>Terminación 3364 · Línea S/ 22,202</small></div><span class="chip">Soles</span></div><div class="mini-stats"><div class="mini"><small>Línea utilizada</small><b>S/ 128.36</b></div><div class="mini"><small>Disponible</small><b>S/ 22,073.64</b></div><div class="mini"><small>Pago total</small><b>S/ 48.07</b></div></div><p>Vencimiento: <b>07/12/2026</b> · Corte: 10/11/2026.</p><p class="muted">El estado muestra línea utilizada; no equivale necesariamente a la deuda total facturada.</p></div>
-<div class="panel"><div class="bank-head ibk"><div><b>Interbank · Visa Signature</b><small>Terminación 9115 · Línea S/ 7,900</small></div><span class="chip">Soles</span></div><div class="mini-stats"><div class="mini"><small>Deuda total</small><b>S/ 3,781.10</b></div><div class="mini"><small>Disponible aprox.</small><b>S/ 4,118.90</b></div><div class="mini"><small>Pago del mes</small><b>S/ 2,289.85</b></div></div><p>Vencimiento: <b>01/12/2026</b> · Corte: 06/11/2026.</p><p class="muted">El pago del mes no debe interpretarse como deuda total ni como consumo nuevo.</p></div>
-<div class="panel"><div class="bank-head scotia"><div><b>Scotiabank · Visa</b><small>Captura de tarjeta · cifras en soles</small></div><span class="chip">Soles</span></div><div class="mini-stats"><div class="mini"><small>Deuda reportada</small><b>S/ 5,055.04</b></div><div class="mini"><small>Pago del mes</small><b>S/ 695.16</b></div><div class="mini"><small>Vencimiento</small><b>08/12/2026</b></div></div><p>Facturación: <b>11/11/2026</b>.</p><p class="muted">La captura no permite confirmar línea total, disponible ni porcentaje de utilización actual.</p></div>
-<div class="panel"><div class="bank-head cmr"><div><b>Banco Falabella · CMR Visa</b><small>Terminación 4761 · Línea S/ 28,200</small></div><span class="chip">Soles</span></div><div class="mini-stats"><div class="mini"><small>Deuda facturada</small><b>S/ 1,670.54</b></div><div class="mini"><small>Disponible</small><b>S/ 26,529.46</b></div><div class="mini"><small>Pago total</small><b>S/ 1,670.54</b></div></div><p>Vencimiento: <b>30/11/2026</b> · Periodo 05/10–04/11.</p><p class="muted">El estado refleja consumos, pagos y cargos del ciclo. Revisar suscripciones y compras recurrentes.</p></div>
+<section class="section" id="tarjetas">
+<div class="section-head"><div><h2>Tarjetas y obligaciones</h2><p>Resumen consolidado de los estados de cuenta del periodo septiembre–octubre 2026. Importes en soles, salvo indicación contraria.</p></div><span class="chip info">5 entidades · 09/2026</span></div>
+<div class="grid kpis">
+ <div class="card"><div class="kpi-label">Pagos exigidos del ciclo</div><div class="kpi-value">S/ 3,213.54</div><div class="kpi-note">Suma de pagos del mes reportados por las cinco entidades</div></div>
+ <div class="card"><div class="kpi-label">Pagos mínimos</div><div class="kpi-value">S/ 1,182.52</div><div class="kpi-note">Suma de mínimos informados; Diners reporta S/ 0.00</div></div>
+ <div class="card"><div class="kpi-label">Consumos identificados</div><div class="kpi-value">S/ 2,013.05</div><div class="kpi-note">BCP 242.37 · Scotia 674.58 · Interbank 1,095.67 · CMR no aislado</div></div>
+ <div class="card"><div class="kpi-label">Cuotas mensuales futuras</div><div class="kpi-value">S/ 973.41</div><div class="kpi-note">Scotia 675.16 + Interbank 298.25; referencia de cuotas vigentes</div></div>
 </div>
-<div class="note" style="margin-top:13px"><strong>Total de pagos identificados: S/ 4,703.62.</strong> Es la suma de los pagos indicados en los cuatro documentos, no una suma de consumos ni necesariamente la deuda total de las tarjetas. Diners no está incluido porque no se recibió un estado actualizado.</div>
-</section>
+<div class="grid two" style="margin-top:14px">
+ <div class="glass-panel"><div class="chart-title"><div><h3>Pago del mes por entidad</h3><p>Importe facturado/exigido en el ciclo del estado</p></div><span class="chip">Soles</span></div>
+ <div class="chart-bars">
+  <div class="chart-row"><span>Interbank</span><div class="chart-track"><i class="expense" style="width:100%"></i></div><b class="right">1,716.64</b></div>
+  <div class="chart-row"><span>Scotiabank</span><div class="chart-track"><i class="expense" style="width:50.3%"></i></div><b class="right">863.70</b></div>
+  <div class="chart-row"><span>CMR</span><div class="chart-track"><i class="expense" style="width:22.8%"></i></div><b class="right">390.83</b></div>
+  <div class="chart-row"><span>BCP</span><div class="chart-track"><i class="expense" style="width:14.1%"></i></div><b class="right">242.37</b></div>
+  <div class="chart-row"><span>Diners</span><div class="chart-track"><i style="width:0%"></i></div><b class="right">0.00</b></div>
+ </div></div>
+ <div class="glass-panel"><div class="chart-title"><div><h3>Pago mínimo por entidad</h3><p>Compromiso mínimo informado en cada resumen</p></div><span class="chip">Soles</span></div>
+ <div class="chart-bars">
+  <div class="chart-row"><span>Scotiabank</span><div class="chart-track"><i class="expense" style="width:100%"></i></div><b class="right">725.16</b></div>
+  <div class="chart-row"><span>Interbank</span><div class="chart-track"><i class="expense" style="width:52.8%"></i></div><b class="right">383.17</b></div>
+  <div class="chart-row"><span>CMR</span><div class="chart-track"><i class="expense" style="width:6%"></i></div><b class="right">43.71</b></div>
+  <div class="chart-row"><span>BCP</span><div class="chart-track"><i class="expense" style="width:4.2%"></i></div><b class="right">30.48</b></div>
+  <div class="chart-row"><span>Diners</span><div class="chart-track"><i style="width:0%"></i></div><b class="right">0.00</b></div>
+ </div></div>
+</div>
+<div class="grid bank-grid" style="margin-top:14px">
+ <div class="panel"><div class="bank-head bcp"><div><b>BCP · Visa Oro LATAM Pass</b><small>Terminación 3364 · Facturación 11/09–11/10</small></div><span class="chip">Soles</span></div><div class="mini-stats"><div class="mini"><small>Línea de crédito</small><b>S/ 22,202.00</b></div><div class="mini"><small>Línea utilizada</small><b>S/ 242.37</b></div><div class="mini"><small>Disponible</small><b>S/ 21,959.63</b></div></div><p>Pago total <b>S/ 242.37</b> · mínimo S/ 30.48 · vence 05/11/2026.</p><p class="muted">El resumen del estado detalla consumos, pagos y cargos; el total facturado no equivale a la suma de compras aisladas.</p></div>
+ <div class="panel"><div class="bank-head scotia"><div><b>Scotiabank · Visa Platinum</b><small>Terminación 5197 · Periodo 12/09–11/10</small></div><span class="chip">Soles + USD</span></div><div class="mini-stats"><div class="mini"><small>Deuda total</small><b>S/ 5,898.74</b></div><div class="mini"><small>Pago del mes</small><b>S/ 863.70</b></div><div class="mini"><small>Mínimo</small><b>S/ 725.16</b></div></div><p>Consumos S/ 674.58 · intereses y gastos S/ 20.00 · pagos/ajustes S/ 1,366.00. Cuotas futuras del mes: S/ 675.16.</p><p class="muted">El estado también informa deuda en dólares de US$ 5.41; no está convertida ni sumada a soles.</p></div>
+ <div class="panel"><div class="bank-head ibk"><div><b>Interbank · Visa Signature</b><small>Terminación 9115 · Corte 07/10/2026</small></div><span class="chip">Soles + USD</span></div><div class="mini-stats"><div class="mini"><small>Deuda total</small><b>S/ 3,506.14</b></div><div class="mini"><small>Pago del mes</small><b>S/ 1,716.64</b></div><div class="mini"><small>Mínimo</small><b>S/ 383.17</b></div></div><p>Consumos S/ 1,095.67 · cuotas del mes S/ 298.25 · otros cobros S/ 24.47. Disponible S/ 4,418.33 de línea S/ 7,900.</p><p class="muted">El resumen registra además movimientos en dólares; se mantienen separados para no mezclar monedas.</p></div>
+ <div class="panel"><div class="bank-head cmr"><div><b>Banco Falabella · CMR Visa Platinum</b><small>Terminación 4761 · Periodo 05/09–04/10</small></div><span class="chip">Soles</span></div><div class="mini-stats"><div class="mini"><small>Deuda facturada</small><b>S/ 390.83</b></div><div class="mini"><small>Pago mínimo</small><b>S/ 43.71</b></div><div class="mini"><small>Línea disponible</small><b>S/ 21,309.17</b></div></div><p>Pago total S/ 390.83 · capital S/ 377.12 · gastos y comisiones S/ 13.71.</p><p class="muted">La línea de crédito indicada en el estado es S/ 21,700.00. Se observan compras, pagos y cargos en el detalle.</p></div>
+ <div class="panel"><div class="bank-head" style="background:linear-gradient(110deg,#252a36,#59616e)"><div><b>Diners Club · Miles Special Edition</b><small>Periodo facturado 10/09–09/10</small></div><span class="chip">Soles + USD</span></div><div class="mini-stats"><div class="mini"><small>Pago del mes</small><b>S/ 0.00</b></div><div class="mini"><small>Deuda reportada</small><b>S/ 0.00</b></div><div class="mini"><small>Línea disponible</small><b>US$ 3,200</b></div></div><p>Se observan pagos/abonos por S/ 83.30 y US$ 0.69. No se informa pago exigible en ese ciclo.</p><p class="muted">El documento no muestra compras pendientes ni deuda facturada para ese periodo.</p></div>
+</div>
+<div class="note" style="margin-top:14px"><strong>Cómo interpretar el gráfico:</strong> el pago del mes suma S/ 3,213.54 y el pago mínimo S/ 1,182.52. Son obligaciones del ciclo, no deuda total consolidada. Los saldos de deuda de las entidades no se suman aquí porque el BCP muestra línea utilizada mientras las otras entidades muestran deuda total o facturada. No hay estados de meses anteriores comparables suficientes para afirmar una tendencia de alza o baja; al importar nuevos periodos, el panel podrá mostrar esa evolución sin inventar datos.</div>
+<section class="section" id="importar"><div class="section-head"><div><h2>Importar estados de cuenta PDF</h2><p>Extrae movimientos, revisa categorías y agrega solo los registros confirmados.</p></div><span class="chip info">Importación asistida</span></div>
+<div class="panel">
+ <div class="import-zone"><div style="font-size:28px">⇧</div><h3>Sube tu estado de cuenta</h3><p>Selecciona un PDF descargado de tu banco. El archivo se procesa localmente en este navegador.</p><input id="statementFile" type="file" accept="application/pdf,.pdf"></div>
+ <div class="import-controls">
+  <div class="field"><label for="statementBank">Banco / entidad</label><select id="statementBank"><option>BCP</option><option>Interbank</option><option>Scotiabank</option><option>Banco Falabella / CMR</option><option>Diners Club</option><option>Otro</option></select></div>
+  <div class="field"><label for="statementAccount">Cuenta / tarjeta (opcional)</label><input id="statementAccount" placeholder="Ej. Visa terminación 3364"></div>
+  <div class="field"><label for="statementPeriod">Periodo (referencial)</label><input id="statementPeriod" type="month"></div>
+ </div>
+ <div class="tools-row"><button class="btn primary" type="button" id="analyzeStatement">Analizar PDF</button><button class="btn" type="button" id="clearStatement">Limpiar vista previa</button></div>
+ <div id="statementStatus" class="import-status">Aún no has seleccionado un estado de cuenta.</div>
+ <div id="statementReview" hidden>
+  <div class="import-kpis"><div class="mini"><small>Movimientos detectados</small><b id="statementCount">0</b></div><div class="mini"><small>Posibles duplicados</small><b id="statementDuplicates">0</b></div><div class="mini"><small>Total seleccionado</small><b id="statementTotal">S/ 0.00</b></div></div>
+  <p class="muted" style="font-size:11px">Revisa cada fila antes de importar. La detección automática es orientativa: verifica especialmente el signo, fecha, importe y descripción. Los duplicados aparecen desmarcados.</p>
+  <div class="import-preview"><table><thead><tr><th>Incluir</th><th>Fecha</th><th>Descripción</th><th>Importe</th><th>Tipo</th><th>Categoría</th><th>Estado</th></tr></thead><tbody id="statementRows"></tbody></table></div>
+  <div class="tools-row" style="margin-top:14px"><button class="btn primary" type="button" id="confirmStatement">Agregar movimientos seleccionados</button></div>
+ </div>
+ <div class="note" style="margin-top:14px"><strong>Protección de tus datos:</strong> los movimientos existentes no se reemplazan. Se agregan nuevos registros al almacenamiento local y se omiten coincidencias probables. El PDF no se envía a un servidor. Los PDF escaneados como imagen podrían no contener texto extraíble y requerirán OCR o registro manual.</div>
+</div></section>
 
+</section>
 <section class="section" id="comparativa"><div class="section-head"><div><h2>Cómo has evolucionado</h2><p>Comparación de los datos anteriores con los documentos de noviembre. Algunas bases no son idénticas.</p></div></div>
 <div class="compare">
 <div class="panel"><span class="chip good">Mejora</span><div class="delta" style="color:#16805f">+S/ 3,000</div><b>Ahorro vivienda</b><p>De S/ 5,000 a S/ 8,000. Aumento del 60%, confirmado como fondo exclusivo para la inicial.</p></div>
@@ -160,7 +204,7 @@ body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),rad
 
 
 <section class="section" id="analitica"><div class="section-head"><div><h2>Analítica financiera</h2><p>Una página dedicada a entender tendencias, categorías y flujo de caja.</p></div><span class="chip good">Overview · Analytics</span></div>
-<div class="analytics-hero"><div class="eyebrow" style="color:#8de0d0">FINANCIAL INSIGHTS</div><h2 style="margin:5px 0;font-size:23px">Mira más allá de los saldos.</h2><p>Visualiza cómo se mueve tu dinero. Los gráficos se alimentan de los movimientos que registres en la sección Registro diario y del mes seleccionado.</p><div class="analytics-tabs"><span>Flujo mensual</span><span>Gastos por categoría</span><span>Tendencia diaria</span><span>Balance</span></div></div>
+<div class="analytics-hero"><div class="eyebrow" style="color:#8de0d0">FINANCIAL INSIGHTS</div><h2 style="margin:5px 0;font-size:23px">Mira más allá de los saldos.</h2><p>Visualiza cómo se mueve tu dinero. Los gráficos generales se mantienen como referencia; el análisis de tarjetas se encuentra en Tarjetas y obligaciones y utiliza los estados de cuenta importados.</p><div class="analytics-tabs"><span>Flujo mensual</span><span>Gastos por categoría</span><span>Tendencia diaria</span><span>Balance</span></div></div>
 <div class="grid kpis" style="margin-top:14px">
 <div class="card"><div class="kpi-label">Ingresos del mes</div><div class="kpi-value" id="analyticsIncome">S/ 0.00</div><div class="kpi-note">Movimientos clasificados como ingreso</div></div>
 <div class="card"><div class="kpi-label">Consumo del mes</div><div class="kpi-value" id="analyticsExpense">S/ 0.00</div><div class="kpi-note">Sin pagos de tarjetas</div></div>
@@ -176,7 +220,7 @@ body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),rad
 <div class="glass-panel"><div class="chart-title"><div><h3>Resumen del periodo</h3><p>Indicadores calculados con tus registros</p></div></div><div id="periodInsights"><div class="mini-total"><span>Días con movimientos</span><b>0</b></div><div class="mini-total"><span>Promedio de gasto diario</span><b>S/ 0.00</b></div><div class="mini-total"><span>Mayor gasto individual</span><b>S/ 0.00</b></div><div class="mini-total"><span>Participación del ahorro vivienda</span><b>No calculado</b></div></div></div>
 </div>
 <div class="note" style="margin-top:13px"><strong>Importante:</strong> los gráficos se construyen únicamente con movimientos que registres en esta página. No inventan datos históricos ni incorporan automáticamente los estados de cuenta. Los pagos de tarjeta se visualizan por separado para evitar doble conteo.</div>
-</section>\n<section class="section" id="movimientos"><div class="section-head"><div><h2>Registro diario · Overview</h2><p>Registra ingresos y gastos en una sola vista. El resumen y los gráficos se actualizan automáticamente.</p></div><span class="chip good">Libro personal</span></div>
+</section>\n<section class="section" id="movimientos" style="display:none"><div class="section-head"><div><h2>Registro diario · Overview</h2><p>Registra ingresos y gastos en una sola vista. El resumen y los gráficos se actualizan automáticamente.</p></div><span class="chip good">Libro personal</span></div>
 <div class="entry-layout">
 <div class="panel">
 <h3>＋ Añadir movimiento</h3><p>Un registro por cada ingreso o gasto. Si pagas una tarjeta, elige “Pago de tarjeta”: no se sumará como consumo.</p>
@@ -210,31 +254,13 @@ body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),rad
 <tr><td>SEBFLOW E.I.R.L.</td><td class="right">S/ 500.00</td><td class="right">13.0%</td></tr><tr><td>Podoinka S.A.C.</td><td class="right">S/ 250.00</td><td class="right">6.5%</td></tr><tr><td>Bl & Jt Consultores S.A.C.</td><td class="right">S/ 700.00</td><td class="right">18.1%</td></tr><tr><td>Juan Manuel</td><td class="right">S/ 1,900.00</td><td class="right">49.2%</td></tr><tr><td>Proyecto Educando S.A.C.</td><td class="right">S/ 275.00</td><td class="right">7.1%</td></tr><tr><td>URBAN ASOCIADOS S.A.C.</td><td class="right">S/ 236.00</td><td class="right">6.1%</td></tr></tbody><tfoot><tr><td><b>Total</b></td><td class="right"><b>S/ 3,861.00</b></td><td class="right"><b>100%</b></td></tr></tfoot></table></div>
 </section>
 
-<section class="section" id="importar"><div class="section-head"><div><h2>Importar estados de cuenta PDF</h2><p>Extrae movimientos, revisa categorías y agrega solo los registros confirmados.</p></div><span class="chip info">Importación asistida</span></div>
-<div class="panel">
- <div class="import-zone"><div style="font-size:28px">⇧</div><h3>Sube tu estado de cuenta</h3><p>Selecciona un PDF descargado de tu banco. El archivo se procesa localmente en este navegador.</p><input id="statementFile" type="file" accept="application/pdf,.pdf"></div>
- <div class="import-controls">
-  <div class="field"><label for="statementBank">Banco / entidad</label><select id="statementBank"><option>BCP</option><option>Interbank</option><option>Scotiabank</option><option>Banco Falabella / CMR</option><option>Diners Club</option><option>Otro</option></select></div>
-  <div class="field"><label for="statementAccount">Cuenta / tarjeta (opcional)</label><input id="statementAccount" placeholder="Ej. Visa terminación 3364"></div>
-  <div class="field"><label for="statementPeriod">Periodo (referencial)</label><input id="statementPeriod" type="month"></div>
- </div>
- <div class="tools-row"><button class="btn primary" type="button" id="analyzeStatement">Analizar PDF</button><button class="btn" type="button" id="clearStatement">Limpiar vista previa</button></div>
- <div id="statementStatus" class="import-status">Aún no has seleccionado un estado de cuenta.</div>
- <div id="statementReview" hidden>
-  <div class="import-kpis"><div class="mini"><small>Movimientos detectados</small><b id="statementCount">0</b></div><div class="mini"><small>Posibles duplicados</small><b id="statementDuplicates">0</b></div><div class="mini"><small>Total seleccionado</small><b id="statementTotal">S/ 0.00</b></div></div>
-  <p class="muted" style="font-size:11px">Revisa cada fila antes de importar. La detección automática es orientativa: verifica especialmente el signo, fecha, importe y descripción. Los duplicados aparecen desmarcados.</p>
-  <div class="import-preview"><table><thead><tr><th>Incluir</th><th>Fecha</th><th>Descripción</th><th>Importe</th><th>Tipo</th><th>Categoría</th><th>Estado</th></tr></thead><tbody id="statementRows"></tbody></table></div>
-  <div class="tools-row" style="margin-top:14px"><button class="btn primary" type="button" id="confirmStatement">Agregar movimientos seleccionados</button></div>
- </div>
- <div class="note" style="margin-top:14px"><strong>Protección de tus datos:</strong> los movimientos existentes no se reemplazan. Se agregan nuevos registros al almacenamiento local y se omiten coincidencias probables. El PDF no se envía a un servidor. Los PDF escaneados como imagen podrían no contener texto extraíble y requerirán OCR o registro manual.</div>
-</div></section>
 <section class="section" id="criterios"><div class="section-head"><div><h2>Cómo leer este panel</h2><p>Reglas para que tus números no se distorsionen.</p></div></div>
 <details open><summary>¿Por qué un pago de tarjeta no es un gasto nuevo?</summary><p>El gasto se reconoce cuando realizas la compra. Cuando pagas la tarjeta, estás cancelando la deuda generada por esas compras. Registrar ambos como gasto duplicaría el consumo.</p></details>
 <details><summary>¿Qué diferencia hay entre deuda, pago del mes y línea utilizada?</summary><p>La deuda es el saldo pendiente; el pago del mes es el importe exigido en el ciclo; la línea utilizada es el crédito consumido según la medición del banco. No son cifras intercambiables.</p></details>
 <details><summary>¿Qué información falta para un diagnóstico completo?</summary><p>Estado reciente de Diners, conciliación detallada de Scotiabank, confirmación de ingresos mensuales vigentes y registro diario completo de ingresos y gastos de noviembre.</p></details>
 <details><summary>¿Qué incluye la proyección del departamento?</summary><p>Solo el saldo actual y los aportes mensuales simulados. No incluye intereses, gastos notariales, registrales, tasación, seguros, costos hipotecarios ni variaciones del precio del inmueble. La inicial de S/ 30,000 es una meta de trabajo, no una cotización bancaria.</p></details>
 </section>
-<div class="footer">ALVAPEN · Centro Financiero Personal · Actualizado al 14/11/2026 · Cifras sujetas a conciliación con los estados bancarios originales.</div>
+<div class="footer">ALVAPEN · Centro Financiero Personal · Estados de cuenta base: septiembre–octubre 2026 · Cifras sujetas a conciliación con los estados bancarios originales.</div>
 </div></main>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
