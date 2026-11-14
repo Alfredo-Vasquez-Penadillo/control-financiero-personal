@@ -44,6 +44,31 @@ details{border:1px solid var(--line);border-radius:15px;padding:13px 15px;backgr
 .chart-empty{padding:26px 12px;text-align:center;color:#8190a0;font-size:11px;border:1px dashed #d8e2e9;border-radius:15px}
 .analytics-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.analytics-tabs span{padding:7px 10px;background:#ffffffa8;border:1px solid #ffffff;border-radius:99px;font-size:10px;color:#5c7083;box-shadow:0 5px 14px #17344c0b}
 @media(max-width:850px){.analytics-grid{grid-template-columns:1fr}.donut-wrap{justify-content:center}}
+
+/* iOS-inspired refresh */
+:root{--bg:#f5f7fb;--ink:#17243a;--muted:#718096;--teal:#0b8f87;--line:#e6ebf2;--shadow:0 12px 34px rgba(35,55,85,.075);--radius:24px}
+body{background:radial-gradient(ellipse at 12% 0%,#eaf2ff 0,transparent 38%),radial-gradient(ellipse at 92% 12%,#e8f7f4 0,transparent 32%),#f6f8fc}
+.card,.panel,.glass-panel{background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.92);box-shadow:0 12px 36px rgba(34,53,82,.07),inset 0 1px 0 rgba(255,255,255,.9);backdrop-filter:blur(24px) saturate(165%)}
+.hero{background:linear-gradient(125deg,#263b5c 0%,#385a7d 58%,#398c88 100%);box-shadow:0 24px 55px rgba(36,66,104,.18)}
+.sidebar{background:linear-gradient(180deg,#172944,#233d5a);box-shadow:8px 0 35px rgba(23,41,68,.08)}
+.btn{border:1px solid rgba(255,255,255,.9);background:rgba(255,255,255,.72);border-radius:15px}
+.section{scroll-margin-top:28px}
+.mobile-nav{display:none}
+.ios-dock{display:none}
+@media(max-width:760px){
+ .content{padding:18px 14px 112px}
+ .mobile-nav{display:none!important}
+ .ios-dock{position:fixed;z-index:50;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));padding:8px 7px calc(8px + env(safe-area-inset-bottom));border-radius:25px;background:rgba(250,252,255,.78);border:1px solid rgba(255,255,255,.9);box-shadow:0 12px 38px rgba(27,45,72,.2),inset 0 1px 0 #fff;backdrop-filter:blur(28px) saturate(190%);-webkit-backdrop-filter:blur(28px) saturate(190%)}
+ .ios-dock a{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 2px;border-radius:17px;color:#77859a;font-size:9px;font-weight:700;transition:all .22s ease}
+ .ios-dock a .dock-icon{width:28px;height:25px;display:grid;place-items:center;font-size:19px;line-height:1}
+ .ios-dock a.active{color:#087f79;background:rgba(14,145,135,.11);transform:translateY(-2px)}
+ .ios-dock a.active .dock-icon{filter:drop-shadow(0 2px 4px rgba(10,130,120,.18))}
+ .topbar{gap:8px}.top-actions .chip{display:none}
+ .hero{border-radius:25px}
+ .kpis{gap:10px}
+ .card,.panel,.glass-panel{border-radius:21px}
+}
+@media(prefers-reduced-motion:no-preference){.ios-dock a,.card,.panel,.btn{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}.card:hover,.panel:hover{transform:translateY(-2px)}}
 </style>
 </head>
 <body>
@@ -60,7 +85,13 @@ details{border:1px solid var(--line);border-radius:15px;padding:13px 15px;backgr
 <div><div class="eyebrow">Panel personal · Noviembre 2026</div><h1>Hola, Alfred 👋</h1><div class="sub">Tu dinero, tus metas y tus decisiones en un solo lugar.</div></div>
 <div class="top-actions"><span class="chip info">Actualizado · 14 nov 2026</span><button class="btn" onclick="window.print()">⤓ Imprimir informe</button></div>
 </header>
-<nav class="mobile-nav"><a href="#resumen">Resumen</a><a href="#proyeccion">Proyecciones</a><a href="#tarjetas">Tarjetas</a><a href="#comparativa">Evolución</a><a href="#analitica">Gráficos</a><a href="#movimientos">Movimientos</a><a href="#departamento">Departamento</a></nav>
+<nav class="ios-dock" aria-label="Navegación principal">
+<a href="#inicio" class="active"><span class="dock-icon">⌂</span><span>Inicio</span></a>
+<a href="#tarjetas"><span class="dock-icon">▣</span><span>Tarjetas</span></a>
+<a href="#analitica"><span class="dock-icon">▥</span><span>Analítica</span></a>
+<a href="#movimientos"><span class="dock-icon">＋</span><span>Movimientos</span></a>
+<a href="#departamento"><span class="dock-icon">⌑</span><span>Mi meta</span></a>
+</nav>
 
 <section class="hero">
 <div><div class="eyebrow">Tu objetivo patrimonial</div><h2>Construyendo el camino hacia tu departamento.</h2><p>Tu ahorro destinado a la inicial ya llegó a S/ 8,000. Mantendremos ese fondo separado y proyectaremos cuánto puedes avanzar según tu capacidad mensual de ahorro.</p><a class="btn primary" href="#proyeccion">Ver mis proyecciones ↗</a></div>
@@ -261,5 +292,18 @@ document.getElementById("monthFilter").value=new Date().toISOString().slice(0,7)
 document.getElementById("entryDate").value=new Date().toISOString().slice(0,10);
 document.getElementById("monthFilter").addEventListener("change",()=>{renderEntries();renderAnalytics()});
 renderEntries();
+renderAnalytics();
+
+// Dock iOS: resalta la sección visible y permite navegar con un toque.
+(function(){
+ const links=[...document.querySelectorAll(".ios-dock a")];
+ const targets=links.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);
+ if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver(items=>{items.forEach(item=>{if(item.isIntersecting){links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+item.target.id));}})},{rootMargin:"-28% 0px -58% 0px",threshold:0});
+  targets.forEach(t=>observer.observe(t));
+ }
+ links.forEach(a=>a.addEventListener("click",()=>{links.forEach(x=>x.classList.toggle("active",x===a));}));
+})();
 </script>
-</body></html\nrenderAnalytics();>
+</body>
+</html>
