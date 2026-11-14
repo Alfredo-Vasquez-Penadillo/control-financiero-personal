@@ -1067,7 +1067,7 @@ body{background:radial-gradient(ellipse at 12% 0%,rgba(180,205,255,.25),transpar
  const view=document.createElement("section");view.id="alvapenModuleView";
  view.innerHTML='<div class="module-toolbar"><button type="button" id="alvapenHomeBack">← Volver al resumen</button><span id="alvapenModuleLabel">ALVAPEN / ESPACIO</span></div><div class="module-content" id="alvapenModuleContent"></div>';
  const content=view.querySelector("#alvapenModuleContent");
- const groups={finanzas:["tarjetas","analitica","comparativa"],vivienda:["departamento","bonos","proyeccion"],cierres:["actualizaciones","criterios"]};
+ const groups={finanzas:["resumen","tarjetas","analitica","comparativa"],vivienda:["departamento","bonos","proyeccion"],cierres:["actualizaciones","criterios"]};
  const names={finanzas:"Finanzas y obligaciones",vivienda:"Mi vivienda",cierres:"Cierres y control"};
  Object.values(groups).flat().forEach(id=>{if(section[id]){section[id].style.display="";content.appendChild(section[id]);}});
  main.appendChild(home);main.appendChild(view);
