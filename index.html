@@ -2,7 +2,13 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111827">
+<meta name="theme-color" content="#202b3a">
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#202b3a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ALVAPEN">
+<link rel="apple-touch-icon" href="./icons/icon.svg">
 <meta name="alvapen-build" content="2026-11-14-clean-finance-command-center-v6">
 <title>ALVAPEN | Panel financiero actualizado</title>
 <style>
@@ -1135,5 +1141,16 @@ body{background:radial-gradient(ellipse at 12% 4%,rgba(185,165,221,.32),transpar
  render();
 })();
 </script>
+
+<script>
+if ("serviceWorker" in navigator && location.protocol === "https:") {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js", { scope: "./" }).catch(error => {
+      console.warn("ALVAPEN: no se pudo registrar el modo sin conexión.", error);
+    });
+  });
+}
+</script>
+
 </body>
 </html>
