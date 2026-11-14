@@ -896,5 +896,92 @@ function renderDashboardCharts(all,months,selected,sum,fmt){
 })();
 
 </script>
+
+<style id="alvapen-liquid-pages">
+:root{--glass-bg:rgba(255,255,255,.68);--glass-line:rgba(255,255,255,.82);--glass-shadow:0 18px 50px rgba(29,55,90,.09)}
+body{background:radial-gradient(ellipse at 12% 0%,rgba(180,205,255,.25),transparent 36%),radial-gradient(ellipse at 90% 15%,rgba(210,195,255,.2),transparent 32%),linear-gradient(145deg,#f5f7fc,#edf1f8 55%,#f8f9fc)!important}
+.sidebar{background:linear-gradient(160deg,rgba(18,27,45,.96),rgba(34,43,67,.94))!important;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.dashboard-intro{margin:10px 0 24px!important}
+.dashboard-group{display:none!important}
+#alvapenHub{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:24px 0 34px}
+.hub-card{position:relative;display:flex;align-items:center;gap:17px;min-height:126px;padding:23px 24px;border:1px solid rgba(255,255,255,.9);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(245,248,255,.62));box-shadow:var(--glass-shadow),inset 0 1px 0 #fff;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);text-decoration:none!important;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;overflow:hidden}
+.hub-card:before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(#8d9cff,#b7a1ff);opacity:.0;transition:.2s}
+.hub-card:hover{transform:translateY(-3px);box-shadow:0 24px 55px rgba(29,55,90,.14),inset 0 1px 0 #fff;border-color:#c9d6f4}
+.hub-card:hover:before{opacity:1}
+.hub-number{flex:0 0 46px;width:46px;height:46px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(145deg,#e5eaff,#d9d1ff);color:#39466d;font-size:13px;font-weight:800;box-shadow:inset 0 1px 1px #fff,0 5px 14px #7d83b522}
+.hub-copy{min-width:0;display:block}
+.hub-copy strong{display:block;font-size:16px;line-height:1.3;color:#172b46;margin:0 0 5px}
+.hub-copy small{display:block;font-size:12px;line-height:1.55;color:#64758d}
+.hub-arrow{margin-left:auto;flex:0 0 auto;color:#7788aa;font-size:20px}
+#alvapenPage{display:none;min-width:0}
+.page-toolbar{display:flex;align-items:center;gap:14px;margin:8px 0 22px}
+.page-back{border:1px solid rgba(255,255,255,.9);border-radius:14px;padding:10px 15px;background:rgba(255,255,255,.72);box-shadow:0 7px 20px #1d375a12;color:#243b5a;font-weight:700;cursor:pointer;backdrop-filter:blur(16px)}
+.page-back:hover{background:#fff;transform:translateY(-1px)}
+.page-caption{font-size:12px;color:#77869d;letter-spacing:.08em;text-transform:uppercase}
+#alvapenPage .section{margin-top:0}
+#alvapenPage .section-head{margin-top:0}
+#alvapenPage .panel,#alvapenPage .card,#alvapenPage .section .grid>div{border-radius:20px}
+.protocol-number{position:static!important;display:grid!important;place-items:center;width:42px;height:42px;margin:0 0 12px!important;border-radius:14px!important;float:none!important;line-height:1!important}
+.statement-protocol{display:flex;flex-direction:column;align-items:flex-start;min-height:160px;padding:22px!important;gap:0}
+.statement-protocol h3{margin:0 0 6px!important;line-height:1.35!important;position:static!important}
+.statement-protocol p{margin:0 0 12px!important;line-height:1.6}
+.statement-protocol .chip,.statement-protocol .btn{margin-top:auto}
+@media(max-width:760px){#alvapenHub{grid-template-columns:1fr;gap:12px}.hub-card{min-height:108px;padding:18px;border-radius:20px}.page-toolbar{align-items:flex-start;flex-direction:column;gap:8px}.content{padding-top:20px}}
+</style>
+<script id="alvapen-page-navigation">
+(function(){
+ const main=document.querySelector("main .content");if(!main)return;
+ const ids=["resumen","tarjetas","analitica","comparativa","departamento","bonos","proyeccion","actualizaciones","criterios"];
+ const titles={
+ resumen:["Resumen financiero","Tus indicadores principales, ahorro y situación general."],
+ tarjetas:["Tarjetas y obligaciones","Saldos, pagos exigidos, cuotas y compromisos financieros."],
+ analitica:["Análisis de consumo","Movimientos por periodo, categorías y evolución del consumo."],
+ comparativa:["Comparativa mensual","Cambios entre periodos y lectura de tus avances."],
+ departamento:["Proyecto de departamento","Ahorro protegido, meta de inicial y preparación de compra."],
+ bonos:["Bonos y programas de vivienda","Evaluación preliminar y seguimiento de programas del Estado."],
+ proyeccion:["Proyección de ahorro","Simula aportes y fechas estimadas para tu inicial."],
+ actualizaciones:["Cierre por estados de cuenta","Flujo documental para conciliar tarjetas, cuentas y pagos."],
+ criterios:["Criterios y metodología","Reglas de conciliación y lectura correcta de las cifras."]
+ };
+ const descriptions=Object.fromEntries(ids.map(id=>[id,titles[id][1]]));
+ const sections={};ids.forEach(id=>sections[id]=document.getElementById(id));
+ const hero=main.querySelector(".hero"),intro=main.querySelector(".dashboard-intro"),footer=main.querySelector(".footer");
+ const hub=document.createElement("div");hub.id="alvapenHub";
+ const page=document.createElement("div");page.id="alvapenPage";
+ page.innerHTML='<div class="page-toolbar"><button type="button" class="page-back" id="alvapenBack">← Volver al inicio</button><span class="page-caption">ALVAPEN / ESPACIO DE TRABAJO</span></div><div id="alvapenPageContent"></div>';
+ const pageContent=page.querySelector("#alvapenPageContent");
+ ids.forEach((id,index)=>{
+   const section=sections[id];if(!section)return;
+   const a=document.createElement("a");a.className="hub-card";a.href="#pagina/"+id;
+   a.innerHTML='<span class="hub-number">'+String(index+1).padStart(2,"0")+'</span><span class="hub-copy"><strong>'+titles[id][0]+'</strong><small>'+descriptions[id]+'</small></span><span class="hub-arrow" aria-hidden="true">›</span>';
+   hub.appendChild(a);pageContent.appendChild(section);
+ });
+ const oldGroups=[...main.querySelectorAll(".dashboard-group")];oldGroups.forEach(g=>g.remove());
+ if(hero)main.insertBefore(hub,hero.nextSibling);else main.appendChild(hub);
+ if(intro)hub.insertAdjacentElement("beforebegin",intro);
+ if(footer)pageContent.appendChild(footer);
+ main.appendChild(page);
+ function showRoute(){
+   const match=location.hash.match(/^#pagina\/([a-z]+)$/);
+   const id=match&&ids.includes(match[1])?match[1]:null;
+   hub.style.display=id?"none":"grid";
+   if(hero)hero.style.display=id?"none":"";
+   if(intro)intro.style.display=id?"none":"";
+   page.style.display=id?"block":"none";
+   ids.forEach(key=>{if(sections[key])sections[key].style.display=key===id?"block":"none";});
+   if(id){document.title="ALVAPEN | "+titles[id][0];}
+   else{document.title="ALVAPEN | Panel financiero actualizado";}
+   window.scrollTo({top:0,behavior:"smooth"});
+ }
+ document.getElementById("alvapenBack").addEventListener("click",()=>{location.hash="inicio";});
+ window.addEventListener("hashchange",showRoute);
+ const nav=document.querySelector(".sidebar .nav");
+ if(nav)nav.innerHTML='<a href="#inicio" class="active">Inicio</a>';
+ const dock=document.querySelector(".ios-dock");
+ if(dock)dock.innerHTML='<a href="#inicio" class="active"><span class="dock-icon">⌂</span><span>Inicio</span></a>';
+ showRoute();
+})();
+</script>
+
 </body>
 </html>
