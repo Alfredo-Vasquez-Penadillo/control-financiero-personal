@@ -248,7 +248,7 @@ function visibleEntries(){return entries.filter(e=>e.date.slice(0,7)===selectedM
 function saveEntry(ev){ev.preventDefault();const type=document.getElementById("entryType").value;const amount=Number(document.getElementById("entryAmount").value);const concept=document.getElementById("entryConcept").value.trim();if(!amount||amount<=0||!concept)return;
 const category=document.getElementById("entryCategory").value;const isCardPayment=type==="gasto"&&category==="Pago de tarjeta";
 entries.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),date:document.getElementById("entryDate").value,amount,concept,type,category,method:document.getElementById("entryMethod").value,notes:document.getElementById("entryNotes").value.trim(),cardPayment:isCardPayment,created:Date.now()});
-persistEntries();document.getElementById("entryAmount").value="";document.getElementById("entryConcept").value="";document.getElementById("entryNotes").value="";renderEntries();}
+persistEntries();document.getElementById("entryAmount").value="";document.getElementById("entryConcept").value="";document.getElementById("entryNotes").value="";renderEntries();renderAnalytics();}
 function renderAnalytics(){
  const month=visibleEntries();
  const inc=month.filter(e=>e.type==="ingreso").reduce((a,e)=>a+e.amount,0);
@@ -283,7 +283,7 @@ const list=document.getElementById("entryList");list.innerHTML=month.length?mont
 }
 function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function removeEntry(id){if(!confirm("¿Eliminar este movimiento?"))return;entries=entries.filter(e=>e.id!==id);persistEntries();renderEntries();renderAnalytics()}
-function clearMonth(){const m=selectedMonth();if(!confirm("¿Eliminar todos los movimientos de "+m+" guardados en este navegador?"))return;entries=entries.filter(e=>e.date.slice(0,7)!==m);persistEntries();renderEntries()}
+function clearMonth(){const m=selectedMonth();if(!confirm("¿Eliminar todos los movimientos de "+m+" guardados en este navegador?"))return;entries=entries.filter(e=>e.date.slice(0,7)!==m);persistEntries();renderEntries();renderAnalytics()}
 function exportEntries(){const rows=[["fecha","tipo","importe","concepto","categoria","medio","nota","pago_tarjeta"],...entries.map(e=>[e.date,e.type,e.amount,e.concept,e.category,e.method,e.notes||"",e.cardPayment?"si":"no"])];const csv=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(",")).join("\n");const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alvapen_movimientos.csv";a.click();URL.revokeObjectURL(a.href)}
 function downloadBackup(){const blob=new Blob([JSON.stringify(entries,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alvapen_respaldo_financiero.json";a.click();URL.revokeObjectURL(a.href)}
 function importBackup(ev){const file=ev.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);if(!Array.isArray(data))throw Error();entries=data;persistEntries();renderEntries();alert("Respaldo importado.")}catch(e){alert("El archivo no tiene un respaldo válido.")}};reader.readAsText(file);ev.target.value=""}
