@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "ALVAPEN · Finanzas personales",
+  "short_name": "ALVAPEN",
+  "description": "Panel personal de finanzas, obligaciones y vivienda.",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eef1f5",
+  "theme_color": "#202b3a",
+  "orientation": "portrait",
+  "icons": [
+    {"src":"./icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"},
+    {"src":"./icons/maskable.svg","sizes":"any","type":"image/svg+xml","purpose":"maskable"}
+  ]
+}
