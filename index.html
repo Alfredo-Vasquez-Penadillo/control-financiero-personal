@@ -260,21 +260,91 @@ details{background:#101e32;border-color:#293f5d;color:#e3edfc}details p{color:#9
 .flow-caption{font-size:9px;color:#748aa8;line-height:1.5;margin-top:11px}
 @media(max-width:760px){.month-bars{gap:8px}.month-bar{min-width:34px}.flow-bars{gap:8px}.flow-pair i{width:9px}}
 
+
+/* ALVAPEN · Midnight lavender financial console */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--bg:#090a14;--ink:#f2efff;--muted:#a29bb8;--navy:#11111f;--navy2:#1a192a;--teal:#bda5ff;--teal2:#29233d;--gold:#e8b9d8;--line:#302d43;--white:#171625;--shadow:0 18px 55px #0008;--radius:19px}
+html{scroll-behavior:smooth;scroll-padding-top:22px}
+body{background:radial-gradient(ellipse at 84% 7%,#3b244b55,transparent 30%),radial-gradient(ellipse at 6% 78%,#28234755,transparent 32%),#090a14;color:#f2efff;font-family:Manrope,Inter,system-ui,sans-serif}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,transparent 49.8%,#ffffff08 50%,transparent 50.2%),linear-gradient(transparent 49.8%,#ffffff08 50%,transparent 50.2%);background-size:164px 164px;opacity:.38}
+.shell{grid-template-columns:190px minmax(0,1fr);background:transparent}
+.sidebar{background:rgba(16,15,28,.84);border-right:1px solid #353047;color:#f5f0ff;backdrop-filter:blur(22px);padding:24px 13px;box-shadow:10px 0 40px #0005}
+.logo{font-size:21px;letter-spacing:.14em;color:#fff}.logo span{color:#c9b2ff}
+.tag{font-size:9px;color:#938ba8;letter-spacing:.13em;padding-bottom:28px}
+.nav{gap:7px}.nav a{padding:11px 12px;border:1px solid transparent;border-radius:12px;color:#b6afc9;font-size:11px}.nav a:hover,.nav a.active{background:linear-gradient(100deg,#322746aa,#24233aaa);border-color:#57466e;color:#fff;box-shadow:inset 2px 0 #c6aaff,0 0 22px #a98aff13}
+.sidefoot{background:#1a1828;border:1px solid #3c3650;border-radius:14px;color:#a8a0b8}.sidefoot strong{color:#d0baff;font:500 20px "DM Mono",monospace}
+.content{max-width:1600px;padding:24px clamp(15px,2.8vw,42px) 58px}
+.topbar{border-bottom:1px solid #29263a;padding-bottom:17px;margin-bottom:20px}
+.eyebrow{color:#c3a9ff;font-size:9px;letter-spacing:.2em}
+.topbar h1{color:#f7f3ff;letter-spacing:-.045em}.sub{color:#a59db8}
+.btn{background:#211f32;color:#e9e3fa;border:1px solid #48405d;border-radius:11px;box-shadow:none;backdrop-filter:blur(16px)}
+.btn:hover{background:#302942;border-color:#b49aff;box-shadow:0 0 22px #b49aff1e;transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(110deg,#9b7be8,#d0b7ff);color:#171223;border:1px solid #d7c4ff;font-weight:850}
+.btn.dark{background:#211f32;color:#fff}
+.hero{background:linear-gradient(120deg,#191827eF,#211b31f2 60%,#392644ed);border:1px solid #514363;border-radius:22px;box-shadow:0 18px 55px #0008;padding:26px 28px}
+.hero:after{background:#c49cff24;width:440px;height:440px;right:3%;top:-300px;filter:blur(12px)}
+.hero h2{color:#fff;letter-spacing:-.04em}.hero p{color:#b9b1c9}.hero .eyebrow{color:#d0b8ff}
+.hero-stat{background:#0c0b18aa;border:1px solid #68577e;border-radius:15px;backdrop-filter:blur(20px)}
+.hero-stat strong{color:#d5c0ff;font:500 31px "DM Mono",monospace}.hero-stat span{color:#c4b5dd}
+.section{margin-top:24px}
+.section-head h2{color:#f1edff;font-size:18px;letter-spacing:-.03em}.section-head p{color:#a29ab4}
+.card,.panel,.glass-panel{background:linear-gradient(145deg,rgba(28,26,43,.96),rgba(17,17,29,.96));border:1px solid #3a354d;border-radius:17px;box-shadow:0 14px 40px #0006;backdrop-filter:blur(18px)}
+.card{padding:17px}.kpi-label{color:#aaa2bc;font-size:9px;letter-spacing:.1em}.kpi-value{color:#faf7ff;font:500 clamp(21px,2vw,28px) "DM Mono",monospace;letter-spacing:-.05em}.kpi-note{color:#9890aa}.kpi-icon{background:#302744;color:#d0b9ff;border:1px solid #58466f;border-radius:10px}
+.panel{padding:18px}.panel h3,.glass-panel h3{color:#f2edff}.panel p{color:#aaa2b7}
+.chip{background:#29263b;color:#c2b7d8;border:1px solid #49405c}.chip.good{background:#1d3434;color:#8ce2d0;border-color:#365f5b}.chip.warn{background:#3b3026;color:#f0c88f;border-color:#6e553e}.chip.bad{background:#3a2532;color:#f2a8c6;border-color:#70415d}.chip.info{background:#302742;color:#d2bdff;border-color:#5a4775}
+.note{background:#211d30;border:1px solid #51415f;color:#c2b8d2;border-radius:13px}.note strong{color:#fff}
+.bank-head{border-radius:13px 13px 0 0;margin:-18px -18px 15px;padding:14px 17px;border-bottom:1px solid #ffffff1c}
+.bcp{background:linear-gradient(110deg,#34304a,#6e5b8d)}.ibk{background:linear-gradient(110deg,#292b4c,#655b91)}.scotia{background:linear-gradient(110deg,#273a42,#4b7777)}.cmr{background:linear-gradient(110deg,#392c4d,#795a83)}
+.mini{background:#11111e;border:1px solid #39344b;border-radius:10px}.mini small{color:#9e96b0}.mini b{color:#f0eaff;font:500 13px "DM Mono",monospace}
+.chart-track{background:#302b40}.chart-track i{background:linear-gradient(90deg,#9d83ef,#d7baff)}.chart-track i.expense{background:linear-gradient(90deg,#a77bdc,#e5a8d4)}
+.projection{background:linear-gradient(145deg,#211d32,#151522);border-color:#514260}.control{background:#131220;border:1px solid #3c354d}.control input{accent-color:#c5aaff}.result{background:linear-gradient(120deg,#322541,#1c263a);border:1px solid #67527c}.result b{color:#decaff;font:500 20px "DM Mono",monospace}.progress{background:#383047}.progress i{background:linear-gradient(90deg,#9e7ee9,#e1b6df)}
+table{color:#eee9fa}th{color:#a69cb9;border-color:#39334a}td{border-color:#2b283a}
+.entry-item{background:#151422;border-color:#39334b}.entry-item b{color:#f0eaff}.entry-item small{color:#9c94ac}
+.field label{color:#b3abc3}.field input,.field select,.field textarea{background:#11111e;border:1px solid #423951;color:#f2edff}
+.analytics-hero{background:linear-gradient(120deg,#201a31,#332342);border:1px solid #59466c}
+.glass-panel{background:linear-gradient(145deg,#1c1a2c,#12121f);border-color:#40394f}
+.donut{background:conic-gradient(#c4aaff 0 35%,#9b83e9 35% 60%,#e4b8d8 60% 82%,#94b8dc 82% 100%)}
+.import-zone{background:#141321;border-color:#514261}
+details{background:#191727;border-color:#3d364e;color:#eee9fa}details p{color:#aaa2b7}
+.ios-dock{background:rgba(18,16,29,.9);border:1px solid #49405d;box-shadow:0 12px 40px #0008}
+.ios-dock a{color:#aaa1bd}.ios-dock a.active{color:#ddcaff;background:#322744}
+.statement-protocol{position:relative;overflow:hidden;min-height:160px;padding:20px 20px 18px 72px}
+.protocol-number{position:absolute;left:18px;top:20px;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(145deg,#9878df,#d0b5ff);color:#171321;font:500 14px "DM Mono",monospace;box-shadow:0 0 24px #b49aff36}
+.statement-protocol h3{margin:0 0 8px}.protocol-tag{display:inline-flex;margin-top:8px;padding:5px 9px;border-radius:30px;background:#302742;color:#d1bdff;font-size:9px;letter-spacing:.08em;text-transform:uppercase}
+.statement-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:14px}
+.statement-list>div{padding:13px;border:1px solid #39334b;background:#151422;border-radius:11px}
+.statement-list b{display:block;color:#eee9fa;font-size:11px}.statement-list small{display:block;color:#9f96b1;font-size:10px;margin-top:4px}
+#movimientos,#ingresos{display:none!important}
+@media(max-width:760px){.shell{display:block}.sidebar{position:relative;height:auto;padding:12px 14px}.sidebar .tag,.sidefoot{display:none}.sidebar .nav{display:flex;overflow-x:auto;gap:6px;padding:5px 0}.sidebar .nav a{white-space:nowrap;padding:9px 11px}.content{padding:14px 12px 100px}.hero{grid-template-columns:1fr;padding:20px;border-radius:17px}.hero-stat{max-width:none}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.statement-list{grid-template-columns:1fr}.statement-protocol{min-height:unset}.ios-dock{display:none}}
+@media(prefers-reduced-motion:no-preference){.card,.panel,.btn,.nav a{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}.card:hover,.panel:hover{transform:translateY(-2px);border-color:#7b659a;box-shadow:0 18px 45px #0008,0 0 20px #b49aff12}}
+
+
+.dashboard-intro{margin:18px 0 12px;padding:0 3px}.dashboard-intro h2{font-size:18px;color:#f3edff;margin:5px 0}.dashboard-intro p{font-size:11px;color:#a49bb5;margin:0}
+.dashboard-group{margin-top:24px;padding:18px;border:1px solid #2e2a3e;border-radius:19px;background:linear-gradient(145deg,#141321aa,#0e0e19aa);box-shadow:inset 0 1px #ffffff08}
+.dashboard-group-title{display:flex;align-items:center;gap:12px;color:#bba5e8;font-size:9px;font-weight:800;letter-spacing:.18em;margin:0 0 4px}.dashboard-group-title:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,#5b4b70,transparent)}
+.dashboard-group .section:first-of-type{margin-top:12px}.dashboard-group .section{margin-top:23px}
+@media(max-width:760px){.dashboard-group{padding:12px;margin-top:16px}.dashboard-intro{margin:14px 2px}.dashboard-group-title{font-size:8px}}
+
 </style>
 </head>
 <body>
 <div class="shell">
 <aside class="sidebar">
-<div class="logo">ALVA<span>PEN</span></div><div class="tag">TU CENTRO FINANCIERO PERSONAL</div>
+<div class="logo">ALVA<span>PEN</span></div><div class="tag">PERSONAL FINANCE DASHBOARD</div>
 <nav class="nav">
-<a href="#inicio" class="active">⌂ &nbsp; Inicio</a><a href="#resumen">▦ &nbsp; Mi resumen</a><a href="#proyeccion">↗ &nbsp; Proyecciones</a><a href="#tarjetas">▣ &nbsp; Tarjetas y deudas</a><a href="#comparativa">⇄ &nbsp; Evolución</a><a href="#analitica">▥ &nbsp; Analítica</a><a href="#departamento">⌂ &nbsp; Mi departamento</a><a href="#ingresos">＋ &nbsp; Ingresos</a><a href="#criterios">✓ &nbsp; Criterios</a>
+<a href="#inicio" class="active">◉ &nbsp; Overview</a>
+<a href="#tarjetas">▣ &nbsp; Tarjetas</a>
+<a href="#analitica">◫ &nbsp; Consumo y análisis</a>
+<a href="#comparativa">⌁ &nbsp; Evolución</a>
+<a href="#departamento">◇ &nbsp; Meta vivienda</a>
+<a href="#actualizaciones">↻ &nbsp; Cortes y estados</a>
 </nav>
 <div class="sidefoot">Meta de ahorro mensual<strong>S/ 1,000</strong>Tu ahorro para vivienda está separado de las deudas.</div>
 </aside>
 <main><div class="content">
 <header class="topbar" id="inicio">
-<div><div class="eyebrow">Panel personal · Noviembre 2026</div><h1>Hola, Alfred 👋</h1><div class="sub">Tu dinero, tus metas y tus decisiones en un solo lugar.</div></div>
-<div class="top-actions"><span class="chip info">Actualizado · 14 nov 2026</span><button class="btn" onclick="window.print()">⤓ Imprimir informe</button></div>
+<div><div class="eyebrow">PERSONAL FINANCE · CONTROL DOCUMENTAL</div><h1>Tu panorama financiero</h1><div class="sub">Estados de cuenta, obligaciones y patrimonio en una sola vista.</div></div>
+<div class="top-actions"><span class="chip info">Último corte · Noviembre 2026</span><button class="btn" onclick="window.print()">⤓ Imprimir informe</button></div>
 </header>
 <nav class="ios-dock" aria-label="Navegación principal">
 <a href="#inicio" class="active"><span class="dock-icon">⌂</span><span>Inicio</span></a>
@@ -285,16 +355,16 @@ details{background:#101e32;border-color:#293f5d;color:#e3edfc}details p{color:#9
 </nav>
 
 <section class="hero">
-<div><div class="eyebrow">Tu objetivo patrimonial</div><h2>Construyendo el camino hacia tu departamento.</h2><p>Tu ahorro destinado a la inicial ya llegó a S/ 8,000. Mantendremos ese fondo separado y proyectaremos cuánto puedes avanzar según tu capacidad mensual de ahorro.</p><a class="btn primary" href="#proyeccion">Ver mis proyecciones ↗</a></div>
-<div class="hero-stat"><small>AHORRO EXCLUSIVO PARA DEPARTAMENTO</small><strong>S/ 8,000</strong><span>26.7% de la meta referencial de S/ 30,000</span></div>
+<div><div class="eyebrow">FINANCIAL OVERVIEW</div><h2>Controla tus tarjetas. Protege tu patrimonio.</h2><p>Consulta tus cortes, consumos, pagos pendientes y evolución mensual. La información se actualiza a partir de tus estados de cuenta.</p><a class="btn primary" href="#tarjetas">Ver obligaciones ↗</a></div>
+<div class="hero-stat"><small>AHORRO PROTEGIDO · VIVIENDA</small><strong>S/ 8,000</strong><span>26.7% de la meta referencial de S/ 30,000</span></div>
 </section>
 
-<section class="section" id="resumen"><div class="section-head"><div><h2>Tu resumen financiero</h2><p>Indicadores principales con la información más reciente disponible.</p></div><span class="chip">Corte documental 14/11/2026</span></div>
+<section class="section" id="resumen"><div class="section-head"><div><h2>Tu resumen financiero</h2><p>Indicadores principales con la información más reciente disponible.</p></div><span class="chip">BASE DOCUMENTAL · OCTUBRE 2026</span></div>
 <div class="grid kpis">
 <div class="card"><span class="kpi-icon">⌂</span><div class="kpi-label">Ahorro vivienda</div><div class="kpi-value">S/ 8,000</div><div class="kpi-note">Confirmado por ti · 100% para la inicial</div></div>
 <div class="card"><span class="kpi-icon">◎</span><div class="kpi-label">Meta de inicial</div><div class="kpi-value">S/ 30,000</div><div class="kpi-note">Meta referencial · faltan S/ 22,000</div></div>
-<div class="card"><span class="kpi-icon">↗</span><div class="kpi-label">Pagos próximos identificados</div><div class="kpi-value">S/ 4,703.62</div><div class="kpi-note">Vencimientos del 30 nov. al 8 dic.</div></div>
-<div class="card"><span class="kpi-icon">▤</span><div class="kpi-label">Ingreso mensual de referencia</div><div class="kpi-value">S/ 3,861</div><div class="kpi-note">Último dato registrado; falta confirmar vigencia</div></div>
+<div class="card"><span class="kpi-icon">↗</span><div class="kpi-label">Pagos del ciclo identificados</div><div class="kpi-value">S/ 4,703.62</div><div class="kpi-note">Vencimientos del 30 nov. al 8 dic.</div></div>
+<div class="card"><span class="kpi-icon">▤</span><div class="kpi-label">Ahorro para vivienda</div><div class="kpi-value">S/ 8,000</div><div class="kpi-note">Fondo protegido para la inicial</div></div>
 </div></section>
 
 <section class="section" id="proyeccion"><div class="section-head"><div><h2>Proyecta tu inicial</h2><p>Mueve los controles y mira cómo cambia tu avance. No modifica tus cuentas reales.</p></div><span class="chip good">Simulador interactivo</span></div>
@@ -371,7 +441,7 @@ details{background:#101e32;border-color:#293f5d;color:#e3edfc}details p{color:#9
 
 
 <section class="section" id="analitica">
-<div class="section-head"><div><h2>Panel de consumo mensual</h2><p>Resumen ejecutivo para entender tus gastos y decidir dónde ajustar.</p></div><span class="chip good">Control por periodo</span></div>
+<div class="section-head"><div><h2>Panel de consumo mensual</h2><p>Consumos extraídos de estados de cuenta, organizados por periodo y tarjeta.</p></div><span class="chip good">Control por periodo</span></div>
 <div class="consumption-header">
  <div><div class="eyebrow">FINANZAS PERSONALES</div><h2>Tu consumo, bajo control.</h2><p>Compara tus meses, identifica las categorías que más pesan y detecta cambios antes de que se conviertan en hábito.</p></div>
  <div class="consumption-period"><label for="consumptionMonthFilter">Periodo evaluado</label><select id="consumptionMonthFilter"></select><button class="btn primary" type="button" id="applyConsumptionFilter">Actualizar análisis</button></div>
@@ -394,28 +464,25 @@ details{background:#101e32;border-color:#293f5d;color:#e3edfc}details p{color:#9
 <div class="consumption-insight" id="consumptionInsight">Selecciona un periodo para ver las principales señales de gasto.</div>
 <div class="note" style="margin-top:12px"><strong>Criterio:</strong> los pagos de tarjetas y cancelaciones de deuda se excluyen para no duplicar compras. Los cargos en dólares no se suman a los importes en soles. Los estados Diners antiguos no aportaron detalle legible de operaciones, por lo que no se han inventado consumos para esa tarjeta.</div>
 </section>
-<section class="section" id="movimientos" style="display:none"><div class="section-head"><div><h2>Registro diario · Overview</h2><p>Registra ingresos y gastos en una sola vista. El resumen y los gráficos se actualizan automáticamente.</p></div><span class="chip good">Libro personal</span></div>
-<div class="entry-layout">
-<div class="panel">
-<h3>＋ Añadir movimiento</h3><p>Un registro por cada ingreso o gasto. Si pagas una tarjeta, elige “Pago de tarjeta”: no se sumará como consumo.</p>
-<form class="entry-form" id="entryForm">
-<div class="type-switch"><button type="button" id="incomeType" class="selected" onclick="chooseType('ingreso')">＋ Ingreso</button><button type="button" id="expenseType" onclick="chooseType('gasto')">− Gasto</button></div>
-<input type="hidden" id="entryType" value="ingreso">
-<div class="form-row"><div class="field"><label for="entryDate">Fecha</label><input id="entryDate" type="date" required></div><div class="field"><label for="entryAmount">Importe (S/)</label><input id="entryAmount" type="number" min="0.01" step="0.01" placeholder="0.00" required></div></div>
-<div class="field"><label for="entryConcept">Concepto / motivo</label><input id="entryConcept" maxlength="100" placeholder="Ej. honorarios, almuerzo, movilidad..." required></div>
-<div class="form-row"><div class="field"><label for="entryCategory">Categoría</label><select id="entryCategory"><option>Honorarios / trabajo</option><option>Otros ingresos</option><option>Alimentación</option><option>Transporte</option><option>Vivienda y servicios</option><option>Salud</option><option>Educación</option><option>Compras personales</option><option>Suscripciones</option><option>Ocio</option><option>Deudas / intereses</option><option>Pago de tarjeta</option><option>Otros gastos</option></select></div><div class="field"><label for="entryMethod">Medio / cuenta / tarjeta</label><select id="entryMethod"><option>Efectivo</option><option>BCP</option><option>Interbank</option><option>Scotiabank</option><option>Falabella / CMR</option><option>Diners</option><option>Transferencia</option><option>Otro</option></select></div></div>
-<div class="field"><label for="entryNotes">Nota opcional</label><input id="entryNotes" maxlength="140" placeholder="Detalle adicional"></div>
-<button class="btn primary" type="submit">Guardar movimiento</button>
-<div class="muted" style="font-size:10px">Los datos se guardan en este navegador. No se envían automáticamente a GitHub ni se sincronizan entre dispositivos.</div>
-</form></div>
-<div class="panel"><div style="display:flex;justify-content:space-between;gap:8px;align-items:start"><div><h3>Tu actividad</h3><p>Resumen del mes seleccionado.</p></div><div class="field" style="min-width:145px"><label for="monthFilter">Mes</label><input id="monthFilter" type="month"></div></div>
-<div class="grid three" style="margin:13px 0"><div class="mini"><small>Ingresos</small><b id="monthIncome">S/ 0.00</b></div><div class="mini"><small>Gastos consumo</small><b id="monthExpense">S/ 0.00</b></div><div class="mini"><small>Flujo neto</small><b id="monthNet">S/ 0.00</b></div></div>
-<h3 style="margin-top:16px">Ingresos vs. gastos</h3><div class="chart-bars" id="monthChart"><div class="empty">Aún no hay movimientos para este mes.</div></div>
-<h3 style="margin-top:20px">Gastos por categoría</h3><div id="categoryChart" class="chart-bars"><div class="empty">Tus categorías aparecerán al registrar gastos.</div></div>
-<div class="tools-row" style="margin-top:18px"><button class="btn" type="button" onclick="exportEntries()">↓ Exportar CSV</button><button class="btn" type="button" onclick="downloadBackup()">Guardar respaldo JSON</button><button class="btn" type="button" onclick="document.getElementById('importFile').click()">Importar respaldo</button><input id="importFile" type="file" accept="application/json" style="display:none" onchange="importBackup(event)"></div>
-</div></div>
-<div class="panel" style="margin-top:14px"><div class="section-head"><div><h3>Movimientos registrados</h3><p>Los pagos de tarjeta se muestran aparte y no se suman a los gastos de consumo.</p></div><button class="btn danger" type="button" onclick="clearMonth()">Limpiar mes seleccionado</button></div><div id="entryList" class="entry-list"><div class="empty">Todavía no has registrado movimientos.</div></div></div>
-<div class="note" style="margin-top:12px"><strong>Regla de conciliación:</strong> registra la compra como gasto. Cuando pagues la tarjeta, registra el movimiento como “Pago de tarjeta”; el panel lo mostrará como salida de caja separada, sin volver a sumarlo al consumo. No registres como ingreso una transferencia entre tus propias cuentas.</div>
+<section class="section" id="actualizaciones">
+<div class="section-head"><div><h2>Actualización por estados de cuenta</h2><p>ALVAPEN se alimenta de tus documentos bancarios. No necesitas registrar compras, ingresos ni pagos manualmente.</p></div><span class="chip info">Flujo documental</span></div>
+<div class="grid two">
+ <div class="panel statement-protocol"><div class="protocol-number">01</div><h3>Envías tus documentos</h3><p>Adjunta aquí en el chat los estados de cuenta PDF o capturas de cada tarjeta cuando cierre el ciclo o tengas el documento disponible.</p><span class="protocol-tag">Tu única tarea</span></div>
+ <div class="panel statement-protocol"><div class="protocol-number">02</div><h3>Yo concilio la información</h3><p>Extraigo compras, cuotas, intereses, comisiones, pagos, saldo facturado, pago mínimo, vencimiento y línea disponible. Mantengo soles y dólares separados.</p><span class="protocol-tag">Revisión documental</span></div>
+ <div class="panel statement-protocol"><div class="protocol-number">03</div><h3>Actualizo el historial</h3><p>Incorporo los movimientos al mes que corresponde, identifico duplicados y separo consumos, pagos de tarjeta y cargos financieros.</p><span class="protocol-tag">Sin doble conteo</span></div>
+ <div class="panel statement-protocol"><div class="protocol-number">04</div><h3>Publico el nuevo corte</h3><p>Actualizo tarjetas, gráficos, comparativas y alertas en ALVAPEN. El panel conserva los meses anteriores para ver la evolución.</p><span class="protocol-tag">Historial acumulado</span></div>
+</div>
+<div class="glass-panel" style="margin-top:14px;padding:20px">
+ <div class="chart-title"><div><h3>Documentos que alimentan el panel</h3><p>Envíame los estados disponibles de estas entidades; no hace falta que llenes formularios.</p></div><span class="chip good">Carga por chat</span></div>
+ <div class="statement-list">
+  <div><b>BCP · Visa Oro LATAM Pass</b><small>Estado de cuenta y detalle de operaciones</small></div>
+  <div><b>Interbank · Visa Signature</b><small>Estado de cuenta y detalle de operaciones</small></div>
+  <div><b>Scotiabank · Visa Platinum</b><small>Estado de cuenta en soles y dólares, si corresponde</small></div>
+  <div><b>Banco Falabella · CMR Visa Platinum</b><small>Estado de cuenta y detalle de operaciones</small></div>
+  <div><b>Diners Club</b><small>Estado de cuenta y detalle de operaciones</small></div>
+ </div>
+</div>
+<div class="note" style="margin-top:14px"><strong>Regla de trabajo:</strong> la fecha de corte y el vencimiento se toman de cada estado, no de una fecha estimada. Una compra se cuenta una sola vez; pagar la tarjeta no vuelve a registrarse como consumo. Los gastos profesionales, SUNAT y detracciones se identifican aparte para no confundirlos con consumo personal.</div>
 </section>
 <section class="section" id="departamento"><div class="section-head"><div><h2>Tu proyecto de departamento</h2><p>Meta inicial referencial y ahorro protegido.</p></div><span class="chip good">Objetivo activo</span></div>
 <div class="grid two">
@@ -423,10 +490,7 @@ details{background:#101e32;border-color:#293f5d;color:#e3edfc}details p{color:#9
 <div class="panel"><h3>Regla de protección</h3><p>Tu ahorro para vivienda se mantiene separado. No lo consideraremos disponible para cubrir pagos de tarjetas ni gastos corrientes.</p><p><b>Meta mensual base: S/ 1,000.</b> Es un mínimo de planificación, no un límite máximo. Si tus ingresos crecen, puedes acelerar la inicial.</p></div>
 </div></section>
 
-<section class="section" id="ingresos"><div class="section-head"><div><h2>Ingresos de referencia</h2><p>Última estructura mensual registrada; pendiente de confirmar que siga vigente.</p></div><span class="chip info">Base histórica</span></div>
-<div class="panel table-wrap"><table><thead><tr><th>Fuente</th><th class="right">Importe mensual</th><th class="right">Participación</th></tr></thead><tbody>
-<tr><td>SEBFLOW E.I.R.L.</td><td class="right">S/ 500.00</td><td class="right">13.0%</td></tr><tr><td>Podoinka S.A.C.</td><td class="right">S/ 250.00</td><td class="right">6.5%</td></tr><tr><td>Bl & Jt Consultores S.A.C.</td><td class="right">S/ 700.00</td><td class="right">18.1%</td></tr><tr><td>Juan Manuel</td><td class="right">S/ 1,900.00</td><td class="right">49.2%</td></tr><tr><td>Proyecto Educando S.A.C.</td><td class="right">S/ 275.00</td><td class="right">7.1%</td></tr><tr><td>URBAN ASOCIADOS S.A.C.</td><td class="right">S/ 236.00</td><td class="right">6.1%</td></tr></tbody><tfoot><tr><td><b>Total</b></td><td class="right"><b>S/ 3,861.00</b></td><td class="right"><b>100%</b></td></tr></tfoot></table></div>
-</section>
+
 
 <section class="section" id="criterios"><div class="section-head"><div><h2>Cómo leer este panel</h2><p>Reglas para que tus números no se distorsionen.</p></div></div>
 <details open><summary>¿Por qué un pago de tarjeta no es un gasto nuevo?</summary><p>El gasto se reconoce cuando realizas la compra. Cuando pagas la tarjeta, estás cancelando la deuda generada por esas compras. Registrar ambos como gasto duplicaría el consumo.</p></details>
@@ -434,7 +498,7 @@ details{background:#101e32;border-color:#293f5d;color:#e3edfc}details p{color:#9
 <details><summary>¿Qué información falta para un diagnóstico completo?</summary><p>Estado reciente de Diners, conciliación detallada de Scotiabank, confirmación de ingresos mensuales vigentes y registro diario completo de ingresos y gastos de noviembre.</p></details>
 <details><summary>¿Qué incluye la proyección del departamento?</summary><p>Solo el saldo actual y los aportes mensuales simulados. No incluye intereses, gastos notariales, registrales, tasación, seguros, costos hipotecarios ni variaciones del precio del inmueble. La inicial de S/ 30,000 es una meta de trabajo, no una cotización bancaria.</p></details>
 </section>
-<div class="footer">ALVAPEN · Centro Financiero Personal · Estados de cuenta base: septiembre–octubre 2026 · Cifras sujetas a conciliación con los estados bancarios originales.</div>
+<div class="footer">ALVAPEN · Personal Finance Dashboard · Actualización documental por ciclos de tarjeta · Cifras sujetas a validación con los estados originales.</div>
 </div></main>
 </div>
 
@@ -615,50 +679,7 @@ renderAnalytics();
 })();
 
 
-/* Navegación por espacios de trabajo: reduce duplicidad y ordena tareas */
-(function(){
- const main=document.querySelector("main .content");
- if(!main)return;
- const ids=["resumen","tarjetas","movimientos","ingresos","analitica","comparativa","departamento","proyeccion","criterios"];
- const sections={};ids.forEach(id=>{sections[id]=document.getElementById(id);});
- const makeGroup=(id,label,items)=>{
-  const wrap=document.createElement("div");wrap.className="workspace-group";wrap.id=id;
-  const title=document.createElement("div");title.className="workspace-label";title.textContent=label;wrap.appendChild(title);
-  items.forEach(key=>{const el=sections[key];if(el){wrap.appendChild(el);}});
-  main.appendChild(wrap);return wrap;
- };
- const hero=main.querySelector(".hero");if(hero)hero.insertAdjacentElement("afterend",sections.resumen);
- makeGroup("space-control","01 / Control de obligaciones",[ "tarjetas","movimientos","ingresos" ]);
- makeGroup("space-insights","02 / Inteligencia financiera",[ "analitica","comparativa" ]);
- makeGroup("space-goals","03 / Patrimonio y planificación",[ "departamento","proyeccion" ]);
- makeGroup("space-method","04 / Método y criterios",[ "criterios" ]);
- const nav=document.querySelector(".sidebar .nav");
- const dock=document.querySelector(".ios-dock");
- const navItems=[
-  ["#inicio","⌂","Inicio"],
-  ["#resumen","▦","Resumen"],
-  ["#space-control","◫","Control"],
-  ["#space-insights","⌁","Análisis"],
-  ["#space-goals","◇","Metas"]
- ];
- if(nav)nav.innerHTML=navItems.map((x,i)=>'<a href="'+x[0]+'"'+(i===0?' class="active"':'')+'>'+x[1]+'&nbsp; '+x[2]+'</a>').join("");
- if(dock)dock.innerHTML=navItems.map((x,i)=>'<a href="'+x[0]+'"'+(i===0?' class="active"':'')+'><span class="dock-icon">'+x[1]+'</span><span>'+x[2]+'</span></a>').join("");
- const top=document.querySelector(".topbar .eyebrow");if(top)top.textContent="ALVAPEN / PERSONAL FINANCE OS";
- const heading=document.querySelector(".topbar h1");if(heading)heading.textContent="Tu centro de control financiero";
- const summary=sections.resumen;
- if(summary){const p=summary.querySelector(".section-head p");if(p)p.textContent="Una sola vista para tus indicadores clave. Los detalles viven en sus respectivos módulos.";}
- const movement=sections.movimientos;
- if(movement){const h=movement.querySelector("h2");if(h)h.textContent="Registro y flujo de caja";const p=movement.querySelector(".section-head p");if(p)p.textContent="Registra operaciones y revisa el flujo mensual en el mismo módulo.";}
- const income=sections.ingresos;
- if(income){const h=income.querySelector("h2");if(h)h.textContent="Composición de ingresos";const p=income.querySelector(".section-head p");if(p)p.textContent="Detalle por fuente. La cifra total ya se muestra en el resumen.";}
- const analytics=sections.analitica;
- if(analytics){const h=analytics.querySelector(".section-head h2");if(h)h.textContent="Consumo y comportamiento";const p=analytics.querySelector(".section-head p");if(p)p.textContent="Tendencias, composición y señales de gasto. No duplica pagos de tarjetas.";}
- const projection=sections.proyeccion;
- if(projection){const h=projection.querySelector("h2");if(h)h.textContent="Simulador de ahorro para inicial";}
- const footer=main.querySelector(".footer");if(footer)main.appendChild(footer);
- const links=[...document.querySelectorAll(".sidebar .nav a,.ios-dock a")];
- links.forEach(a=>a.addEventListener("click",()=>{links.forEach(x=>x.classList.toggle("active",x===a));}));
-})();
+
 
 
 
@@ -686,6 +707,38 @@ function renderDashboardCharts(all,months,selected,sum,fmt){
   }else cash.innerHTML='<div class="chart-empty">Aún no hay ingresos registrados suficientes para comparar el flujo. Cuando registres tus ingresos mensuales, este gráfico mostrará ingresos frente a gastos sin inventar cifras.</div>';
  }
 }
+
+/* Reorganización de dashboard documental */
+(function(){
+ const main=document.querySelector("main .content");if(!main)return;
+ const order=["resumen","tarjetas","analitica","comparativa","departamento","proyeccion","actualizaciones","criterios"];
+ const refs={};order.forEach(id=>refs[id]=document.getElementById(id));
+ const hero=main.querySelector(".hero");
+ if(hero){
+  const intro=document.createElement("div");intro.className="dashboard-intro";
+  intro.innerHTML='<div class="eyebrow">FINANCIAL COMMAND CENTER</div><h2>Tu panorama, sin registros manuales.</h2><p>Los datos se actualizan cuando compartes los estados de cuenta y cierres de tus tarjetas.</p>';
+  hero.insertAdjacentElement("afterend",intro);
+ }
+ const groups=[
+  ["overview-group","01 · OVERVIEW",["resumen","tarjetas"]],
+  ["insights-group","02 · INTELIGENCIA Y EVOLUCIÓN",["analitica","comparativa"]],
+  ["goals-group","03 · PATRIMONIO Y PLANIFICACIÓN",["departamento","proyeccion"]],
+  ["updates-group","04 · ACTUALIZACIONES DOCUMENTALES",["actualizaciones","criterios"]]
+ ];
+ groups.forEach(([id,label,keys])=>{
+  const wrap=document.createElement("div");wrap.className="dashboard-group";wrap.id=id;
+  const heading=document.createElement("div");heading.className="dashboard-group-title";heading.textContent=label;wrap.appendChild(heading);
+  keys.forEach(k=>{if(refs[k])wrap.appendChild(refs[k]);});
+  main.appendChild(wrap);
+ });
+ const nav=document.querySelector(".sidebar .nav");
+ const items=[["#inicio","Overview"],["#overview-group","Tarjetas"],["#insights-group","Insights"],["#goals-group","Goals"],["#updates-group","Cierres"]];
+ if(nav)nav.innerHTML=items.map((x,i)=>'<a href="'+x[0]+'"'+(i===0?' class="active"':'')+'>'+x[1]+'</a>').join("");
+ const head=document.querySelector(".topbar .eyebrow");if(head)head.textContent="ALVAPEN / PERSONAL FINANCE";
+ const title=document.querySelector(".topbar h1");if(title)title.textContent="Financial overview";
+ const sub=document.querySelector(".topbar .sub");if(sub)sub.textContent="Un panel documental para controlar tus tarjetas y tu patrimonio.";
+ const footer=main.querySelector(".footer");if(footer)main.appendChild(footer);
+})();
 </script>
 </body>
 </html>
