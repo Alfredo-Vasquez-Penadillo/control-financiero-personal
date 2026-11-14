@@ -290,7 +290,54 @@ document.getElementById("months").addEventListener("input",updateProjection);
 updateProjection();
 
 const STORE_KEY="alvapen_personal_finance_v1";
+const BASELINE_SEPT_2026=[
+ {id:"stmt26_bcp_01",date:"2026-09-24",amount:585,concept:"Pago de impuestos SUNAT",type:"gasto",category:"Impuestos y trámites",method:"BCP",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_bcp_02",date:"2026-09-24",amount:3.90,concept:"Combate de Angamos",type:"gasto",category:"Alimentación",method:"BCP",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_bcp_03",date:"2026-09-28",amount:6.70,concept:"Supermercados Holi",type:"gasto",category:"Alimentación",method:"BCP",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_bcp_04",date:"2026-09-28",amount:536,concept:"Pago de impuestos SUNAT",type:"gasto",category:"Impuestos y trámites",method:"BCP",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_bcp_05",date:"2026-09-28",amount:50,concept:"Starbucks",type:"gasto",category:"Alimentación",method:"BCP",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_bcp_06",date:"2026-09-28",amount:21.90,concept:"E Wong Gardenias",type:"gasto",category:"Alimentación",method:"BCP",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_bcp_07",date:"2026-09-28",amount:203,concept:"Pago de detracciones SUNAT",type:"gasto",category:"Impuestos y trámites",method:"BCP",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_bcp_08",date:"2026-09-30",amount:425,concept:"Pago de servicio · código 000079088999",type:"gasto",category:"Servicios y obligaciones",method:"BCP",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_bcp_09",date:"2026-09-30",amount:425,concept:"Pago de servicio · código 000090849312",type:"gasto",category:"Servicios y obligaciones",method:"BCP",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_bcp_10",date:"2026-09-30",amount:390,concept:"Pago de servicio · código INST00C22BN11129",type:"gasto",category:"Servicios y obligaciones",method:"BCP",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_sc_01",date:"2026-09-01",amount:128.48,concept:"Integra AFP",type:"gasto",category:"Aportes y seguros",method:"Scotiabank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_sc_02",date:"2026-09-03",amount:39.72,concept:"Rappi SAC",type:"gasto",category:"Alimentación",method:"Scotiabank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_sc_03",date:"2026-09-07",amount:2.20,concept:"Supermercados Holi",type:"gasto",category:"Alimentación",method:"Scotiabank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_01",date:"2026-09-15",amount:139.90,concept:"Movistar App MT",type:"gasto",category:"Telefonía e internet",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_02",date:"2026-09-17",amount:33,concept:"SUNARP",type:"gasto",category:"Impuestos y trámites",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_03",date:"2026-09-17",amount:32,concept:"María Almenara",type:"gasto",category:"Alimentación",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_04",date:"2026-09-17",amount:69,concept:"Rosatel",type:"gasto",category:"Compras personales y regalos",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_05",date:"2026-09-17",amount:24.50,concept:"PVEA Cortijo",type:"gasto",category:"Salud y cuidado personal",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_06",date:"2026-09-18",amount:3.79,concept:"Supermercados Holi",type:"gasto",category:"Alimentación",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_07",date:"2026-09-19",amount:22.90,concept:"Alm Benavides",type:"gasto",category:"Salud y cuidado personal",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_08",date:"2026-09-19",amount:2.10,concept:"Mifarma",type:"gasto",category:"Salud y cuidado personal",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_09",date:"2026-09-27",amount:140,concept:"Interseguro",type:"gasto",category:"Aportes y seguros",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_10",date:"2026-09-27",amount:11.20,concept:"Gusham SAC",type:"gasto",category:"Compras personales y regalos",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_11",date:"2026-09-28",amount:240,concept:"IZI Emuss SA",type:"gasto",category:"Compras personales y regalos",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_12",date:"2026-09-28",amount:6.70,concept:"Supermercados Holi",type:"gasto",category:"Alimentación",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_13",date:"2026-09-30",amount:214.60,concept:"Luz del Sur",type:"gasto",category:"Vivienda y servicios",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_ibk_14",date:"2026-09-30",amount:83.10,concept:"Sedapal",type:"gasto",category:"Vivienda y servicios",method:"Interbank",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_cmr_01",date:"2026-09-06",amount:108.73,concept:"Compra internacional Apple.com Bill",type:"gasto",category:"Suscripciones y servicios digitales",method:"CMR Falabella",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_cmr_02",date:"2026-09-08",amount:20.58,concept:"OpenAI ChatGPT Subscription",type:"gasto",category:"Suscripciones y servicios digitales",method:"CMR Falabella",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_cmr_03",date:"2026-09-08",amount:22.40,concept:"Compra Falabella Centro Cívico",type:"gasto",category:"Compras personales y regalos",method:"CMR Falabella",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_cmr_04",date:"2026-09-14",amount:32.90,concept:"Uber Rides",type:"gasto",category:"Transporte",method:"CMR Falabella",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_cmr_05",date:"2026-09-16",amount:1.69,concept:"Uber Rides",type:"gasto",category:"Transporte",method:"CMR Falabella",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_cmr_06",date:"2026-09-17",amount:33.37,concept:"Apple.com Bill",type:"gasto",category:"Suscripciones y servicios digitales",method:"CMR Falabella",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_cmr_07",date:"2026-09-21",amount:7.82,concept:"Rappi",type:"gasto",category:"Alimentación",method:"CMR Falabella",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_cmr_08",date:"2026-09-22",amount:20.40,concept:"Google One",type:"gasto",category:"Suscripciones y servicios digitales",method:"CMR Falabella",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_cmr_09",date:"2026-09-24",amount:34.24,concept:"Rappi",type:"gasto",category:"Alimentación",method:"CMR Falabella",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_cmr_10",date:"2026-09-25",amount:16.31,concept:"Rappi",type:"gasto",category:"Alimentación",method:"CMR Falabella",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_din_01",date:"2026-09-06",amount:6.90,concept:"IZI Hipercasa",type:"gasto",category:"Compras personales y hogar",method:"Diners Club",cardPayment:false,source:"statement_baseline"},
+ {id:"stmt26_din_02",date:"2026-09-06",amount:76.40,concept:"El Chinito Plaza Mayor",type:"gasto",category:"Alimentación",method:"Diners Club",cardPayment:false,source:"statement_baseline"}
+];
+function mergeBaselineEntries(){
+ const known=new Set(entries.map(e=>e.id));
+ const missing=BASELINE_SEPT_2026.filter(e=>!known.has(e.id));
+ if(missing.length){entries=entries.concat(missing);persistEntries();}
+}
 let entries=loadEntries();
+mergeBaselineEntries();
 function loadEntries(){try{return JSON.parse(localStorage.getItem(STORE_KEY)||"[]")}catch(e){return []}}
 function persistEntries(){localStorage.setItem(STORE_KEY,JSON.stringify(entries))}
 function money(n){return "S/ "+Number(n||0).toLocaleString("es-PE",{minimumFractionDigits:2,maximumFractionDigits:2})}
@@ -467,7 +514,7 @@ document.getElementById("entryForm").addEventListener("submit",saveEntry);
 document.getElementById("monthFilter").value=new Date().toISOString().slice(0,7);
 document.getElementById("entryDate").value=new Date().toISOString().slice(0,10);
 document.getElementById("monthFilter").addEventListener("change",()=>{renderEntries();renderAnalytics()});
-document.getElementById("consumptionMonthFilter").value=new Date().toISOString().slice(0,7);
+document.getElementById("consumptionMonthFilter").value="2026-09";
 document.getElementById("consumptionMonthFilter").addEventListener("change",renderAnalytics);
 renderEntries();
 renderAnalytics();
