@@ -528,6 +528,7 @@ renderAnalytics();
  if(!main)return;
  const order=["resumen","tarjetas","analitica","movimientos","ingresos","departamento","proyeccion","comparativa","criterios"];
  order.forEach(id=>{const el=document.getElementById(id);if(el)main.appendChild(el);});
+ const footer=main.querySelector(".footer");if(footer)main.appendChild(footer);
  const nav=document.querySelector(".sidebar .nav");
  if(nav){
   const labels={resumen:"▦ &nbsp; Resumen",tarjetas:"▣ &nbsp; Tarjetas y deudas",analitica:"▥ &nbsp; Consumo mensual",movimientos:"✎ &nbsp; Movimientos",ingresos:"＋ &nbsp; Ingresos",departamento:"⌂ &nbsp; Mi departamento",proyeccion:"↗ &nbsp; Proyecciones",comparativa:"⇄ &nbsp; Evolución",criterios:"✓ &nbsp; Criterios"};
